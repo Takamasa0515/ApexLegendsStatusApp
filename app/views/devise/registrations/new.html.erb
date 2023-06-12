@@ -1,0 +1,39 @@
+<header class="bg-primary bg-gradient text-white">
+  <div class="container px-4">
+    <div class="boxshadow">
+      <h2 class="container-h2">アカウント作成</h2>
+      <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+        <div class="devise">
+        <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="devise-form">
+            <div class="field">
+              <%= f.label :name, class: "devise-label" %><br />
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "devise-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :email, class: "devise-label" %><br />
+              <%= f.email_field :email, autocomplete: "email", class: "devise-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :password, class: "devise-label" %>
+              <% if @minimum_password_length %>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class: "devise-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :password_confirmation, class: "devise-label" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "devise-field" %>
+            </div>
+          </div>
+          <div class="signup-actions ">
+            <%= f.submit "新規登録", class: "btn-dark btn-lg btn btn-border-color-white" %>
+          </div>
+        </div>
+      <% end %>
+      <hr class="hr-white">
+      <div>
+        <p>すでにアカウントをお持ちの場合は、<%= link_to "こちらからログイン", new_user_session_path, class: "custom-link" %>してください。</p>
+      </div>
+    </div>
+  </div>
+</header>
