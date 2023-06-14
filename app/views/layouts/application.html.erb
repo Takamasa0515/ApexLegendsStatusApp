@@ -15,7 +15,12 @@
   </head>
 
   <body id="page-top">
-    <%= render "shared/nav" %>
+    <% if user_signed_in? %>
+      <%= render "layouts/login_user_nav" %>
+    <% else %>
+      <%= render "layouts/no_login_user_nav" %>
+    <% end %>
+    <%= render "shared/devise_flash_messages" %>
     <%= yield %>
     <%= render "shared/footer" %>
   </body>

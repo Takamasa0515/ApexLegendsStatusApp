@@ -1,10 +1,24 @@
-<header class = "bg-gradient">
-  <div class="vertical text-white">
-    <div class="container px-4 text-center">
-      <h1 class="fw-bolder">ApexLegends Statuにようこそ</h1>
-      <p class="lead">このサイトではあなたの戦績を表示します</p>
-      <%= link_to "新規会員登録して戦績を確認する", new_user_registration_path, class:"btn btn-lg btn-dark btn-border-color-white" %>
-      <%= link_to "ログインはこちら", new_user_session_path, class:"btn btn-lg btn-dark btn-border-color-white" %>
+<header class="bg-gradient header">
+  <div class="header-container">
+    <div class="header-container-first-line">
+      <div class="header-mypage-left" >
+        <%= image_tag "default_avatar.jpg", class: "user-avatar" %>
+        <div class="header-mypage-user-profiel">
+          <h2><%= @user.name %></h2>
+          <p>steam:Twitch_Ne1u</p>
+        </div>
+      </div>
+      <div class="header-mypage-right">
+        <div class="profile-edit-btn">
+          <%= link_to "プロフィールを編集する", edit_user_registration_path, class: "btn-dark btn-lg btn btn-border-color-white" %>
+        </div>
+      </div>
+    </div>
+    <hr class="hr-white">
+    <div class="header-container-second-line">
+      <p>これはテストアカウントです</p>
     </div>
   </div>
 </header>
+<div class="game-status">
+</div>

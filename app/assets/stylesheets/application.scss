@@ -11229,6 +11229,10 @@ section {
   border-radius: 10px;
 }
 
+.error-messages {
+  color: #ff0000;
+  margin: 0;
+}
 .devise {
   display: flex;
   justify-content: flex-start;
@@ -11309,4 +11313,74 @@ section {
 .btn-border-color-white {
   --bs-btn-border-color: #ffffff;
   --bs-btn-hover-border-color: #ffffff;
+}
+
+.header {
+  display: block;
+  height: auto;
+  padding-top: 2.7rem;
+}
+
+.my-page {
+  display: block;
+}
+
+.header-container {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 30px 10px 25px;
+  color: #ffffff;
+}
+
+.header-container-first-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-mypage-left {
+  display: flex;
+}
+
+.header-mypage-user-profiel {
+  margin: auto 0;
+  margin-left: 20px;
+}
+
+.header-mypage-user-profiel h2 {
+  font-size: 3rem;
+  margin: auto 0;
+}
+
+.header-mypage-user-profiel p {
+  margin: 0;
+}
+
+.header-mypage-right {
+  margin: auto 0;
+}
+
+.user-avatar {
+  width: auto;
+  height: 100px;
+  margin: auto 0;
+}
+
+.devise-alert {
+  height: 40px;
+  line-height: 42px;
+  margin: 0 auto;
+  margin-top: 40px;
+  color: #ffffff;
+  background-color: #fd5a5a;
+  text-align: center;
+}
+
+.devise-notice {
+  height: 40px;
+  line-height: 42px;
+  margin: 0 auto;
+  margin-top: 40px;
+  color: #ffffff;
+  background-color: #4169e1;
+  text-align: center;
 }

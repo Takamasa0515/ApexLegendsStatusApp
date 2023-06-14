@@ -4,14 +4,13 @@
       <h2 class="container-h2">ログイン</h2>
       <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
         <div class="devise">
-        <%= render "devise/shared/error_messages", resource: resource %>
           <div class="devise-form">
             <div class="field">
-              <%= f.label :email, class: "devise-label" %><br />
+              <%= f.label :email, class: "devise-label" %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "devise-field" %>
             </div>
             <div class="field">
-              <%= f.label :password, class: "devise-label"  %><br />
+              <%= f.label :password, class: "devise-label"  %>
               <%= f.password_field :password, autocomplete: "current-password", class: "devise-field" %>
             </div>
             <% if devise_mapping.rememberable? %>

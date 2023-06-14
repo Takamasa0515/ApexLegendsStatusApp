@@ -1,5 +1,22 @@
 ja:
   activerecord:
+    errors:
+      modules:
+        user:
+          attributes:
+            email:
+              blank: "が入力されていません"
+            password:
+              too_short: "は6文字以上で設定してください"
+            password_confirmation:
+              confirmation: "確認1"
+          blank: "が入力されていません"
+          confirmation: "確認2"
+          too_short: "は6文字以上で設定してください"
+      messages:
+        blank: "を入力してください"
+        confirmation: "がパスワードと一致しません"
+        taken: "はすでに登録されています"
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -16,7 +33,7 @@ ja:
         last_sign_in_ip: 最終ログインIPアドレス
         locked_at: ロック時刻
         name: ユーザー名
-        password: パスワード(6文字以上)
+        password: パスワード
         password_confirmation: パスワード（確認用）
         remember_created_at: ログイン記憶時刻
         remember_me: ログインを記憶する
@@ -38,10 +55,10 @@ ja:
     failure:
       already_authenticated: すでにログインしています。
       inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
-      invalid: "%{authentication_keys}またはパスワードが違います。"
+      invalid: "%{authentication_keys}またはパスワードが違います"
       last_attempt: もう一回誤るとアカウントがロックされます。
       locked: アカウントはロックされています。
-      not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
+      not_found_in_database: "%{authentication_keys}またはパスワードが違います"
       timeout: セッションがタイムアウトしました。もう一度ログインしてください。
       unauthenticated: ログインもしくはアカウント登録してください。
       unconfirmed: メールアドレスの本人確認が必要です。
@@ -134,6 +151,7 @@ ja:
       unlocked: アカウントをロック解除しました。
   errors:
     messages:
+      blank: "入力してください"
       already_confirmed: は既に登録済みです。ログインしてください。
       confirmation_period_expired: の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。
       expired: の有効期限が切れました。新しくリクエストしてください。
@@ -142,3 +160,12 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+    attributes:
+      email:
+        blank: "Eメールを入力してください"
+      messages:
+        confirmation: "確認4"
+      password:
+        too_short: "は6文字以上で設定してください"
+      password_confirmation:
+        confirmation: "確認5"

@@ -4,24 +4,33 @@
       <h2 class="container-h2">アカウント作成</h2>
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
         <div class="devise">
-        <%= render "devise/shared/error_messages", resource: resource %>
           <div class="devise-form">
             <div class="field">
-              <%= f.label :name, class: "devise-label" %><br />
+              <%= f.label :name, class: "devise-label" %>
+              <% if @user.errors.include?(:name) %>
+                <p class="error-messages"><%= @user.errors.full_messages_for(:name).first %>
+              <% end %>
               <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "devise-field" %>
             </div>
             <div class="field">
-              <%= f.label :email, class: "devise-label" %><br />
+              <%= f.label :email, class: "devise-label" %>
+              <% if @user.errors.include?(:email) %>
+                <p class="error-messages"><%= @user.errors.full_messages_for(:email).first %>
+              <% end %>
               <%= f.email_field :email, autocomplete: "email", class: "devise-field" %>
             </div>
             <div class="field">
-              <%= f.label :password, class: "devise-label" %>
-              <% if @minimum_password_length %>
-              <% end %><br />
+              <%= f.label :password, "パスワード(6文字以上)", class: "devise-label" %>
+              <% if @user.errors.include?(:password) %>
+                <p class="error-messages"><%= @user.errors.full_messages_for(:password).first %>
+              <% end %>
               <%= f.password_field :password, autocomplete: "new-password", class: "devise-field" %>
             </div>
             <div class="field">
-              <%= f.label :password_confirmation, class: "devise-label" %><br />
+              <%= f.label :password_confirmation, class: "devise-label" %>
+              <% if @user.errors.include?(:password_confirmation) %>
+                <p class="error-messages"><%= @user.errors.full_messages_for(:password_confirmation).first %>
+              <% end %>
               <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "devise-field" %>
             </div>
           </div>
