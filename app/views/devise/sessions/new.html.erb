@@ -2,16 +2,16 @@
   <div class="container px-4">
     <div class="boxshadow">
       <h2 class="container-h2">ログイン</h2>
-      <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <%= form_with model: @user, url: user_session_path, id: 'new_user', local: true do |f| %>
         <div class="devise">
           <div class="devise-form">
             <div class="field">
               <%= f.label :email, class: "devise-label" %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "devise-field" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
             </div>
             <div class="field">
               <%= f.label :password, class: "devise-label"  %>
-              <%= f.password_field :password, autocomplete: "current-password", class: "devise-field" %>
+              <%= f.password_field :password, autocomplete: "current-password" %>
             </div>
             <% if devise_mapping.rememberable? %>
               <div class="checkbox">

@@ -11213,6 +11213,8 @@ section {
   padding-top: 9rem;
   padding-bottom: 9rem;
 }
+.container {
+}
 
 .container-h2 {
   border-left: 2px solid #ffffff;
@@ -11229,13 +11231,26 @@ section {
   border-radius: 10px;
 }
 
+.boxshadow-user-edit {
+  max-width: 900px;
+  padding: 1rem 2rem;
+  margin: 0 auto;
+  box-shadow: 0 0 20px #ffffff;
+  border-radius: 10px;
+}
+
 .error-messages {
   color: #ff0000;
   margin: 0;
 }
+
 .devise {
   display: flex;
   justify-content: flex-start;
+  margin: 0;
+}
+
+.devise-user-edit {
   margin: 0;
 }
 
@@ -11243,11 +11258,10 @@ section {
   font-size: 1rem;
 }
 
-.devise-field {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid #ffffff;
-  outline: none;
-  margin-top: 2px;
+.devise-label-user-edit {
+  width: 25%;
+  margin: auto 0;
+  font-size: 1rem;
 }
 
 .field {
@@ -11260,6 +11274,37 @@ section {
   width: 300px;
   height: 40px;
   border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ffffff;
+  outline: none;
+  margin-top: 2px;
+}
+
+.field-user-edit {
+  display: flex;
+}
+
+.field-user-edit input {
+  color: #ffffff;
+  width: 65%;
+  height: 40px;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ffffff;
+  outline: none;
+  margin-top: 2px;
+}
+
+.devise-user-edit textarea {
+  resize: none;
+  color: #ffffff;
+  width: 65%;
+  height: 150px;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ffffff;
+  outline: none;
+  margin-top: 2px;
 }
 
 .devise-button {
@@ -11274,10 +11319,21 @@ section {
   margin-right: 0;
 }
 
+.actions-user-edit {
+  margin: 0;
+}
+
 .actions input {
   width: 300px;
   height: 40px;
   margin: 7px auto;
+}
+
+.actions-user-edit input {
+  display: block;
+  width: 70%;
+  height: 40px;
+  margin: 0 auto;
 }
 
 .signup-actions {
@@ -11321,8 +11377,8 @@ section {
   padding-top: 2.7rem;
 }
 
-.my-page {
-  display: block;
+.header-mypage {
+  height: 400px;
 }
 
 .header-container {
@@ -11383,4 +11439,14 @@ section {
   color: #ffffff;
   background-color: #4169e1;
   text-align: center;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.delete-btn {
+  color: #ff0000;
+  font-size: 15px;
+  text-decoration: none;
 }
