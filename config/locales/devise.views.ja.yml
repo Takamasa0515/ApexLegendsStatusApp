@@ -12,6 +12,9 @@ ja:
             current_password:
           blank: "が入力されていません"
           too_short: "は6文字以上で設定してください"
+        game_status:
+          attributes:
+            user:
       messages:
         blank: "を入力してください"
         confirmation: "がパスワードと一致しません"
@@ -19,6 +22,7 @@ ja:
         invalid: "が一致しません"
     attributes:
       user:
+        avatar: アイコン画像
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -44,8 +48,12 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
         self_introduction: "プロフィール"
+      game_account_info:
+        platform: "プラットフォーム"
+        gameid: "ゲームID"
     models:
       user: ユーザー
+      game_account_info: ゲームアカウント情報
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

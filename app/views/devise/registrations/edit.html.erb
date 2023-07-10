@@ -4,24 +4,41 @@
       <h2 class="container-h2">アカウント編集</h2>
       <hr class="hr-white">
       <%= form_with model: @user, url: user_registration_path, id: 'edit_user', local: true do |f| %>
-
-      <%= render "devise/shared/error_messages", resource: resource %>
         <div class="devise-user-edit">
           <div class="devise-form">
             <div class="field-user-edit">
-              <%= f.label :email, class: "devise-label-user-edit" %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <%= f.label :avatar, class: "devise-label-user-edit" %>
+              <%= f.file_field :avatar, autofocus: true, class: "file_field" %>
             </div>
             <hr class="hr-white">
             <div class="field-user-edit">
-              <%= f.label :self_introduction, class: "devise-label-user-edit" %><br />
+              <%= f.label :name, class: "devise-label-user-edit" %>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "devise-field" %>
+            </div>
+            <% if @user.errors.include?(:name) %>
+              <p class="error-messages em-25"><%= @user.errors.full_messages_for(:name).first %></p>
+            <% end %>
+            <hr class="hr-white">
+            <div class="field-user-edit">
+              <%= f.label :self_introduction, class: "devise-label-user-edit" %>
               <%= f.text_area :self_introduction, autofocus: true, autocomplete: "email", class: "devise-field" %>
             </div>
+            <hr class="hr-white">
+            <div class="field-user-edit">
+              <%= f.label :email, class: "devise-label-user-edit" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+            <% if @user.errors.include?(:email) %>
+              <p class="error-messages em-25"><%= @user.errors.full_messages_for(:email).first %></p>
+            <% end %>
             <hr class="hr-white">
             <div class="field-user-edit">
               <%= f.label :current_password, class: "devise-label-user-edit" %>
               <%= f.password_field :current_password, autocomplete: "current-password" %>
             </div>
+            <% if @user.errors.include?(:current_password) %>
+              <p class="error-messages em-25"><%= @user.errors.full_messages_for(:current_password).first %></p>
+            <% end %>
             <hr class="hr-white">
             <div class="actions-user-edit">
               <%= f.submit "更新する", class: "btn-dark btn-lg btn btn-border-color-white" %>

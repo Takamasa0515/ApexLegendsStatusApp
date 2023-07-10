@@ -1,14 +1,8 @@
-<!-- Header-->
-<header class="bg-gradient">
-  <div class="vertical text-white">
-    <div class="container px-4 text-center">
-      <h1 class="fw-bolder">ApexLegends Statuにようこそ</h1>
-      <p class="lead">このサイトではあなたの戦績を表示します</p>
-      <%= link_to "新規会員登録して戦績を確認する", new_user_registration_path, class:"btn btn-lg btn-dark btn-border-color-white" %>
-      <%= link_to "ログインはこちら", new_user_session_path, class:"btn btn-lg btn-dark btn-border-color-white" %>
-    </div>
-  </div>
-</header>
+<% if user_signed_in? %>
+  <%= render "login_user_top" %>
+<% else %>
+  <%= render "no_login_user_top" %>
+<% end %>
 <!-- About section-->
 <section id="about">
   <div class="container px-4">

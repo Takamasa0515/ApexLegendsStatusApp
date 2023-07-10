@@ -1,0 +1,38 @@
+<header class="bg-primary bg-gradient text-white">
+  <div class="container px-4 mt-10">
+    <div class="boxshadow-user-edit">
+      <h2 class="container-h2">ゲームアカウント 登録 / 編集</h2>
+      <hr class="hr-white">
+      <%= form_with model: @game_account_info, url: {controller: 'game_account_info', action: 'update' }, method: :patch, local: true do |f| %>
+        <div class="devise-user-edit">
+          <div class="devise-form">
+            <div class="field-user-edit">
+              <div class="left-field-user-edit">
+                <%= render partial: 'shared/error_messages', locals: { errors: @game_account_info.errors, attribute: :platform } %>
+                <%= f.label :platform, class: "devise-label-user-edit" %>
+              </div>
+              <div class="right-field-user-edit">
+                <%= f.select :platform, [["Steam", "steam"], ["Origin", "origin"], ["PlayStation", "psn"], ["Xbox", "xbl"]], include_blank: "選択して下さい" %>
+              </div>
+            </div>
+            <hr class="hr-white">
+            <div class="field-user-edit">
+              <div class="left-field-user-edit">
+              <%= render partial: 'shared/error_messages', locals: { errors: @game_account_info.errors, attribute: :gameid } %>
+              <%= f.label :gameid %>
+              </div>
+              <div class="right-field-user-edit">
+                <%= f.text_field :gameid, autofocus: true, class: "devise-field" %>
+              </div>
+            </div>
+            <hr class="hr-white">
+            <div class="actions-user-edit">
+              <%= f.submit "登録する", class: "btn-dark btn-lg btn btn-border-color-white" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <hr class="hr-white">
+    </div>
+  </div>
+</header>

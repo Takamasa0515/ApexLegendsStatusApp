@@ -11213,7 +11213,9 @@ section {
   padding-top: 9rem;
   padding-bottom: 9rem;
 }
-.container {
+
+h2 {
+  color: #ffffff;
 }
 
 .container-h2 {
@@ -11244,6 +11246,11 @@ section {
   margin: 0;
 }
 
+.em-25 {
+  width: 25%;
+  color: #ff0000;
+}
+
 .devise {
   display: flex;
   justify-content: flex-start;
@@ -11258,10 +11265,23 @@ section {
   font-size: 1rem;
 }
 
-.devise-label-user-edit {
+.left-field-user-edit {
   width: 25%;
   margin: auto 0;
   font-size: 1rem;
+}
+
+.right-field-user-edit {
+  width: 65%;
+  margin: auto;
+}
+
+.right-field-user-edit select {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 0.5rem;
+  height: 40px;
 }
 
 .field {
@@ -11284,9 +11304,14 @@ section {
   display: flex;
 }
 
-.field-user-edit input {
+.field-user-edit label {
+  width: 25%;
+  margin: auto 0;
+}
+
+.field-user-edit input:not(.file_field) {
   color: #ffffff;
-  width: 65%;
+  width: 75%;
   height: 40px;
   border-radius: 0.5rem;
   background-color: rgba(255, 255, 255, 0.1);
@@ -11298,7 +11323,7 @@ section {
 .devise-user-edit textarea {
   resize: none;
   color: #ffffff;
-  width: 65%;
+  width: 75%;
   height: 150px;
   border-radius: 0.5rem;
   background-color: rgba(255, 255, 255, 0.1);
@@ -11416,6 +11441,7 @@ section {
 }
 
 .user-avatar {
+  border-radius: 50%;
   width: auto;
   height: 100px;
   margin: auto 0;
@@ -11449,4 +11475,184 @@ section {
   color: #ff0000;
   font-size: 15px;
   text-decoration: none;
+}
+
+.file-user-edit {
+  display: flex;
+}
+
+.profiel-edit-btn {
+  margin-bottom: 5px;
+}
+
+.wd-300 {
+  width: 300px;
+}
+
+.bg-dark-black {
+  background-color: #16160e;
+}
+
+.bg-gray {
+  background-color: #1f1f1f;
+}
+
+.overall-record-area {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.overall-record-container {
+  display: flex;
+  border: 1px solid #ffffff;
+  border-radius: 0.5rem;
+}
+
+.overall-title {
+  display: flex;
+  width: 300px;
+}
+
+.overall-title p {
+  color: #ffffff;
+  font-size: 2rem;
+  text-align: center;
+  margin: auto;
+}
+
+.overall-record-stats {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.overall-stat {
+  display: flex;
+  flex-direction: column;
+  width: 175px;
+  margin: 1rem 0.5rem 1rem 0;
+  padding-left: 1rem;
+  color: #ffffff;
+  line-height: 1.1;
+  border-left: 1px solid #ffffff;
+}
+
+.overall-stat .name {
+  font-size: 1rem;
+}
+
+.overall-stat .value {
+  font-size: 1.7rem;
+}
+
+.overall-stat .rank {
+  font-size: 0.7rem;
+  color: #fdd35c;
+}
+
+.overall-stat .rank::before {
+  content: "\e561";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 3px;
+}
+
+.trn-legend-stats-area {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.trn-legend-stats-container {
+  border: 1px solid #ffffff;
+  border-radius: 0.5rem;
+}
+
+.legend-stats-title h2 {
+  text-align: center;
+  padding-top: 24px;
+}
+
+.legend-stats-card {
+  margin: 1.5rem;
+  border: solid 1px #ffffff;
+  border-radius: 0.5rem;
+  background-color: #292929;
+}
+
+.legend-stats-card-head {
+  display: flex;
+  border-bottom: solid 1px #ffffff;
+}
+
+.legend-name {
+  color: #ffffff;
+  font-size: 2rem;
+  text-align: center;
+  margin: auto 0;
+}
+
+.legend-stats-card-body {
+  display: flex;
+  flex-wrap: wrap;
+  color: #ffffff;
+  margin: 0 0 0 35px;
+}
+
+.legend-stat {
+  display: flex;
+  color: #ffffff;
+  flex-direction: column;
+  width: 175px;
+  margin: 1rem 0.5rem;
+  padding-left: 1rem;
+  line-height: 1.1;
+  border-left: 1px solid #ffffff;
+}
+
+.legend-stat .name {
+  font-size: 1rem;
+}
+
+.legend-stat .value {
+  font-size: 1.7rem;
+}
+
+.legend-stat .nodata {
+  margin: auto 0;
+  font-size: 1.4rem;
+}
+
+.legend-icon img {
+  width: 70px;
+  height: 70px;
+  background-color: rgb(98, 76, 162);
+  margin-right: 0.8rem;
+  border-radius: 0.5rem 0 0 0;
+}
+
+.legend-stats-card-body .legend-name {
+  line-height: 1;
+  font-size: 2rem;
+  margin: auto 0.5rem;
+}
+
+.legend-stat .name {
+  font-size: 1rem;
+}
+
+.legend-stat .value {
+  font-size: 1.7rem;
+}
+
+.legend-stat .rank {
+  font-size: 0.7rem;
+  color: #fdd35c;
+}
+
+.legend-stat .rank::before {
+  content: "\e561";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 3px;
 }
