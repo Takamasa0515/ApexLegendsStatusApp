@@ -11447,6 +11447,17 @@ h2 {
   margin: auto 0;
 }
 
+.game-account-info {
+  display: flex;
+}
+
+.platform-icon img {
+  display: block;
+  width: auto;
+  height: 25px;
+  padding-right: 5px;
+}
+
 .devise-alert {
   height: 40px;
   line-height: 42px;

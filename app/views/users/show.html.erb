@@ -10,8 +10,14 @@
         <div class="header-mypage-user-profiel">
           <h2><%= current_user.name %></h2>
           <% if @game_account_info.present? %>
-            <%= @game_account_info.platform %>
-            <%= @game_account_info.gameid %>
+          <div class="game-account-info">
+            <span class="platform-icon">
+              <%= platform_image_path(@game_account_info.platform) %>
+            </span>
+            <span class="gameid">
+              <%= @game_account_info.gameid %>
+            </span>
+          </div>
           <% end %>
         </div>
       </div>
