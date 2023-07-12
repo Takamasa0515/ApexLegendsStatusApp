@@ -20,7 +20,7 @@
           <%= link_to "プロフィールを編集する", edit_user_registration_path, class: "btn-dark btn-lg btn btn-border-color-white wd-300" %>
         </div>
         <div class="profiel-edit-btn">
-          <%= link_to "ゲームアカウントを登録 / 編集する", edit_game_account_info_path, class: "btn-dark btn-lg btn btn-border-color-white wd-300" %>
+          <%= link_to "ゲームアカウントを登録・編集する", edit_game_account_info_path, class: "btn-dark btn-lg btn btn-border-color-white wd-300" %>
         </div>
       </div>
     </div>
@@ -31,6 +31,10 @@
   </div>
 </header>
 <div class="game-stats-area bg-dark-black">
-  <%= render "overall_stats" %>
-  <%= render "legend_stats_card" %>
+  <% if @trn_player_stats.present? %>
+    <%= render "overall_stats" %>
+    <%= render "legend_stats_card" %>
+  <% else %>
+    <%= render "no_game_account_info" %>
+  <% end %>
 </div>

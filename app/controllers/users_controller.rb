@@ -6,10 +6,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @game_account_info = @user.game_account_info
     @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
-    initialize_trn_overall_segment_stats
-    initialize_trn_current_season_stats
-    initialize_trn_legend_stats
-    @percentage_base = PERCENTAGE_BASE
+    if @trn_player_stats.include?("errors")
+      @trn_player_stats = nil
+    else
+      initialize_trn_overall_segment_stats
+      initialize_trn_current_season_stats
+      initialize_trn_legend_stats
+      @percentage_base = PERCENTAGE_BASE
+    end
   end
 
   private
