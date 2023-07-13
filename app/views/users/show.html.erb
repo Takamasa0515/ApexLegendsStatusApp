@@ -1,0 +1,46 @@
+<header class="bg-gradient header header-mypage">
+  <div class="header-container">
+    <div class="header-container-first-line">
+      <div class="header-mypage-left" >
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar, class: "user-avatar" %>
+        <% else %>
+          <%= image_tag "default_avatar.jpg", class: "user-avatar" %>
+        <% end %>
+        <div class="header-mypage-user-profiel">
+          <h2><%= current_user.name %></h2>
+          <% if @game_account_info.present? %>
+          <div class="game-account-info">
+            <span class="platform-icon">
+              <%= platform_image_path(@game_account_info.platform) %>
+            </span>
+            <span>
+              <%= @game_account_info.gameid %>
+            </span>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="header-mypage-right">
+        <div class="profiel-edit-btn">
+          <%= link_to "プロフィールを編集する", edit_user_registration_path, class: "btn-dark btn-lg btn btn-border-color-white wd-300" %>
+        </div>
+        <div class="profiel-edit-btn">
+          <%= link_to "ゲームアカウントを登録・編集する", edit_game_account_info_path, class: "btn-dark btn-lg btn btn-border-color-white wd-300" %>
+        </div>
+      </div>
+    </div>
+    <hr class="hr-white">
+    <div class="header-container-second-line">
+      <p><%= current_user.self_introduction %></p>
+    </div>
+  </div>
+</header>
+<div class="game-stats-area bg-dark-black">
+  <% if @trn_player_stats.present? %>
+    <%= render "overall_stats" %>
+    <%= render "legend_stats_card" %>
+  <% else %>
+    <%= render "no_game_account_info" %>
+  <% end %>
+</div>

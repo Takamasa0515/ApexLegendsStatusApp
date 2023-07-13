@@ -1,0 +1,36 @@
+<div class="trn-legend-stats-area">
+  <div class="trn-legend-stats-container bg-gray">
+    <div class="legend-stats-title">
+      <h2>レジェンドステータス</h2>
+    </div>
+    <% @trn_all_legend_stats.sort_by { |legend_stats| -legend_stats.dig("stats", "kills", "value").to_i }.each do |legend_stats| %>
+    <div class="legend-stats-card">
+      <div class="legend-stats-card-head">
+        <span class="legend-icon">
+          <%= legend_image_path(legend_stats["metadata"]["name"]) %>
+        </span>
+        <span class="legend-name">
+          <%= legend_stats["metadata"]["name"] %>
+        </span>
+      </div>
+      <div class="legend-stats-card-body">
+        <% @trn_legend_stats.each do |legend_stat| %>
+          <div class="legend-stat">
+            <span class="name"><%= legend_stat.capitalize %></span>
+            <% if legend_stats.dig("stats", legend_stat, "value").present? %>
+              <span class="value">
+                <%= legend_stats["stats"][legend_stat]["value"].floor.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %>
+              </span>
+              <span class="rank">
+                <%= legend_stats["stats"][legend_stat]["rank"].to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %> - Top<%= (@percentage_base - legend_stats["stats"][legend_stat]["percentile"]).round(1) %>%
+              </span>
+            <% else %>
+              <span class="nodata">データなし</span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

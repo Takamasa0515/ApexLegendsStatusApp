@@ -1,0 +1,50 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  DisplayCopNames: true
+  Exclude:
+    - "Gemfile"
+    - "bin/**/*"
+    - "db/**/*"
+    - "log/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "config/environments/*"
+    - "config/puma.rb"
+
+Style/Documentation:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/FloatDivision:
+  Exclude:
+    - "app/models/tracker_api_service.rb"
+
+Layout/LineLength:
+  Enabled: false
+
+Naming/VariableName:
+  Exclude:
+    - "app/models/tracker_api_service.rb"
+  AllowedVariables:
+    - "matchesPlayed"
+
+Naming/MethodParameterName:
+  Exclude:
+    - "app/models/tracker_api_service.rb"
+  AllowedNames:
+    - "matchesPlayed"
