@@ -5,6 +5,8 @@ class TrackerApiService < ApplicationRecord
   def self.fetch_trn_player_stats(game_account_info)
     client = HTTPClient.new
     headers = { 'TRN-Api-Key' => ENV.fetch('TRN_API_KEY', nil) }
+    return unless game_account_info.present?
+
     url = "https://public-api.tracker.gg/v2/apex/standard/profile/#{game_account_info.platform}/#{game_account_info.gameid}"
     JSON.parse(client.get(url, header: headers).body)
   end
@@ -22,7 +24,7 @@ class TrackerApiService < ApplicationRecord
   end
 
   def self.calculate_kpm(overall_matchesPlayed_value, overall_kills_value)
-    calculate_ratio(overall_matchesPlayed_value, overall_kills_value)
+    calculate_ratio(overall_matchesPlayed_value, overall_kills_value).floor(2)
   end
 
   def self.calculate_winrate(overall_matchesPlayed_value, overall_wins_value)
@@ -61,7 +63,7 @@ class TrackerApiService < ApplicationRecord
     if matchesPlayed == '---' || attribute == '---'
       '---'
     else
-      ratio = (attribute.delete(',').to_f / matchesPlayed.delete(',').to_f).floor(2)
+      ratio = (attribute.delete(',').to_f / matchesPlayed.delete(',').to_f).floor(3)
       percentage ? "#{(ratio * PERCENTAGE_BASE).floor(1)}%" : ratio
     end
   end
