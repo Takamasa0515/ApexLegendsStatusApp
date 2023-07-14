@@ -1,0 +1,10 @@
+<% @users.each do |user| %>
+  <p><%= user.name %></p>
+  <% if user.game_account_info.nil? %>
+    <p>---</p>
+  <% else %>
+    <p><%= user.game_account_info.platform %></p>
+    <p><%= user.game_account_info.gameid %></p>
+  <% end %>
+<% end %>
+

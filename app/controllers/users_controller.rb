@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   PERCENTAGE_BASE = 100
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
     @game_account_info = @user.game_account_info
@@ -24,7 +28,7 @@ class UsersController < ApplicationController
       value = TrackerApiService.overall_stat_value(@trn_player_stats, segment)
       rank = TrackerApiService.overall_stat_rank(@trn_player_stats, segment)
       percentile = TrackerApiService.overall_stat_percentile(@trn_player_stats, segment)
-      
+
       instance_variable_set("@trn_overall_#{segment}_value", value)
       instance_variable_set("@trn_overall_#{segment}_rank", rank)
       instance_variable_set("@trn_overall_#{segment}_percentile", percentile)
