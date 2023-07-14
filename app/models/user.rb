@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
-  validates :self_introduction, length: { maximum: 500 }
   has_one :game_account_info, dependent: :destroy
   accepts_nested_attributes_for :game_account_info
   has_one_attached :avatar
