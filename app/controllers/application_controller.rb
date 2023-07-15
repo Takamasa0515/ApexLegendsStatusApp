@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_q, :search
+
+  def search
+    @users_result = @q.result
+  end
 
   private
 
@@ -18,5 +23,9 @@ class ApplicationController < ActionController::Base
 
   def after_update_path_for(_resource_or_scope)
     user_path(current_user)
+  end
+
+  def set_q
+    @q = User.ransack(params[:q])
   end
 end

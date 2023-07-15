@@ -59,6 +59,7 @@ gem 'pry-rails'
 gem 'aws-sdk-s3'
 gem 'httpclient'
 gem 'dotenv-rails'
+gem 'ransack'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

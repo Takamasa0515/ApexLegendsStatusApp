@@ -1,0 +1,35 @@
+<div class="search-results">
+  <% users.each do |user| %>
+    <div class="result-card">
+      <div class="result-header">
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar, class: "result-user-avatar" %>
+        <% else %>
+          <%= image_tag "default_avatar.jpg", class: "result-user-avatar" %>
+        <% end %>
+        <div class="result-user-info">
+          <p><%= user.name %></p>
+          <div class="game-account-info">
+            <% if user.game_account_info.nil? %>
+              <span class="no-game-account-info">---</span>
+            <% else %>
+              <span class="platform-icon">
+                <%= platform_image_path(user.game_account_info.platform) %>
+              </span>
+              <span>
+                <%= user.game_account_info.gameid %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+        <div class="user-profile-btn">
+          <%= link_to "ユーザープロフィールへ", user_path(user.id), class: "btn-dark btn-lg btn btn-border-color-white wd-250"%>
+        </div>
+      </div>
+      <hr class="hr-white">
+      <div class="result-body">
+        <%= user.self_introduction%>
+      </div>
+    </div>
+  <% end %>
+</div>
