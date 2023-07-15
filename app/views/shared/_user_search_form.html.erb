@@ -1,0 +1,55 @@
+<div class="search-field">
+  <%= search_form_for @q, url: search_users_path do |f| %>
+    <div class="search-field-form">
+      <%= f.label :name_or_game_account_info_gameid_cont, "キーワード" %>
+      <%= f.search_field :name_or_game_account_info_gameid_cont, placeholder: "ユーザー名・ゲームID",  class: "search-form" %>
+    </div>
+    <hr class="hr-white">
+    <div class="search-field-form">
+      <%= f.label :game_account_info_platform_eq, "プラットフォーム" %>
+      <%= f.select :game_account_info_platform_eq, [["Steam", "steam"], ["Origin", "origin"], ["PlayStation", "psn"], ["Xbox", "xbl"]], {include_blank: '全プラットフォーム'}, class: "search-form" %>
+    </div>
+    <hr class="hr-white">
+    <div class="search-field-form">
+      <%= f.label :game_account_info_rank_eq, "現在のランク"  %>
+      <div class="search-field-checkbox">
+        <label>
+          <%= f.check_box :game_account_info_rank_eq_any, { multiple: true }, "predator", "" %>
+          <span>プレデター</span>
+        </label>
+        <label>
+          <%= f.check_box :game_account_info_rank_eq_any, { multiple: true }, "master", "" %>
+          <span>マスター</span>
+        </label>
+        <label>
+          <%= f.check_box :game_account_info_rank_eq_any, { multiple: true }, "diamond", "" %>
+          <span>ダイヤモンド</span>
+        </label>
+        <label>
+          <%= f.check_box :game_account_info_rank_eq_any, { multiple: true }, "platinam", "" %>
+          <span>プラチナ</span>
+        </label>
+        <label>
+          <%= f.check_box :game_account_info_rank_eq_any, { multiple: true }, "gold", "" %>
+          <span>ゴールド</span>
+        </label>
+        <label>
+          <%= f.check_box :game_account_info_rank_eq_any, { multiple: true }, "silver", "" %>
+          <span>シルバー</span>
+        </label>
+        <label>
+          <%= f.check_box :game_account_info_rank_eq_any, { multiple: true }, "bronze", "" %>
+          <span>ブロンズ</span>
+        </label>
+        <label>
+          <%= f.check_box :game_account_info_rank_eq_any, { multiple: true }, "rookie", "" %>
+          <span>ルーキー</span>
+        </label>
+      </div>
+    </div>
+    <hr class="hr-white">
+    <div class="search-field-submit">
+      <%= f.submit "検索", class: "btn-dark btn-lg btn btn-border-color-white" %>
+    </div>
+  <% end %>
+</div>

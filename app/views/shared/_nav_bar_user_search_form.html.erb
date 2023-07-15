@@ -1,0 +1,6 @@
+<%= search_form_for @q, url: search_users_path do |f| %>
+  <div class="nav-bar-search">
+    <%= f.search_field :name_or_game_account_info_platform_or_game_account_info_gameid_cont, class: "nav-bar-search-field", placeholder: " \uf002 キーワード検索" %>
+    <%= f.submit '検索', class: "btn btn-dark nav-bar-search-submit" %>
+  </div>
+<% end %>

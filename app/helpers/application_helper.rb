@@ -8,13 +8,14 @@ module ApplicationHelper
   end
 
   def platform_image_path(platform)
-    if platform == "origin"
+    case platform
+    when "origin"
       image_tag("origin_icon.png")
-    elsif platform == "steam"
+    when "steam"
       image_tag("steam_icon.png")
-    elsif platform == "psn"
+    when "psn"
       image_tag("psn_icon.png")
-    elsif platform == "xbl"
+    when "xbl"
       image_tag("xbl_icon.png")
     end
   end

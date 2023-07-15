@@ -2,29 +2,36 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   PERCENTAGE_BASE = 100
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
     @game_account_info = @user.game_account_info
     @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
-    if @trn_player_stats.nil? || @trn_player_stats.include?("errors")
+    if @trn_player_stats["message"] == "API rate limit exceeded"
+      @trn_player_stats = "Apilimit"
+    elsif @trn_player_stats.nil? || @trn_player_stats.include?("errors")
       @trn_player_stats = nil
     else
-      initialize_trn_overall_segment_stats
-      initialize_trn_current_season_stats
-      initialize_trn_legend_stats
+      fetch_trn_overall_segment_stats
+      fetch_trn_current_season_stats
+      fetch_trn_legend_stats
+      save_current_rank
       @percentage_base = PERCENTAGE_BASE
     end
   end
 
   private
 
-  def initialize_trn_overall_segment_stats
+  def fetch_trn_overall_segment_stats
     @trn_overall_segment_stats = ["level", "kills", "damage", "matchesPlayed", "wins", "killsAsKillLeader"]
     @trn_overall_segment_stats.each do |segment|
       value = TrackerApiService.overall_stat_value(@trn_player_stats, segment)
       rank = TrackerApiService.overall_stat_rank(@trn_player_stats, segment)
       percentile = TrackerApiService.overall_stat_percentile(@trn_player_stats, segment)
-      
+
       instance_variable_set("@trn_overall_#{segment}_value", value)
       instance_variable_set("@trn_overall_#{segment}_rank", rank)
       instance_variable_set("@trn_overall_#{segment}_percentile", percentile)
@@ -38,7 +45,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def initialize_trn_current_season_stats
+  def fetch_trn_current_season_stats
     @trn_current_season = @trn_player_stats['data']['metadata']['currentSeason'].to_s
     @trn_current_season_stats = ["Kills", "Wins"]
     @trn_current_season_stats.each do |segment|
@@ -52,11 +59,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def initialize_trn_legend_stats
+  def fetch_trn_legend_stats
     @trn_all_legend_stats = @trn_player_stats['data']['segments'].select do |value|
       value['type'] == 'legend'
     end
     @trn_legend_stats = ["kills", "damage", "wins", "matchesPlayed", "killsAsKillLeader"]
+  end
+
+  def save_current_rank
+    @game_account_info.rank = @trn_player_stats['data']['segments'][0]["stats"]["rankScore"]["metadata"]["rankName"]
   end
 
   def value_check(value1, value2)
