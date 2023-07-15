@@ -15,9 +15,9 @@ class UsersController < ApplicationController
     elsif @trn_player_stats.nil? || @trn_player_stats.include?("errors")
       @trn_player_stats = nil
     else
-      get_trn_overall_segment_stats
-      get_trn_current_season_stats
-      get_trn_legend_stats
+      fetch_trn_overall_segment_stats
+      fetch_trn_current_season_stats
+      fetch_trn_legend_stats
       save_current_rank
       @percentage_base = PERCENTAGE_BASE
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   private
 
-  def get_trn_overall_segment_stats
+  def fetch_trn_overall_segment_stats
     @trn_overall_segment_stats = ["level", "kills", "damage", "matchesPlayed", "wins", "killsAsKillLeader"]
     @trn_overall_segment_stats.each do |segment|
       value = TrackerApiService.overall_stat_value(@trn_player_stats, segment)
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def get_trn_current_season_stats
+  def fetch_trn_current_season_stats
     @trn_current_season = @trn_player_stats['data']['metadata']['currentSeason'].to_s
     @trn_current_season_stats = ["Kills", "Wins"]
     @trn_current_season_stats.each do |segment|
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def get_trn_legend_stats
+  def fetch_trn_legend_stats
     @trn_all_legend_stats = @trn_player_stats['data']['segments'].select do |value|
       value['type'] == 'legend'
     end
