@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
   PERCENTAGE_BASE = 100
 
   def index

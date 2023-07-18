@@ -16,4 +16,12 @@ class User < ApplicationRecord
   def self.ransackable_associations(_auth_object = nil)
     ["game_account_info"]
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.name = "ゲストアカウント"
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+    end
+  end
 end
