@@ -11716,7 +11716,7 @@ h2 {
 }
 
 .nav-bar-search {
-  align-items: center;
+  display: block;
 }
 
 .nav-bar-search-field {
@@ -11726,10 +11726,18 @@ h2 {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   margin: 8px 0;
+  outline: none;
 }
 
 .nav-bar-search-submit {
+  border: none;
+  background-color: transparent;
   color: rgba(255, 255, 255, 0.55);
+  transition: color 0.15s ease-in-out;
+}
+
+.nav-bar-search-submit:hover {
+  color: #ffffff;
 }
 
 .search-area {
@@ -11829,4 +11837,28 @@ h2 {
   width: auto;
   height: 80px;
   margin: auto 0;
+}
+
+.breadcrumbs {
+  margin-bottom: 15px;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.15s ease-in-out;
+}
+
+.breadcrumbs a:hover {
+  color: #ffffff;
+}
+
+.link-transition {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.15s ease-in-out;
+}
+
+.link-transition:hover {
+  color: #ffffff;
 }

@@ -1,5 +1,6 @@
 <header class="bg-gradient header header-mypage">
   <div class="header-container">
+    <%= render "shared/breadcrumbs" %>
     <div class="header-container-first-line">
       <div class="header-mypage-left" >
         <% if @user.avatar.attached? %>
@@ -39,7 +40,7 @@
   </div>
 </header>
 <div class="game-stats-area bg-dark-black">
-  <% if @trn_player_stats = "Apilimit" %>
+  <% if @trn_player_stats == "Apilimit" %>
     <%= render "api_rate_limit" %>
   <% elsif @trn_player_stats.present? %>
     <%= render "overall_stats" %>
