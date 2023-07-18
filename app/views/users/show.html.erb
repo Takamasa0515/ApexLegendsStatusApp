@@ -22,7 +22,7 @@
           <% end %>
         </div>
       </div>
-      <% if @user.id == current_user.id %>
+      <% if user_signed_in? && @user.id == current_user.id %>
         <div class="header-mypage-right">
           <div class="profiel-edit-btn">
             <%= link_to "プロフィールを編集する", edit_user_registration_path, class: "btn-dark btn-lg btn btn-border-color-white wd-300" %>
@@ -45,6 +45,8 @@
   <% elsif @trn_player_stats.present? %>
     <%= render "overall_stats" %>
     <%= render "legend_stats_card" %>
+  <% elsif @user.id == 1 %>
+    <%= render "guest_account"%>
   <% else %>
     <%= render "no_game_account_info" %>
   <% end %>
