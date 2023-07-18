@@ -1,0 +1,12 @@
+<div class="trn-failed-stats-area">
+  <div class="trn-failed-stats-container bg-gray">
+    <h2>ゲストアカウントでは戦績は表示できません。</h2>
+    <hr class="hr-white">
+    <div class="trn-failed-stats-body">
+      <div class="trn-error-check-list">
+        <p>Tracker Networkと連携したサービスを利用するには？</p>
+        <p>・全てのサービスを利用するには<%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: "get", turbo_confirm: "ログアウトしますか？" } %>後に、ログインまたはアカウントを作成してください。</p>
+      </div>
+    </div>
+  </div>
+</div>
