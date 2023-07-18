@@ -5,7 +5,11 @@
     <div class="trn-failed-stats-body">
       <div class="trn-error-check-list">
         <p>Tracker Networkと連携したサービスを利用するには？</p>
-        <p>・全てのサービスを利用するには<%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: "get", turbo_confirm: "ログアウトしますか？" } %>後に、ログインまたはアカウントを作成してください。</p>
+        <% if user_signed_in? %>
+          <p>・全てのサービスを利用するには<%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: "get", turbo_confirm: "ログアウトしますか？" } %>後に、ログインまたはアカウントを作成してください。</p>
+        <% else %>
+          <p>・全てのサービスを利用するにはログアウト後に、ログインまたはアカウントを作成してください。</p>
+        <% end %>
       </div>
     </div>
   </div>
