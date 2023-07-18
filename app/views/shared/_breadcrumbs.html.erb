@@ -1,0 +1,13 @@
+<% case params.values_at(:controller, :action) %>
+<% when ["users", "index"] %>
+  <% breadcrumb :users %>
+<% when ["users", "show"] %>
+  <% breadcrumb :user_show, @user %>
+<% when ["users", "search"] %>
+  <% breadcrumb :search %>
+<% when ["devise/registrations", "new"] %>
+  <% breadcrumb :sign_up %>
+<% when ["devise/sessions", "new"] %>
+  <% breadcrumb :log_in %>
+<% end %>
+<%= breadcrumbs separator: " &rsaquo; " %>

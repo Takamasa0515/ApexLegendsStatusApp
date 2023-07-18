@@ -10,10 +10,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @game_account_info = @user.game_account_info
     @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
-    if @trn_player_stats["message"] == "API rate limit exceeded"
-      @trn_player_stats = "Apilimit"
-    elsif @trn_player_stats.nil? || @trn_player_stats.include?("errors")
+    if @trn_player_stats.nil? || @trn_player_stats.include?("errors")
       @trn_player_stats = nil
+    elsif @trn_player_stats["message"] == "API rate limit exceeded"
+      @trn_player_stats = "Apilimit"
     else
       fetch_trn_overall_segment_stats
       fetch_trn_current_season_stats
