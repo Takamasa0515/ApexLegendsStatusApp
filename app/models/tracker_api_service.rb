@@ -1,4 +1,4 @@
-class TrackerApiService < ApplicationRecord
+class TrackerApiService
   require 'httpclient'
   PERCENTAGE_BASE = 100
 
@@ -6,9 +6,12 @@ class TrackerApiService < ApplicationRecord
     client = HTTPClient.new
     headers = { 'TRN-Api-Key' => ENV.fetch('TRN_API_KEY', nil) }
     return if game_account_info.blank?
-
     url = "https://public-api.tracker.gg/v2/apex/standard/profile/#{game_account_info.platform}/#{game_account_info.gameid}"
-    JSON.parse(client.get(url, header: headers).body)
+    result = JSON.parse(client.get(url, header: headers).body)
+    binding.pry
+    if result["messagee"] == "API rate limit exceeded"
+      "Apilimit"
+    end
   end
 
   def self.overall_stat_value(trn_player_stats, overall_segment_stat)
