@@ -9,5 +9,11 @@
   <% breadcrumb :sign_up %>
 <% when ["devise/sessions", "new"] %>
   <% breadcrumb :log_in %>
+<% when ["contacts", "new"] %>
+  <% breadcrumb :contact %>
+<% when ["contacts", "confirm"] %>
+  <% breadcrumb :confirm %>
+<% when ["contacts", "complete"] %>
+  <% breadcrumb :complete%>
 <% end %>
 <%= breadcrumbs separator: " &rsaquo; " %>

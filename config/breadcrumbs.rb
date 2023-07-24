@@ -30,3 +30,18 @@ crumb :search do
   link "ユーザー検索", search_users_path
   parent :root
 end
+
+crumb :contact do
+  link "お問い合わせ", new_contact_path
+  parent :root
+end
+
+crumb :confirm do
+  link "確認画面", confirm_path
+  parent :contact
+end
+
+crumb :complete do
+  link "送信完了", complete_path
+  parent :root
+end

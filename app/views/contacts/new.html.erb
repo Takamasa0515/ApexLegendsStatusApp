@@ -1,0 +1,58 @@
+<header class="bg-gradient header header-mypage">
+  <div class="header-container">
+    <%= render "shared/breadcrumbs" %>
+    <h2>お問い合わせ</h2>
+    <hr class="hr-white">
+    <p>ご意見、ご要望などございましたらこちらからご連絡ください。</p>
+  </div>
+</header>
+<div class="bg-dark-black">
+  <div class="main-area">
+    <div class="main-container bg-gray">
+      <div class="main-field">
+        <%= form_with model: @contact, url: confirm_path, data: { turbo: false }, local: true do |f| %>
+          <div class="main-form">
+            <div class="main-form-left">
+              <%= f.label :name, "お名前" %>
+              <% if flash[:name_error].present? %>
+                <p class="error-messages"><%=flash[:name_error] %></p>
+              <% end %>
+            </div>
+            <div class="main-form-right">
+              <%= f.text_field :name, autofocus: true %>
+            </div>
+          </div>
+          <hr class="hr-white">
+          <div class="main-form">
+            <div class="main-form-left">
+              <%= f.label :email, "メールアドレス" %>
+              <p class="main-left-form-supplement">(返信を希望する場合は入力してください)</p>
+              <% if flash[:email_error].present? %>
+                <p class="error-messages"><%=flash[:email_error] %></p>
+              <% end %>
+            </div>
+            <div class="main-form-right">
+              <%= f.text_field :email, autofocus: true %>
+            </div>
+          </div>
+          <hr class="hr-white">
+          <div class="main-form">
+            <div class="main-form-left">
+              <%= f.label :message, "お問い合わせ内容" %>
+              <% if flash[:message_error].present? %>
+                <p class="error-messages"><%=flash[:message_error] %></p>
+              <% end %>
+            </div>
+            <div class="main-form-right">
+              <%= f.text_area :message, size: '10x10', class: "main-textarea" %>
+            </div>
+          </div>
+          <hr class="hr-white">
+          <div class="main-form-submit pt-4">
+            <%= f.submit "入力内容確認", class: "btn-dark btn-lg btn btn-border-color-white" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

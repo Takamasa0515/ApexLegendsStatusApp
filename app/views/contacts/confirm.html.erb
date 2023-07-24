@@ -1,0 +1,62 @@
+<header class="bg-gradient header header-mypage">
+  <div class="header-container">
+    <%= render "shared/breadcrumbs" %>
+    <h2>確認画面</h2>
+    <hr class="hr-white">
+    <p>入力内容に間違いないか確認してください。</p>
+  </div>
+</header>
+<div class="bg-dark-black">
+  <div class="main-area">
+    <div class="main-container bg-gray">
+      <div class="main-field">
+          <div class="main-form">
+            <div class="main-form-left">
+              <p>お名前</p>
+            </div>
+            <div class="main-form-right">
+              <%= @contact.name %>
+            </div>
+          </div>
+          <hr class="hr-white">
+          <div class="main-form">
+            <div class="main-form-left">
+              <p>メールアドレス</p>
+            </div>
+            <div class="main-form-right">
+              <%= @contact.email.present? ? @contact.email : "未入力" %>
+            </div>
+          </div>
+          <hr class="hr-white">
+          <div class="main-form">
+            <div class="main-form-left">
+              <p>お問い合わせ内容</p>
+            </div>
+            <div class="main-form-right">
+              <p><%= @contact.message %></p>
+            </div>
+          </div>
+          <hr class="hr-white">
+          <div class="confirm-form pt-4">
+            <div class="confirm-form-back">
+              <%= form_with model: @contact, url: back_path, data: { turbo: false }, local: true do |f| %>
+                <%= f.hidden_field :name %>
+                <%= f.hidden_field :email %>
+                <%= f.hidden_field :message %>
+                <%= f.submit '入力画面に戻る', class: "btn-dark btn-lg btn btn-border-color-white" %>
+              <% end %>
+            </div>
+            <div class="confirm-form-submit">
+              <%= form_with model: @contact, data: { turbo: false }, local: true do |f| %>
+                <%= f.hidden_field :name %>
+                <%= f.hidden_field :email %>
+                <%= f.hidden_field :message %>
+                <%= f.submit '送信', class: "btn-dark btn-lg btn btn-border-color-white" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

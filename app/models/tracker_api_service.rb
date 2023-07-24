@@ -5,7 +5,6 @@ class TrackerApiService
   def self.fetch_trn_player_stats(game_account_info)
     client = HTTPClient.new
     headers = { 'TRN-Api-Key' => ENV.fetch('TRN_API_KEY', nil) }
-    return if game_account_info.blank?
     url = "https://public-api.tracker.gg/v2/apex/standard/profile/#{game_account_info.platform}/#{game_account_info.gameid}"
     result = JSON.parse(client.get(url, header: headers).body)
     binding.pry

@@ -8,8 +8,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @game_account_info = @user.game_account_info
-    @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
-    fetch_trn_stats if @trn_player_stats.include?("data")
+    if @game_account_info.blank?
+      @trn_player_stats = nil
+    else
+      @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
+      fetch_trn_stats if @trn_player_stats.include?("data")
+    end
   end
 
   private
