@@ -209,6 +209,7 @@ h6,
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  word-wrap: break-word;
 }
 
 abbr[title] {
@@ -11382,6 +11383,12 @@ h2 {
   opacity: 0.7;
 }
 
+.footer-hr-white {
+  color: #ffffff;
+  opacity: 0.7;
+  margin: 0.5rem 0;
+}
+
 .custom-link {
   color: #33ccff;
   text-decoration: none;
@@ -11741,14 +11748,14 @@ h2 {
   color: #ffffff;
 }
 
-.search-area {
+.main-area {
   width: 90%;
   padding: 80px 20px 20px 20px;
   margin: 0 auto;
   color: #ffffff;
 }
 
-.search-container {
+.main-container {
   max-width: 1000px;
   border: 1px solid #ffffff;
   border-radius: 0.5rem;
@@ -11756,27 +11763,42 @@ h2 {
   margin: 0 auto;
 }
 
-.search-field {
+.main-field {
   display: block;
 }
 
-.search-field h2 {
+.main-field h2 {
   border-left: 2px solid #ffffff;
   padding-left: 1rem;
 }
 
-.search-field-form {
+.main-form {
   display: flex;
   align-items: center;
 }
 
-.search-field-form label {
+.main-form-left {
   width: 25%;
 }
 
-.search-form {
+.main-left-form-supplement {
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.main-form-right {
+  width: 75%;
+}
+
+.main-form-left p,
+.main-form-right p {
+  margin: 0;
+}
+
+.main-form-right input:not(.main-form-checkbox input),
+.main-form-right select {
   color: #ffffff;
-  width: 60%;
+  width: 80%;
   height: 40px;
   border-radius: 0.5rem;
   background-color: rgba(255, 255, 255, 0.1);
@@ -11785,14 +11807,43 @@ h2 {
   margin-top: 2px;
 }
 
-.search-field-checkbox {
-  margin-left: 15px;
+.main-form-checkbox {
+  width: 80%;
 }
 
-.search-field-submit input {
+.main-form-right textarea {
+  color: #ffffff;
+  width: 80%;
+  height: 300px;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ffffff;
+  outline: none;
+  margin-top: 2px;
+}
+
+.main-form-submit input {
   display: block;
   width: 70%;
   height: 40px;
+  margin: 0 auto;
+}
+
+.confirm-form {
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-form-back,
+.confirm-form-submit {
+  width: 45%;
+}
+
+.confirm-form-back input,
+.confirm-form-submit input {
+  display: flex;
+  justify-content: center;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -11854,6 +11905,10 @@ h2 {
   color: #ffffff;
 }
 
+.default-link {
+  text-decoration: none;
+}
+
 .link-transition {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.55);
@@ -11862,4 +11917,9 @@ h2 {
 
 .link-transition:hover {
   color: #ffffff;
+}
+
+footer {
+  color: white;
+  font-size: 0.75rem;
 }

@@ -53,6 +53,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'rails-i18n'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'pry-rails'
@@ -61,6 +62,7 @@ gem 'httpclient'
 gem 'dotenv-rails'
 gem 'ransack'
 gem 'gretel'
+gem 'active_decorator'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
