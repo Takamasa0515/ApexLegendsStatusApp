@@ -7,9 +7,10 @@ class TrackerApiService
     headers = { 'TRN-Api-Key' => ENV.fetch('TRN_API_KEY', nil) }
     url = "https://public-api.tracker.gg/v2/apex/standard/profile/#{game_account_info.platform}/#{game_account_info.gameid}"
     result = JSON.parse(client.get(url, header: headers).body)
-    binding.pry
-    if result["messagee"] == "API rate limit exceeded"
+    if result["message"] == "API rate limit exceeded"
       "Apilimit"
+    else
+      result
     end
   end
 
@@ -49,7 +50,7 @@ class TrackerApiService
     if trn_player_stats.dig('data', 'segments', 0, 'stats', segment_stat, attribute).present?
       trn_player_stats['data']['segments'][0]['stats'][segment_stat][attribute].floor.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')
     else
-      '---'
+      "---"
     end
   end
 
@@ -57,13 +58,13 @@ class TrackerApiService
     if trn_player_stats.dig('data', 'segments', 0, 'stats', segment_stat, 'value').present?
       "#{(PERCENTAGE_BASE - trn_player_stats['data']['segments'][0]['stats'][segment_stat]['percentile']).round(1)}%"
     else
-      '---'
+      "---"
     end
   end
 
   def self.calculate_ratio(matchesPlayed, attribute, percentage: false)
-    if matchesPlayed == '---' || attribute == '---'
-      '---'
+    if matchesPlayed == "---" || attribute == "---"
+      "---"
     else
       ratio = (attribute.delete(',').to_f / matchesPlayed.delete(',').to_f).floor(3)
       percentage ? "#{(ratio * PERCENTAGE_BASE).floor(1)}%" : ratio

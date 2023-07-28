@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       @trn_player_stats = nil
     else
       @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
-      fetch_trn_stats if @trn_player_stats.include?("data")
+      fetch_trn_player_stats if @trn_player_stats.include?("data")
     end
   end
 
@@ -51,14 +51,14 @@ class UsersController < ApplicationController
       value = TrackerApiService.current_season_stat_value(@trn_player_stats, @trn_current_season, segment)
       rank = TrackerApiService.current_season_stat_rank(@trn_player_stats, @trn_current_season, segment)
       percentile = TrackerApiService.current_season_stat_percentile(@trn_player_stats, @trn_current_season, segment)
-      set_trn_instance_variables("currentseason", value, rank, percentile)
+      set_trn_instance_variables("currentseason", segment, value, rank, percentile)
     end
   end
 
   def set_trn_instance_variables(prefix, segment, value, rank, percentile)
-    instance_variable_set("@trn_#{prefix}_#{segment.downcase}_value", value)
-    instance_variable_set("@trn_#{prefix}_#{segment.downcase}_rank", rank)
-    instance_variable_set("@trn_#{prefix}_#{segment.downcase}_percentile", percentile)
+    instance_variable_set("@trn_#{prefix}_#{segment}_value", value)
+    instance_variable_set("@trn_#{prefix}_#{segment}_rank", rank)
+    instance_variable_set("@trn_#{prefix}_#{segment}_percentile", percentile)
   end
 
   def fetch_trn_legend_stats

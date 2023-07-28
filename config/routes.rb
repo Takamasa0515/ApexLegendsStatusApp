@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :game_account_info, only: %i[edit update]
 
-  resources :contacts, only: [:new, :create]
+  resources :contacts, only: %i[new create]
 
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'
