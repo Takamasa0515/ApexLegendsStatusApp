@@ -7,25 +7,30 @@
     <div class="legend-stats-card">
       <div class="legend-stats-card-head">
         <span class="legend-icon">
-          <%= legend_image_path(legend_stats["metadata"]["name"]) %>
+          <%= legend_image_path(legend_name(legend_stats)) %>
         </span>
         <span class="legend-name">
-          <%= legend_stats["metadata"]["name"] %>
+          <%= legend_name(legend_stats) %>
         </span>
       </div>
       <div class="legend-stats-card-body">
-        <% @trn_legend_stats.each do |legend_stat| %>
+        <% @trn_legend_stats_name.each do |stats_name| %>
           <div class="legend-stat">
-            <span class="name"><%= legend_stat.capitalize %></span>
-            <% if legend_stats.dig("stats", legend_stat, "value").present? %>
+            <span class="name"><%= stats_name.capitalize %></span>
+            <% if legend_stats.dig("stats", stats_name, "value").present? %>
               <span class="value">
-                <%= legend_stats["stats"][legend_stat]["value"].floor.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %>
+                <%= add_commas_to_number(legend_stats_value(legend_stats, stats_name, "value").floor) %>
               </span>
               <span class="rank">
-                <%= legend_stats["stats"][legend_stat]["rank"].to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %> - Top<%= (@percentage_base - legend_stats["stats"][legend_stat]["percentile"]).round(1) %>%
+                <%= add_commas_to_number(legend_stats_value(legend_stats, stats_name, "rank")) %> - Top<%= (@percentage_base - legend_stats_value(legend_stats, stats_name, "percentile")).round(1) %>%
               </span>
-            <% else %>
-              <span class="nodata">データなし</span>
+              <% else %>
+              <span class="value">
+                ---
+              </span>
+              <span class="rank">
+                --- - Top ---
+              </span>
             <% end %>
           </div>
         <% end %>

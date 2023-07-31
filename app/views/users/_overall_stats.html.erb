@@ -4,7 +4,7 @@
       <p>総合戦績</p>
     </div>
     <div class="overall-record-stats">
-      <% @trn_overall_segment_stats.each do |stat| %>
+      <% @trn_overall_stats_name.each do |stat| %>
         <div class="overall-stat">
           <span class="name"><%= stat.capitalize %></span>
           <span class="value"><%= instance_variable_get(:"@trn_overall_#{stat}_value") %></span>
