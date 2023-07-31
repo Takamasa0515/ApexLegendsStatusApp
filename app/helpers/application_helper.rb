@@ -16,6 +16,27 @@ module ApplicationHelper
     end
   end
 
+  def rank_image_path(rank)
+    case rank
+    when "Predator"
+      image_tag("rank_images/predator.png")
+    when "Master"
+      image_tag("rank_images/master.png")
+    when "Diamond"
+      image_tag("rank_images/diamond.png")
+    when "Platinum"
+      image_tag("rank_images/platinum.png")
+    when "Gold"
+      image_tag("rank_images/gold.png")
+    when "Silver"
+      image_tag("rank_images/silver.png")
+    when "Bronze"
+      image_tag("rank_images/bronze.png")
+    when "Rookie"
+      image_tag("rank_images/rookie.png")
+    end
+  end
+
   def legend_name(legend_stats)
     legend_stats["metadata"]["name"]
   end

@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def current_rank
-    @trn_rank_name = @trn_player_stats["data"]["segments"][0]["stats"]["rankScore"]["metadata"]["rankName"]
+    @trn_rank_name = @trn_player_stats.dig("data", "segments", 0, "stats", "rankScore", "metadata", "rankName")
     value = nil
     rank = TrackerApiService.overall_stat_rank(@trn_player_stats, "rankScore")
     percentile =TrackerApiService.overall_stat_percentile(@trn_player_stats, "rankScore")
