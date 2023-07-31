@@ -29,6 +29,11 @@
         <span class="name">勝率</span>
         <span class="value"><%= @overall_winrate %></span>
       </div>
+      <div class="overall-stat">
+        <span class="name">現在のランク</span>
+        <span class="value"><%= @trn_rank_name %></span>
+        <span class="rank"><%= @trn_rank_point_rank %> - Top<%= @trn_rank_point_percentile %>%</span>
+      </div>
     </div>
   </div>
 </div>

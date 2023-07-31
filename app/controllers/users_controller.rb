@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     fetch_trn_overall_stats
     fetch_trn_current_season_stats
     fetch_trn_legend_stats
-    save_current_rank
+    current_rank
     @percentage_base = PERCENTAGE_BASE
   end
 
@@ -68,11 +68,15 @@ class UsersController < ApplicationController
     instance_variable_set("@trn_#{prefix}_#{segment}_percentile", percentile)
   end
 
-  def save_current_rank
-    @game_account_info.rank = @trn_player_stats["data"]["segments"][0]["stats"]["rankScore"]["metadata"]["rankName"]
+  def current_rank
+    @trn_rank_name = @trn_player_stats["data"]["segments"][0]["stats"]["rankScore"]["metadata"]["rankName"]
+    value = nil
+    rank = TrackerApiService.overall_stat_rank(@trn_player_stats, "rankScore")
+    percentile =TrackerApiService.overall_stat_percentile(@trn_player_stats, "rankScore")
+    set_trn_instance_variables("rank", "point", value, rank, percentile)
   end
 
-  def value_check(value1, value2)
+  def value_check(value1, value2) 
     if value1 == "---" || value2 == "---"
       "---"
     else
