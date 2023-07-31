@@ -8,14 +8,14 @@ class ContactsController < ApplicationController
   # 送信ボタンを押されたらcreateアクションを実行します。
   def confirm
     @contact = Contact.new(contact_params)
-    if @contact.invalid?
-      session[:contact] = @contact.attributes.slice(*contact_params.keys)
-      error_messages = @contact.errors.full_messages
-      flash[:name_error] = error_messages.find{ |message| message.include?("名前を入力してください") }
-      flash[:email_error] = error_messages.detect { |message| message.include?("有効なメールアドレスを入力してください") }
-      flash[:message_error] = error_messages.detect { |message| message.include?("お問い合わせ内容を入力してください") }
-      redirect_to new_contact_path
-    end
+    return unless @contact.invalid?
+
+    session[:contact] = @contact.attributes.slice(*contact_params.keys)
+    error_messages = @contact.errors.full_messages
+    flash[:name_error] = error_messages.find { |message| message.include?("名前を入力してください") }
+    flash[:email_error] = error_messages.detect { |message| message.include?("有効なメールアドレスを入力してください") }
+    flash[:message_error] = error_messages.detect { |message| message.include?("お問い合わせ内容を入力してください") }
+    redirect_to new_contact_path
   end
 
   # 入力内容に誤りがあった場合、

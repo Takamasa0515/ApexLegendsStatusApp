@@ -3,7 +3,7 @@ class ContactMailer < ApplicationMailer
     @contact = contact
     mail(
       from: "contact@example.com",
-      to: ENV['TOMAIL'],
+      to: ENV.fetch('TOMAIL', nil),
       subject: "お問い合わせがありました。"
     )
   end

@@ -4,7 +4,7 @@
       <p>総合戦績</p>
     </div>
     <div class="overall-record-stats">
-      <% @trn_overall_segment_stats.each do |stat| %>
+      <% @trn_overall_stats_name.each do |stat| %>
         <div class="overall-stat">
           <span class="name"><%= stat.capitalize %></span>
           <span class="value"><%= instance_variable_get(:"@trn_overall_#{stat}_value") %></span>
@@ -28,6 +28,11 @@
       <div class="overall-stat">
         <span class="name">勝率</span>
         <span class="value"><%= @overall_winrate %></span>
+      </div>
+      <div class="overall-stat">
+        <span class="name">現在のランク</span>
+        <span class="value"><%= rank_image_path(@trn_rank_name) %><%= @trn_rank_name %></span>
+        <span class="rank"><%= @trn_rank_point_rank %> - Top<%= @trn_rank_point_percentile %>%</span>
       </div>
     </div>
   </div>
