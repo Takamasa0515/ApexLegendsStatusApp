@@ -48,7 +48,7 @@ class TrackerApiService
 
   def self.stat_attribute_check(trn_player_stats, segment_stat, attribute)
     if trn_player_stats.dig('data', 'segments', 0, 'stats', segment_stat, attribute).present?
-      trn_player_stats['data']['segments'][0]['stats'][segment_stat][attribute].floor.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')
+      trn_player_stats['data']['segments'][0]['stats'][segment_stat][attribute].floor.to_s(:delimited)
     else
       "---"
     end
@@ -56,7 +56,8 @@ class TrackerApiService
 
   def self.stat_percentile_check(trn_player_stats, segment_stat)
     if trn_player_stats.dig('data', 'segments', 0, 'stats', segment_stat, 'value').present?
-      "#{(PERCENTAGE_BASE - trn_player_stats['data']['segments'][0]['stats'][segment_stat]['percentile']).round(1)}%"
+      value = trn_player_stats['data']['segments'][0]['stats'][segment_stat]['percentile']
+      value.present? ? "#{(PERCENTAGE_BASE - value).round(1)}%" : "---"
     else
       "---"
     end

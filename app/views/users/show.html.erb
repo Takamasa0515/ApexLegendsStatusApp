@@ -41,7 +41,7 @@
 </header>
 <div class="game-stats-area bg-dark-black">
   <% if @trn_player_stats == "Apilimit" %>
-    <%= render "api_rate_limit" %>
+    <%= render "shared/api_rate_limit" %>
   <% elsif @trn_player_stats.present? %>
     <%= render "overall_stats" %>
     <%= render "legend_stats_card" %>

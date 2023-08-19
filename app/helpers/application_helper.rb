@@ -22,17 +22,17 @@ module ApplicationHelper
       image_tag("rank_images/predator.png")
     when "Master"
       image_tag("rank_images/master.png")
-    when "Diamond"
+    when "Diamond 1", "Diamond 2", "Diamond 3", "Diamond 4"
       image_tag("rank_images/diamond.png")
-    when "Platinum"
+    when "Platinum 1", "Platinum 2", "Platinum 3", "Platinum 4"
       image_tag("rank_images/platinum.png")
-    when "Gold"
+    when "Gold 1", "Gold 2", "Gold 3", "Gold 4"
       image_tag("rank_images/gold.png")
-    when "Silver"
+    when "Silver 1", "Silver 2", "Silver 3", "Silver 4"
       image_tag("rank_images/silver.png")
-    when "Bronze"
+    when "Bronze 1", "Bronze 2", "Bronze 3", "Bronze 4"
       image_tag("rank_images/bronze.png")
-    when "Rookie"
+    when "Rookie 1", "Rookie 2", "Rookie 3", "Rookie 4"
       image_tag("rank_images/rookie.png")
     end
   end
@@ -46,14 +46,6 @@ module ApplicationHelper
       image_tag("legend_images/#{legend_name}_icon.jpg")
     else
       image_tag('legend_images/no_image.jpg')
-    end
-  end
-
-  def legend_stats_value(legend_stats, stats_name, attribute)
-    if legend_stats["stats"][stats_name][attribute].present?
-      legend_stats["stats"][stats_name][attribute]
-    else
-      "---"
     end
   end
 end

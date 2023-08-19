@@ -12,8 +12,9 @@
  */
 
 @import "bootstrap";
-
+@import "simple_calendar";
 @charset "UTF-8";
+
 /*!
 * Start Bootstrap - Scrolling Nav v5.0.6 (https://startbootstrap.com/template/scrolling-nav)
 * Copyright 2013-2023 Start Bootstrap
@@ -11631,6 +11632,40 @@ h2 {
   margin: 0 0 0 35px;
 }
 
+.match-result-card {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem;
+  border: solid 1px #ffffff;
+  border-radius: 0.5rem;
+  background-color: #292929;
+}
+
+.no-match-result-card {
+  display: block;
+  margin: 1.5rem;
+  border: solid 1px #ffffff;
+  border-radius: 0.5rem;
+  background-color: #292929;
+}
+
+.no-match-result-card h2 {
+  text-align: center;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.match-result-card-left {
+  display: flex;
+}
+
+.match-result-card-right {
+  display: flex;
+  flex-wrap: wrap;
+  color: #ffffff;
+  margin: 0 0 0 35px;
+}
+
 .legend-stat {
   display: flex;
   color: #ffffff;
@@ -11925,4 +11960,102 @@ h2 {
 footer {
   color: white;
   font-size: 0.75rem;
+}
+
+.match-record-calendar-area {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.match-record-calendar-container {
+  border: 1px solid #ffffff;
+  border-radius: 0.5rem;
+}
+
+.match-record-calendar-title h2 {
+  text-align: center;
+  padding-top: 24px;
+}
+
+.match-record-calendar {
+  margin: 1.5rem;
+}
+
+.simple-calendar {
+  table,
+  th,
+  td {
+    color: #ffffff;
+    text-align: center;
+    padding: 0;
+  }
+
+  thead {
+    background: #1a1a1a;
+  }
+
+  tbody {
+    background: #2b2b2b;
+  }
+
+  td button {
+    width: 100%;
+  }
+
+  td button p {
+    margin: 0;
+  }
+
+  td button p:first-child {
+    text-align: start;
+  }
+
+  .calendar-heading {
+    display: flex;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .calendar-heading a {
+    margin: auto 0;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .calendar-heading .calendar-title {
+    font-size: 1.5rem;
+    margin: 0 auto;
+  }
+
+  button {
+    color: #ffffff;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  .day {
+    height: 70px;
+  }
+
+  .wday-0 button p:first-child {
+    color: #dc3545;
+  }
+
+  .wday-6 button p:first-child {
+    color: #0d6efd;
+  }
+
+  .today {
+    background: #5e5e5e;
+  }
+
+  .prev-month {
+    background: #16160e;
+  }
+
+  .next-month {
+    background: #16160e;
+  }
 }

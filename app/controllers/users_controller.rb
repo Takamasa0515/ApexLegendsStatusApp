@@ -8,6 +8,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @game_account_info = @user.game_account_info
+    game_account_check
+  end
+
+  private
+
+  def game_account_check
     if @game_account_info.blank?
       @trn_player_stats = nil
     else
@@ -15,8 +21,6 @@ class UsersController < ApplicationController
       fetch_trn_player_stats if @trn_player_stats.include?("data")
     end
   end
-
-  private
 
   def fetch_trn_player_stats
     fetch_trn_overall_stats
@@ -72,15 +76,11 @@ class UsersController < ApplicationController
     @trn_rank_name = @trn_player_stats.dig("data", "segments", 0, "stats", "rankScore", "metadata", "rankName")
     value = nil
     rank = TrackerApiService.overall_stat_rank(@trn_player_stats, "rankScore")
-    percentile =TrackerApiService.overall_stat_percentile(@trn_player_stats, "rankScore")
+    percentile = TrackerApiService.overall_stat_percentile(@trn_player_stats, "rankScore")
     set_trn_instance_variables("rank", "point", value, rank, percentile)
   end
 
-  def value_check(value1, value2) 
-    if value1 == "---" || value2 == "---"
-      "---"
-    else
-      yield
-    end
+  def value_check(value1, value2)
+    value1 == "---" || value2 == "---" ? "---" : yield
   end
 end

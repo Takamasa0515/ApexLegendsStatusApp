@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resources :tracker_match_records, only: %i[index show]
+    post "tracker_match_records", to: "tracker_match_records#show_records", as: "tracker_show_records"
   end
 
   resources :game_account_info, only: %i[edit update]
@@ -22,6 +24,4 @@ Rails.application.routes.draw do
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'
   get 'complete', to: 'contacts#complete', as: 'complete'
-
-  resources :match_histories
 end
