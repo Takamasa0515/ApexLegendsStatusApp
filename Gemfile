@@ -64,6 +64,7 @@ gem 'ransack'
 gem 'gretel'
 gem 'active_decorator'
 gem 'rails_same_site_cookie'
+gem 'simple_calendar', '~> 2.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -1,3 +1,7 @@
 ja:
+  time:
+    format:
+      default: "%Y/%m/%d"
+      short: "%-m/%-d(%a)"
   flash:
     update: "ゲームアカウント情報を更新しました"

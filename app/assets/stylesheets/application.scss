@@ -12,8 +12,9 @@
  */
 
 @import "bootstrap";
-
+@import "simple_calendar";
 @charset "UTF-8";
+
 /*!
 * Start Bootstrap - Scrolling Nav v5.0.6 (https://startbootstrap.com/template/scrolling-nav)
 * Copyright 2013-2023 Start Bootstrap
@@ -11425,6 +11426,10 @@ h2 {
   justify-content: space-between;
 }
 
+.user-self-introduction {
+  margin: 10px;
+}
+
 .header-mypage-left {
   display: flex;
 }
@@ -11524,7 +11529,7 @@ h2 {
 .overall-record-area {
   width: 90%;
   margin: 0 auto;
-  padding: 40px 20px 20px 20px;
+  padding: 20px;
 }
 
 .overall-record-container {
@@ -11606,7 +11611,7 @@ h2 {
 }
 
 .legend-stats-card {
-  margin: 1.5rem;
+  margin: 1.5rem 5rem;
   border: solid 1px #ffffff;
   border-radius: 0.5rem;
   background-color: #292929;
@@ -11625,6 +11630,41 @@ h2 {
 }
 
 .legend-stats-card-body {
+  display: flex;
+  flex-wrap: wrap;
+  color: #ffffff;
+  margin: 0 0 0 35px;
+}
+
+.match-result-card {
+  display: flex;
+  justify-content: space-between;
+  height: 72px;
+  margin: 1.5rem 5rem;
+  border: solid 1px #ffffff;
+  border-radius: 0.5rem;
+  background-color: #292929;
+}
+
+.no-match-result-card {
+  display: block;
+  margin: 1.5rem 5rem;
+  border: solid 1px #ffffff;
+  border-radius: 0.5rem;
+  background-color: #292929;
+}
+
+.no-match-result-card h2 {
+  text-align: center;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.match-result-card-left {
+  display: flex;
+}
+
+.match-result-card-right {
   display: flex;
   flex-wrap: wrap;
   color: #ffffff;
@@ -11655,7 +11695,7 @@ h2 {
   height: 70px;
   background-color: rgb(98, 76, 162);
   margin-right: 0.8rem;
-  border-radius: 0.5rem 0 0 0;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 
 .legend-stats-card-body .legend-name {
@@ -11922,7 +11962,133 @@ h2 {
   color: #ffffff;
 }
 
+.switch-result-button {
+  display: flex;
+  max-width: 400px;
+  height: 60px;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding-top: 10px;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.switch-result-button-top {
+  max-width: 350px;
+}
+
+.switch-result-button a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  margin: 0;
+}
+
+.button-on {
+  border-bottom: 1px solid #ffffff;
+}
+
+.button-off {
+}
+
 footer {
   color: white;
   font-size: 0.75rem;
+}
+
+.match-record-calendar-area {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.match-record-calendar-container {
+  border: 1px solid #ffffff;
+  border-radius: 0.5rem;
+}
+
+.match-record-calendar-title h2 {
+  text-align: center;
+  padding-top: 24px;
+}
+
+.match-record-calendar {
+  margin: 1.5rem 5rem;
+}
+
+.simple-calendar {
+  table,
+  th,
+  td {
+    color: #ffffff;
+    text-align: center;
+    padding: 0;
+  }
+
+  thead {
+    background: #1a1a1a;
+  }
+
+  tbody {
+    background: #2b2b2b;
+  }
+
+  td button {
+    width: 100%;
+  }
+
+  td button p {
+    margin: 0;
+  }
+
+  td button p:first-child {
+    text-align: start;
+  }
+
+  .calendar-heading {
+    display: flex;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .calendar-heading a {
+    margin: auto 0;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .calendar-heading .calendar-title {
+    font-size: 1.5rem;
+    margin: 0 auto;
+  }
+
+  button {
+    color: #ffffff;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  .day {
+    height: 70px;
+  }
+
+  .wday-0 button p:first-child {
+    color: #dc3545;
+  }
+
+  .wday-6 button p:first-child {
+    color: #0d6efd;
+  }
+
+  .today {
+    background: #5e5e5e;
+  }
+
+  .prev-month {
+    background: #16160e;
+  }
+
+  .next-month {
+    background: #16160e;
+  }
 }

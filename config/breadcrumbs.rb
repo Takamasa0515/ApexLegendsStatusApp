@@ -12,7 +12,7 @@ crumb :log_in do
   parent :root
 end
 
-crumb :users do |_user|
+crumb :users do |user|
   link "ユーザー一覧", users_path
   parent :root
 end
@@ -23,6 +23,11 @@ crumb :user_show do |user|
   else
     link "#{user.name}", user_path(user)
   end
+  parent :users
+end
+
+crumb :user_match_record do |user|
+  link "試合履歴",  user_tracker_match_records_path(user)
   parent :users
 end
 

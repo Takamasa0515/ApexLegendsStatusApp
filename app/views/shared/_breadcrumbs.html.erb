@@ -5,6 +5,8 @@
   <% breadcrumb :user_show, @user %>
 <% when ["users", "search"] %>
   <% breadcrumb :search %>
+<% when ["tracker_match_records", "index"] %>
+  <% breadcrumb :user_match_record, @user  %>
 <% when ["devise/registrations", "new"] %>
   <% breadcrumb :sign_up %>
 <% when ["devise/sessions", "new"] %>

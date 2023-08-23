@@ -1,0 +1,37 @@
+<%= render "shared/breadcrumbs" %>
+<div class="header-container-first-line">
+  <div class="header-mypage-left" >
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar, class: "user-avatar" %>
+    <% else %>
+      <%= image_tag "default_avatar.jpg", class: "user-avatar" %>
+    <% end %>
+    <div class="header-mypage-user-profiel">
+      <h2><%= user.name %></h2>
+      <% if game_account_info.present? %>
+        <div class="game-account-info">
+          <span class="platform-icon">
+            <%= platform_image_path(game_account_info.platform) %>
+          </span>
+          <span>
+            <%= game_account_info.gameid %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% if user_signed_in? && user.id == current_user.id %>
+    <div class="header-mypage-right">
+      <div class="profiel-edit-btn">
+        <%= link_to "プロフィールを編集する", edit_user_registration_path, class: "btn-dark btn-lg btn btn-border-color-white wd-300" %>
+      </div>
+      <div class="profiel-edit-btn">
+        <%= link_to "ゲームアカウントを登録・編集する", edit_game_account_info_path(current_user.id), class: "btn-dark btn-lg btn btn-border-color-white wd-300" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="user-self-introduction">
+  <p><%= user.self_introduction %></p>
+</div>
+

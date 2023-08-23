@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_20_033744) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_21_071113) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -62,6 +62,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_033744) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tracker_match_records", force: :cascade do |t|
+    t.datetime "match_date"
+    t.string "legend"
+    t.integer "kills"
+    t.integer "wins"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.integer "damages"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.index ["user_id"], name: "index_tracker_match_records_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -73,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_033744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "self_introduction"
+    t.datetime "last_accessed_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -80,4 +95,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_033744) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "game_account_infos", "users"
+  add_foreign_key "tracker_match_records", "users"
 end

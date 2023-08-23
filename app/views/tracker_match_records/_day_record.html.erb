@@ -1,0 +1,35 @@
+<turbo-frame id="record">
+  <div class="legend-stats-title">
+    <h2><%= match_date.to_s %></h2>
+  </div>
+  <% if day_matches.present? %>
+    <% day_matches.each do |match| %>
+    <div class="match-result-card">
+      <div class="match-result-card-left">
+        <span class="legend-icon">
+          <%= legend_image_path(match.legend) %>
+        </span>
+        <span class="legend-name"><%= match.legend %></span>
+      </div>
+      <div class="match-result-card-right">
+        <div class="legend-stat">
+          <span class="name">Kills</span>
+          <span class="value"><%= match.kills.present? ? add_commas_to_number(match.kills) : "---" %></span>
+        </div>
+        <div class="legend-stat">
+          <span class="name">Damage</span>
+          <span class="value"><%= match.damages.present? ? add_commas_to_number(match.damages) : "---" %></span>
+        </div>
+        <div class="legend-stat">
+          <span class="name">Wins</span>
+          <span class="value"><%= match.wins.present? ? add_commas_to_number(match.wins) : "---" %></span>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <div class="no-match-result-card">
+      <h2>日付をクリックで詳細を表示</h2>
+    </div>
+  <% end %>
+</turbo-frame>
