@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   has_one :game_account_info, dependent: :destroy
-  accepts_nested_attributes_for :game_account_info
   has_one_attached :avatar, dependent: :destroy
   has_many :tracker_match_records, dependent: :destroy
 

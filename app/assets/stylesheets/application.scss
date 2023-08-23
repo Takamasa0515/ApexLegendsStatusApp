@@ -11426,6 +11426,10 @@ h2 {
   justify-content: space-between;
 }
 
+.user-self-introduction {
+  margin: 10px;
+}
+
 .header-mypage-left {
   display: flex;
 }
@@ -11525,7 +11529,7 @@ h2 {
 .overall-record-area {
   width: 90%;
   margin: 0 auto;
-  padding: 40px 20px 20px 20px;
+  padding: 20px;
 }
 
 .overall-record-container {
@@ -11607,7 +11611,7 @@ h2 {
 }
 
 .legend-stats-card {
-  margin: 1.5rem;
+  margin: 1.5rem 5rem;
   border: solid 1px #ffffff;
   border-radius: 0.5rem;
   background-color: #292929;
@@ -11635,7 +11639,8 @@ h2 {
 .match-result-card {
   display: flex;
   justify-content: space-between;
-  margin: 1.5rem;
+  height: 72px;
+  margin: 1.5rem 5rem;
   border: solid 1px #ffffff;
   border-radius: 0.5rem;
   background-color: #292929;
@@ -11643,7 +11648,7 @@ h2 {
 
 .no-match-result-card {
   display: block;
-  margin: 1.5rem;
+  margin: 1.5rem 5rem;
   border: solid 1px #ffffff;
   border-radius: 0.5rem;
   background-color: #292929;
@@ -11690,7 +11695,7 @@ h2 {
   height: 70px;
   background-color: rgb(98, 76, 162);
   margin-right: 0.8rem;
-  border-radius: 0.5rem 0 0 0;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 
 .legend-stats-card-body .legend-name {
@@ -11957,13 +11962,41 @@ h2 {
   color: #ffffff;
 }
 
+.switch-result-button {
+  display: flex;
+  max-width: 400px;
+  height: 60px;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding-top: 10px;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.switch-result-button-top {
+  max-width: 350px;
+}
+
+.switch-result-button a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  margin: 0;
+}
+
+.button-on {
+  border-bottom: 1px solid #ffffff;
+}
+
+.button-off {
+}
+
 footer {
   color: white;
   font-size: 0.75rem;
 }
 
 .match-record-calendar-area {
-  max-width: 1100px;
+  width: 90%;
   margin: 0 auto;
   padding: 20px;
 }
@@ -11979,7 +12012,7 @@ footer {
 }
 
 .match-record-calendar {
-  margin: 1.5rem;
+  margin: 1.5rem 5rem;
 }
 
 .simple-calendar {

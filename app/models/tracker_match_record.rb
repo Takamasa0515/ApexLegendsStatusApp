@@ -7,7 +7,9 @@ class TrackerMatchRecord < ApplicationRecord
     headers = { 'TRN-Api-Key' => ENV.fetch('TRN_API_KEY', nil) }
     url = "https://public-api.tracker.gg/v2/apex/standard/profile/#{game_account_info.platform}/#{game_account_info.gameid}/sessions"
     result = JSON.parse(client.get(url, header: headers).body)
-    if result["message"] == "API rate limit exceeded"
+    if result.include?("errors")
+      "No account"
+    elsif result["message"] == "API rate limit exceeded"
       "Apilimit"
     else
       result
@@ -15,7 +17,7 @@ class TrackerMatchRecord < ApplicationRecord
   end
 
   def self.save_past_match_histories(match_histories, user)
-    history_span = (Time.zone.today.prev_month.beginning_of_month..Time.zone.today).to_a
+    history_span = ((Time.zone.today - 2.months).beginning_of_month..Time.zone.today).to_a
     history_span.each do |day|
       day_history = fetch_day_match_history(match_histories, day)
       next if day_history.blank?
