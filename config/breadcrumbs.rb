@@ -21,13 +21,13 @@ crumb :user_show do |user|
   if user_signed_in? && user.id == current_user.id
     link "マイページ", user_path(user)
   else
-    link "#{user.name}", user_path(user)
+    link user.name.to_s, user_path(user)
   end
   parent :users
 end
 
 crumb :user_match_record do |user|
-  link "試合履歴",  user_tracker_match_records_path(user)
+  link "試合履歴", user_tracker_match_records_path(user)
   parent :users
 end
 

@@ -1,31 +1,7 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- */
-
 @import "bootstrap";
 @import "simple_calendar";
 @charset "UTF-8";
 
-/*!
-* Start Bootstrap - Scrolling Nav v5.0.6 (https://startbootstrap.com/template/scrolling-nav)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-scrolling-nav/blob/master/LICENSE)
-*/
-/*!
- * Bootstrap  v5.2.3 (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -694,14 +670,14 @@ progress {
 @media (min-width: 576px) {
   .container-sm,
   .container {
-    max-width: 540px;
+    max-width: 100%;
   }
 }
 @media (min-width: 768px) {
   .container-md,
   .container-sm,
   .container {
-    max-width: 720px;
+    max-width: 100%;
   }
 }
 @media (min-width: 992px) {
@@ -709,7 +685,7 @@ progress {
   .container-md,
   .container-sm,
   .container {
-    max-width: 960px;
+    max-width: 100%;
   }
 }
 @media (min-width: 1200px) {
@@ -718,7 +694,7 @@ progress {
   .container-md,
   .container-sm,
   .container {
-    max-width: 1140px;
+    max-width: 100%;
   }
 }
 @media (min-width: 1400px) {
@@ -728,7 +704,7 @@ progress {
   .container-md,
   .container-sm,
   .container {
-    max-width: 1320px;
+    max-width: 100%;
   }
 }
 .row {
@@ -11766,8 +11742,19 @@ h2 {
   font-size: 1rem;
 }
 
+.nav-bar-left {
+  display: flex;
+  align-items: center;
+}
+
 .nav-bar-search {
   display: block;
+}
+
+@media (max-width: 992px) {
+  .nav-bar-search {
+    display: none;
+  }
 }
 
 .nav-bar-search-field {
@@ -11987,9 +11974,6 @@ h2 {
   border-bottom: 1px solid #ffffff;
 }
 
-.button-off {
-}
-
 footer {
   color: white;
   font-size: 0.75rem;
@@ -12090,5 +12074,40 @@ footer {
 
   .next-month {
     background: #16160e;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .lead {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-h1-pc {
+    display: none;
+  }
+}
+
+.top-h1-mb {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .top-h1-mb {
+    display: block;
   }
 }

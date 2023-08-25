@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def game_account_check
     if @game_account_info.blank?
-      @trn_player_stats = nil
+      @trn_player_stats = "No account"
     else
       @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
       fetch_trn_player_stats if @trn_player_stats.include?("data")
