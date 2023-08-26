@@ -1,10 +1,3 @@
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
-
-import "@hotwired/turbo-rails";
-import "controllers";
-
 window.addEventListener("DOMContentLoaded", (event) => {
   // Activate Bootstrap scrollspy on the main nav element
   const mainNav = document.body.querySelector("#mainNav");
@@ -15,6 +8,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   }
 
+  // Collapse responsive navbar when toggler is visible
   const navbarToggler = document.body.querySelector(".navbar-toggler");
   const responsiveNavItems = [].slice.call(
     document.querySelectorAll("#navbarResponsive .nav-link")
