@@ -11278,6 +11278,19 @@ h2 {
   margin-top: 2px;
 }
 
+@media (max-width: 768px) {
+  .field input {
+    color: #ffffff;
+    width: 100%;
+    height: 40px;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ffffff;
+    outline: none;
+    margin-top: 2px;
+  }
+}
+
 .field-user-edit {
   display: flex;
 }
@@ -11324,6 +11337,37 @@ h2 {
 
 .actions-user-edit {
   margin: 0;
+}
+
+.actions-mb {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .actions {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .actions-mb {
+    display: block;
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .actions-mb input {
+    width: 100%;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .under-forms p {
+    font-size: 0.75rem;
+    margin: 0;
+  }
 }
 
 .actions input {
@@ -12106,8 +12150,16 @@ footer {
   display: none;
 }
 
-@media (max-width: 576px) {
-  .top-h1-mb {
-    display: block;
+@media (max-width: 768px) {
+  .devise-mb {
+    display: block !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .boxshadow {
+    max-width: 400px;
+    box-shadow: 0 0 20px #ffffff;
+    border-radius: 10px;
   }
 }
