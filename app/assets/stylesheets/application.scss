@@ -11211,6 +11211,14 @@ h2 {
   border-radius: 10px;
 }
 
+@media (max-width: 768px) {
+  .boxshadow {
+    max-width: 400px;
+    box-shadow: 0 0 20px #ffffff;
+    border-radius: 10px;
+  }
+}
+
 .boxshadow-user-edit {
   max-width: 900px;
   padding: 1rem 2rem;
@@ -11233,6 +11241,12 @@ h2 {
   display: flex;
   justify-content: flex-start;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .devise-mb {
+    display: block !important;
+  }
 }
 
 .devise-user-edit {
@@ -12152,19 +12166,6 @@ footer {
 }
 
 @media (max-width: 576px) {
-  .lead {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .top-btn {
-    width: 100%;
-    margin-bottom: 0.5rem;
-  }
-}
-
-@media (max-width: 576px) {
   .top-h1-pc {
     display: none;
   }
@@ -12174,16 +12175,20 @@ footer {
   display: none;
 }
 
-@media (max-width: 768px) {
-  .devise-mb {
-    display: block !important;
+@media (max-width: 576px) {
+  .top-h1-mb {
+    display: block;
   }
 }
 
-@media (max-width: 768px) {
-  .boxshadow {
-    max-width: 400px;
-    box-shadow: 0 0 20px #ffffff;
-    border-radius: 10px;
+@media (max-width: 576px) {
+  .top-btn {
+    width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .lead {
+    font-size: 1rem;
   }
 }
