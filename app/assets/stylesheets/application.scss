@@ -11975,6 +11975,14 @@ h2 {
   padding: 20px;
 }
 
+@media (max-width: 769px) {
+  .trn-failed-stats-area {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
+
 .trn-failed-stats-container {
   border: 1px solid #ffffff;
   border-radius: 0.5rem;
@@ -11984,6 +11992,14 @@ h2 {
   text-align: center;
   font-size: 2rem;
   margin-top: 1rem;
+}
+
+@media (max-width: 769px) {
+  .trn-failed-stats-container h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
 }
 
 .trn-failed-stats-container h2::before {
@@ -11998,6 +12014,12 @@ h2 {
   margin: 1rem 2rem;
 }
 
+@media (max-width: 769px) {
+  .trn-failed-stats-body {
+    margin: 0 0.5rem;
+  }
+}
+
 .trn-failed-stats-body a {
   text-decoration: none;
 }
@@ -12007,8 +12029,21 @@ h2 {
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .trn-error-check-list p:first-child {
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
 .trn-error-check-list p {
   font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .trn-error-check-list p {
+    font-size: 0.8rem;
+  }
 }
 
 .nav-bar-left {
