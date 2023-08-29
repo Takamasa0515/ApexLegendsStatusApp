@@ -11203,6 +11203,12 @@ h2 {
   margin-bottom: 1rem;
 }
 
+@media (max-width: 768px) {
+  .container-h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .boxshadow {
   max-width: 700px;
   padding: 1rem 2rem;
@@ -11225,6 +11231,16 @@ h2 {
   margin: 0 auto;
   box-shadow: 0 0 20px #ffffff;
   border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .boxshadow-user-edit {
+    max-width: 900px;
+    padding: 0.5rem;
+    margin: 0 auto;
+    box-shadow: 0 0 20px #ffffff;
+    border-radius: 10px;
+  }
 }
 
 .error-messages {
@@ -11264,11 +11280,19 @@ h2 {
 }
 
 .right-field-user-edit {
-  width: 65%;
+  width: 75%;
   margin: auto;
 }
 
+@media (max-width: 768px) {
+  .right-field-user-edit input {
+    font-size: 0.5rem;
+  }
+}
+
 .right-field-user-edit select {
+  display: block;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   border: 1px solid #ffffff;
@@ -11310,13 +11334,21 @@ h2 {
 }
 
 .field-user-edit label {
-  width: 25%;
+  width: 100%;
   margin: auto 0;
+}
+
+@media (max-width: 768px) {
+  .field-user-edit label {
+    width: 100%;
+    margin: auto 0;
+    font-size: 0.7rem;
+  }
 }
 
 .field-user-edit input:not(.file_field) {
   color: #ffffff;
-  width: 75%;
+  width: 100%;
   height: 40px;
   border-radius: 0.5rem;
   background-color: rgba(255, 255, 255, 0.1);
@@ -11328,13 +11360,14 @@ h2 {
 .devise-user-edit textarea {
   resize: none;
   color: #ffffff;
-  width: 75%;
+  width: 100%;
   height: 150px;
   border-radius: 0.5rem;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid #ffffff;
   outline: none;
   margin-top: 2px;
+  font-size: 0.5rem;
 }
 
 .devise-button {
@@ -12081,7 +12114,7 @@ h2 {
   display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .nav-bar-search {
     display: none;
   }
