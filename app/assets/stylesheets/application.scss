@@ -11469,7 +11469,7 @@ h2 {
 }
 
 .header-mypage {
-  height: 400px;
+  height: auto;
 }
 
 .header-container {
@@ -11587,7 +11587,7 @@ h2 {
     margin: 0 auto;
     margin-top: 40px;
     color: #ffffff;
-    background-color: #4169e1;
+    background-color: #fd5a5a;
     text-align: center;
   }
 }
@@ -11629,8 +11629,34 @@ h2 {
   display: flex;
 }
 
-.profile-edit-btn {
+.profile-edit-btn-pc {
+  display: block;
   margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .profile-edit-btn-pc {
+    display: none;
+  }
+}
+
+.profile-edit-btn-mb {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .profile-edit-btn-mb {
+    display: block;
+    width: 80%;
+    margin: 5px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-edit-btn-mb a {
+    width: 100%;
+    font-size: 0.8rem;
+  }
 }
 
 .wd-250 {
