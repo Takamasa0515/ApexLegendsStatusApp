@@ -11500,18 +11500,26 @@ h2 {
   display: flex;
 }
 
-.header-mypage-user-profiel {
+.header-mypage-user-profile {
   margin: auto 0;
   margin-left: 20px;
 }
 
-.header-mypage-user-profiel h2 {
+.header-mypage-user-profile h2 {
   font-size: 3rem;
   margin: auto 0;
   padding-left: 5px;
 }
 
-.header-mypage-user-profiel p {
+@media (max-width: 768px) {
+  .header-mypage-user-profile h2 {
+    font-size: 2rem;
+    margin: auto 0;
+    padding-left: 5px;
+  }
+}
+
+.header-mypage-user-profile p {
   margin: 0;
 }
 
@@ -11524,6 +11532,15 @@ h2 {
   width: auto;
   height: 100px;
   margin: auto 0;
+}
+
+@media (max-width: 768px) {
+  .user-avatar {
+    border-radius: 50%;
+    width: auto;
+    height: 70px;
+    margin: auto 0;
+  }
 }
 
 .game-account-info {
@@ -11612,7 +11629,7 @@ h2 {
   display: flex;
 }
 
-.profiel-edit-btn {
+.profile-edit-btn {
   margin-bottom: 5px;
 }
 
@@ -11639,15 +11656,39 @@ h2 {
   padding: 20px;
 }
 
+@media (max-width: 768px) {
+  .overall-record-area {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
+
 .overall-record-container {
   display: flex;
   border: 1px solid #ffffff;
   border-radius: 0.5rem;
 }
 
+@media (max-width: 992px) {
+  .overall-record-container {
+    display: block;
+    border: 1px solid #ffffff;
+    border-radius: 0.5rem;
+  }
+}
+
 .overall-title {
   display: flex;
-  width: 300px;
+  width: 20%;
+}
+
+@media (max-width: 992px) {
+  .overall-title {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ffffff;
+  }
 }
 
 .overall-title p {
@@ -11659,18 +11700,42 @@ h2 {
 
 .overall-record-stats {
   display: flex;
+  width: 80%;
   flex-wrap: wrap;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 992px) {
+  .overall-record-stats {
+    display: flex;
+    width: 100%;
+    padding: 0 0 10px 25px;
+    flex-wrap: wrap;
+  }
 }
 
 .overall-stat {
   display: flex;
   flex-direction: column;
   width: 175px;
-  margin: 1rem 0.5rem 1rem 0;
+  margin: 1rem 0 0 0;
   padding-left: 1rem;
   color: #ffffff;
   line-height: 1.1;
   border-left: 1px solid #ffffff;
+}
+
+@media (max-width: 768px) {
+  .overall-stat {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin: 15px 0 0 0;
+    padding-left: 1rem;
+    color: #ffffff;
+    line-height: 1.1;
+    border-left: 1px solid #ffffff;
+  }
 }
 
 .overall-stat .name {
@@ -11680,6 +11745,13 @@ h2 {
 .overall-stat .value {
   display: flex;
   font-size: 1.7rem;
+}
+
+@media (max-width: 768px) {
+  .overall-stat .value {
+    display: flex;
+    font-size: 1.5rem;
+  }
 }
 
 .overall-stat .rank {
@@ -11707,6 +11779,14 @@ h2 {
   padding: 20px;
 }
 
+@media (max-width: 768px) {
+  .trn-legend-stats-area {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
+
 .trn-legend-stats-container {
   border: 1px solid #ffffff;
   border-radius: 0.5rem;
@@ -11724,9 +11804,26 @@ h2 {
   background-color: #292929;
 }
 
+@media (max-width: 768px) {
+  .legend-stats-card {
+    margin: 0.5rem;
+    border: solid 1px #ffffff;
+    border-radius: 0.5rem;
+    background-color: #292929;
+  }
+}
+
 .legend-stats-card-head {
   display: flex;
   border-bottom: solid 1px #ffffff;
+}
+
+@media (max-width: 768px) {
+  .legend-stats-card-head {
+    display: flex;
+    height: 61px;
+    border-bottom: solid 1px #ffffff;
+  }
 }
 
 .legend-name {
@@ -11740,7 +11837,18 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   color: #ffffff;
-  margin: 0 0 0 35px;
+  margin: 0;
+  padding: 0 0 20px 20px;
+}
+
+@media (max-width: 768px) {
+  .legend-stats-card-body {
+    display: flex;
+    flex-wrap: wrap;
+    color: #ffffff;
+    margin: 0;
+    padding: 0 0 10px 18px;
+  }
 }
 
 .match-result-card {
@@ -11789,12 +11897,17 @@ h2 {
   border-left: 1px solid #ffffff;
 }
 
-.legend-stat .name {
-  font-size: 1rem;
-}
-
-.legend-stat .value {
-  font-size: 1.7rem;
+@media (max-width: 768px) {
+  .legend-stat {
+    display: flex;
+    width: 150px;
+    color: #ffffff;
+    flex-direction: column;
+    margin: 10px 0 0 0;
+    padding-left: 1rem;
+    line-height: 1.1;
+    border-left: 1px solid #ffffff;
+  }
 }
 
 .legend-icon img {
@@ -11803,6 +11916,16 @@ h2 {
   background-color: rgb(98, 76, 162);
   margin-right: 0.8rem;
   border-radius: 0.5rem 0 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .legend-icon img {
+    width: 60px;
+    height: 60px;
+    background-color: rgb(98, 76, 162);
+    margin-right: 0.8rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
 }
 
 .legend-stats-card-body .legend-name {
@@ -11817,6 +11940,12 @@ h2 {
 
 .legend-stat .value {
   font-size: 1.7rem;
+}
+
+@media (max-width: 768px) {
+  .legend-stat .value {
+    font-size: 1.5rem;
+  }
 }
 
 .legend-stat .rank {
@@ -12201,7 +12330,7 @@ h2 {
 
 .switch-result-button {
   display: flex;
-  max-width: 400px;
+  width: 400px;
   height: 60px;
   justify-content: space-between;
   margin: 0 auto;
@@ -12210,14 +12339,37 @@ h2 {
   color: #ffffff;
 }
 
-.switch-result-button-top {
-  max-width: 350px;
+@media (max-width: 768px) {
+  .switch-result-button {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: 10px;
+    font-size: 2rem;
+    color: #ffffff;
+  }
 }
 
 .switch-result-button a {
+  display: block;
   color: rgba(255, 255, 255, 0.55);
   text-decoration: none;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .switch-result-button a {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .overall-button p {
+    font-size: 1.5rem;
+    margin: 0;
+  }
 }
 
 .button-on {

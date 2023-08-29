@@ -6,7 +6,7 @@
     <% else %>
       <%= image_tag "default_avatar.jpg", class: "user-avatar" %>
     <% end %>
-    <div class="header-mypage-user-profiel">
+    <div class="header-mypage-user-profile">
       <h2><%= user.name %></h2>
       <% if game_account_info.present? %>
         <div class="game-account-info">
@@ -22,10 +22,10 @@
   </div>
   <% if user_signed_in? && user.id == current_user.id %>
     <div class="header-mypage-right">
-      <div class="profiel-edit-btn">
+      <div class="profile-edit-btn">
         <%= link_to "プロフィールを編集する", edit_user_registration_path, class: "btn-dark btn-lg btn btn-border-color-white wd-300" %>
       </div>
-      <div class="profiel-edit-btn">
+      <div class="profile-edit-btn">
         <%= link_to "ゲームアカウントを登録・編集する", edit_game_account_info_path(current_user.id), class: "btn-dark btn-lg btn btn-border-color-white wd-300" %>
       </div>
     </div>
