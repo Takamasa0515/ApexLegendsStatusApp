@@ -1,17 +1,19 @@
 <turbo-frame id="record">
-  <div class="legend-stats-title">
-    <h2><%= match_date.to_s %></h2>
-  </div>
+  <% if match_date.present? %>
+    <div class="legend-stats-title">
+      <h2><%= match_date.to_s %></h2>
+    </div>
+  <% end %>
   <% if day_matches.present? %>
     <% day_matches.each do |match| %>
-    <div class="match-result-card">
-      <div class="match-result-card-left">
+    <div class="legend-stats-card">
+      <div class="legend-stats-card-head">
         <span class="legend-icon">
           <%= legend_image_path(match.legend) %>
         </span>
         <span class="legend-name"><%= match.legend %></span>
       </div>
-      <div class="match-result-card-right">
+      <div class="legend-stats-card-body p-0 ps-3">
         <div class="legend-stat">
           <span class="name">Kills</span>
           <span class="value"><%= match.kills.present? ? add_commas_to_number(match.kills) : "---" %></span>
