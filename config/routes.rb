@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root 'top#index'
 
-  resources :users, only: %i[index show] do
+  resources :users, only: %i[index show destroy] do
     collection do
       get 'search'
     end

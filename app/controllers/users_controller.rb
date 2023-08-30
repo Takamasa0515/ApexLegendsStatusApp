@@ -11,6 +11,13 @@ class UsersController < ApplicationController
     game_account_check
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = 'ユーザーを削除しました。'
+    redirect_to :root #削除に成功すればrootページに戻る
+  end
+
   private
 
   def game_account_check
@@ -31,6 +38,7 @@ class UsersController < ApplicationController
   end
 
   def fetch_trn_overall_stats
+    binding.pry
     @trn_overall_stats_name = ["level", "kills", "damage", "matchesPlayed", "wins", "killsAsKillLeader"]
     @trn_overall_stats_name.each do |segment|
       value = TrackerApiService.overall_stat_value(@trn_player_stats, segment)
