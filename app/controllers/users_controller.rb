@@ -73,18 +73,19 @@ class UsersController < ApplicationController
     @trn_legend_stats_name = ["kills", "damage", "wins", "matchesPlayed", "killsAsKillLeader"]
   end
 
-  def set_trn_instance_variables(prefix, segment, value, rank, percentile)
-    instance_variable_set("@trn_#{prefix}_#{segment}_value", value)
-    instance_variable_set("@trn_#{prefix}_#{segment}_rank", rank)
-    instance_variable_set("@trn_#{prefix}_#{segment}_percentile", percentile)
-  end
-
   def current_rank
     @trn_rank_name = @trn_player_stats.dig("data", "segments", 0, "stats", "rankScore", "metadata", "rankName")
+    @user.game_account_info.update(current_rank:@trn_rank_name)
     value = nil
     rank = TrackerApiService.overall_stat_rank(@trn_player_stats, "rankScore")
     percentile = TrackerApiService.overall_stat_percentile(@trn_player_stats, "rankScore")
     set_trn_instance_variables("rank", "point", value, rank, percentile)
+  end
+
+  def set_trn_instance_variables(prefix, segment, value, rank, percentile)
+    instance_variable_set("@trn_#{prefix}_#{segment}_value", value)
+    instance_variable_set("@trn_#{prefix}_#{segment}_rank", rank)
+    instance_variable_set("@trn_#{prefix}_#{segment}_percentile", percentile)
   end
 
   def value_check(value1, value2)
