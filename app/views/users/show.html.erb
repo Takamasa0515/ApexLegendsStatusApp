@@ -19,7 +19,7 @@
   <% if @trn_player_stats == "Apilimit" %>
     <%= render "shared/api_rate_limit" %>
   <% elsif @trn_player_stats == "No account" %>
-    <%= render "no_game_account_info" %>
+    <%= render "shared/no_game_account_info" %>
   <% elsif @trn_player_stats.present? %>
     <%= render "overall_stats" %>
     <%= render "legend_stats_card" %>

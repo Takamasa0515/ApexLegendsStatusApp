@@ -7,34 +7,54 @@
         <div class="devise-user-edit">
           <div class="devise-form">
             <div class="field-user-edit">
-              <%= f.label :avatar, class: "devise-label-user-edit" %>
-              <%= f.file_field :avatar, autofocus: true, class: "file_field" %>
+              <div class="left-field-user-edit">
+                <%= f.label :avatar, class: "devise-label-user-edit" %>
+              </div>
+              <div class="right-field-user-edit">
+                <%= f.file_field :avatar, autofocus: true, class: "file_field" %>
+              </div>
             </div>
             <hr class="hr-white">
             <div class="field-user-edit">
-              <%= f.label :name, class: "devise-label-user-edit" %>
-              <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "devise-field" %>
+              <div class="left-field-user-edit">
+                <%= f.label :name, class: "devise-label-user-edit" %>
+              </div>
+              <div class="right-field-user-edit">
+                <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "devise-field" %>
+              </div>
             </div>
             <% if @user.errors.include?(:name) %>
               <p class="error-messages em-25"><%= @user.errors.full_messages_for(:name).first %></p>
             <% end %>
             <hr class="hr-white">
             <div class="field-user-edit">
-              <%= f.label :self_introduction, class: "devise-label-user-edit" %>
-              <%= f.text_area :self_introduction, autofocus: true, autocomplete: "email", class: "devise-field" %>
+              <div class="left-field-user-edit">
+                <%= f.label :self_introduction, class: "devise-label-user-edit" %>
+              </div>
+              <div class="right-field-user-edit">
+                <%= f.text_area :self_introduction, autofocus: true, autocomplete: "email", class: "devise-field" %>
+              </div>
             </div>
             <hr class="hr-white">
             <div class="field-user-edit">
-              <%= f.label :email, class: "devise-label-user-edit" %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <div class="left-field-user-edit">
+                <%= f.label :email, class: "devise-label-user-edit" %>
+              </div>
+              <div class="right-field-user-edit">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
             </div>
             <% if @user.errors.include?(:email) %>
               <p class="error-messages em-25"><%= @user.errors.full_messages_for(:email).first %></p>
             <% end %>
             <hr class="hr-white">
             <div class="field-user-edit">
-              <%= f.label :current_password, class: "devise-label-user-edit" %>
-              <%= f.password_field :current_password, autocomplete: "current-password" %>
+              <div class="left-field-user-edit">
+                <%= f.label :current_password, class: "devise-label-user-edit" %>
+              </div>
+              <div class="right-field-user-edit">
+                <%= f.password_field :current_password, autocomplete: "current-password" %>
+              </div>
             </div>
             <% if @user.errors.include?(:current_password) %>
               <p class="error-messages em-25"><%= @user.errors.full_messages_for(:current_password).first %></p>

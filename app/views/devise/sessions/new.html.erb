@@ -3,7 +3,7 @@
     <div class="boxshadow">
       <h2 class="container-h2">ログイン</h2>
       <%= form_with model: @user, url: user_session_path, id: 'new_user', local: true do |f| %>
-        <div class="devise">
+        <div class="devise devise-mb">
           <div class="devise-form">
             <div class="field">
               <%= f.label :email, class: "devise-label" %>
@@ -38,10 +38,13 @@
           <div class="actions">
             <%= f.submit "ログインする", class: "btn-dark btn-lg btn btn-border-color-white" %>
           </div>
+          <div class="actions-mb">
+            <%= f.submit "ログインする", class: "btn-dark btn-lg btn btn-border-color-white" %>
+          </div>
         </div>
       <% end %>
       <hr class="hr-white">
-      <div>
+      <div class="under-forms">
         <p>アカウントをお持ちでない場合は、<%= link_to "こちらから新規作成", new_registration_path(resource_name), class: "custom-link" %>してください。</p>
         <p>パスワードを忘れた場合は<%= link_to "こちらから再設定", new_password_path(resource_name), class: "custom-link" %>してください。</p>
       </div>

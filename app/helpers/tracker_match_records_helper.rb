@@ -1,4 +1,8 @@
 module TrackerMatchRecordsHelper
+  def current_month_kills(matches)
+    binding.pry
+  end
+
   def match_id(date)
     results = match_results(date)
     ids = []

@@ -26,9 +26,9 @@ class TrackerMatchRecordsController < ApplicationController
   end
 
   def api_request_check
-    last_accessed_at = @user.last_accessed_at
+    last_accessed_at = @user.last_accessed_at_match_record
     current_time = Time.zone.now
-    if last_accessed_at.present? # 最後にアクセスした記録があるなら比較、ないなら初のアクセスのためAPIリクエスト
+    if last_accessed_at.present?
       time_difference = (current_time - last_accessed_at).to_i
       api_request_and_save if time_difference >= 600
     else
@@ -39,6 +39,6 @@ class TrackerMatchRecordsController < ApplicationController
   def api_request_and_save
     @match_histories = TrackerMatchRecord.fetch_trn_match_history(@game_account_info)
     TrackerMatchRecord.save_past_match_histories(@match_histories, @user) if @match_histories.include?("data")
-    @user.update(last_accessed_at: Time.zone.now)
+    @user.update(last_accessed_at_match_record: Time.zone.now)
   end
 end

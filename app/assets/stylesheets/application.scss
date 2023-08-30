@@ -1,31 +1,7 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- */
-
 @import "bootstrap";
 @import "simple_calendar";
 @charset "UTF-8";
 
-/*!
-* Start Bootstrap - Scrolling Nav v5.0.6 (https://startbootstrap.com/template/scrolling-nav)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-scrolling-nav/blob/master/LICENSE)
-*/
-/*!
- * Bootstrap  v5.2.3 (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -694,14 +670,14 @@ progress {
 @media (min-width: 576px) {
   .container-sm,
   .container {
-    max-width: 540px;
+    max-width: 100%;
   }
 }
 @media (min-width: 768px) {
   .container-md,
   .container-sm,
   .container {
-    max-width: 720px;
+    max-width: 100%;
   }
 }
 @media (min-width: 992px) {
@@ -709,7 +685,7 @@ progress {
   .container-md,
   .container-sm,
   .container {
-    max-width: 960px;
+    max-width: 100%;
   }
 }
 @media (min-width: 1200px) {
@@ -718,7 +694,7 @@ progress {
   .container-md,
   .container-sm,
   .container {
-    max-width: 1140px;
+    max-width: 100%;
   }
 }
 @media (min-width: 1400px) {
@@ -728,7 +704,7 @@ progress {
   .container-md,
   .container-sm,
   .container {
-    max-width: 1320px;
+    max-width: 100%;
   }
 }
 .row {
@@ -11227,6 +11203,12 @@ h2 {
   margin-bottom: 1rem;
 }
 
+@media (max-width: 768px) {
+  .container-h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .boxshadow {
   max-width: 700px;
   padding: 1rem 2rem;
@@ -11235,12 +11217,30 @@ h2 {
   border-radius: 10px;
 }
 
+@media (max-width: 768px) {
+  .boxshadow {
+    max-width: 400px;
+    box-shadow: 0 0 20px #ffffff;
+    border-radius: 10px;
+  }
+}
+
 .boxshadow-user-edit {
   max-width: 900px;
   padding: 1rem 2rem;
   margin: 0 auto;
   box-shadow: 0 0 20px #ffffff;
   border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .boxshadow-user-edit {
+    max-width: 900px;
+    padding: 0.5rem;
+    margin: 0 auto;
+    box-shadow: 0 0 20px #ffffff;
+    border-radius: 10px;
+  }
 }
 
 .error-messages {
@@ -11259,6 +11259,12 @@ h2 {
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .devise-mb {
+    display: block !important;
+  }
+}
+
 .devise-user-edit {
   margin: 0;
 }
@@ -11274,11 +11280,19 @@ h2 {
 }
 
 .right-field-user-edit {
-  width: 65%;
+  width: 75%;
   margin: auto;
 }
 
+@media (max-width: 768px) {
+  .right-field-user-edit input {
+    font-size: 0.5rem;
+  }
+}
+
 .right-field-user-edit select {
+  display: block;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   border: 1px solid #ffffff;
@@ -11302,18 +11316,39 @@ h2 {
   margin-top: 2px;
 }
 
+@media (max-width: 768px) {
+  .field input {
+    color: #ffffff;
+    width: 100%;
+    height: 40px;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ffffff;
+    outline: none;
+    margin-top: 2px;
+  }
+}
+
 .field-user-edit {
   display: flex;
 }
 
 .field-user-edit label {
-  width: 25%;
+  width: 100%;
   margin: auto 0;
+}
+
+@media (max-width: 768px) {
+  .field-user-edit label {
+    width: 100%;
+    margin: auto 0;
+    font-size: 0.7rem;
+  }
 }
 
 .field-user-edit input:not(.file_field) {
   color: #ffffff;
-  width: 75%;
+  width: 100%;
   height: 40px;
   border-radius: 0.5rem;
   background-color: rgba(255, 255, 255, 0.1);
@@ -11325,13 +11360,14 @@ h2 {
 .devise-user-edit textarea {
   resize: none;
   color: #ffffff;
-  width: 75%;
+  width: 100%;
   height: 150px;
   border-radius: 0.5rem;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid #ffffff;
   outline: none;
   margin-top: 2px;
+  font-size: 0.5rem;
 }
 
 .devise-button {
@@ -11348,6 +11384,30 @@ h2 {
 
 .actions-user-edit {
   margin: 0;
+}
+
+.actions-mb {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .actions {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .actions-mb {
+    display: block;
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .actions-mb input {
+    width: 100%;
+    height: 40px;
+  }
 }
 
 .actions input {
@@ -11369,10 +11429,41 @@ h2 {
   margin-right: 0;
 }
 
+.signup-actions-mb {
+  display: none;
+}
+
 .signup-actions input {
   width: 300px;
   height: 40px;
   margin: 7px auto;
+}
+
+@media (max-width: 768px) {
+  .signup-actions {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .signup-actions-mb {
+    display: block;
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .signup-actions-mb input {
+    width: 100%;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .under-forms p {
+    font-size: 0.75rem;
+    margin: 0;
+  }
 }
 
 .test-font {
@@ -11411,14 +11502,22 @@ h2 {
 }
 
 .header-mypage {
-  height: 400px;
+  height: auto;
 }
 
 .header-container {
-  max-width: 80%;
+  width: 80%;
   margin: 0 auto;
   padding: 30px 10px 25px;
   color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    width: 100%;
+    padding: 30px 10px 25px;
+    color: #ffffff;
+  }
 }
 
 .header-container-first-line {
@@ -11434,18 +11533,26 @@ h2 {
   display: flex;
 }
 
-.header-mypage-user-profiel {
+.header-mypage-user-profile {
   margin: auto 0;
   margin-left: 20px;
 }
 
-.header-mypage-user-profiel h2 {
+.header-mypage-user-profile h2 {
   font-size: 3rem;
   margin: auto 0;
   padding-left: 5px;
 }
 
-.header-mypage-user-profiel p {
+@media (max-width: 768px) {
+  .header-mypage-user-profile h2 {
+    font-size: 2rem;
+    margin: auto 0;
+    padding-left: 5px;
+  }
+}
+
+.header-mypage-user-profile p {
   margin: 0;
 }
 
@@ -11460,8 +11567,23 @@ h2 {
   margin: auto 0;
 }
 
+@media (max-width: 768px) {
+  .user-avatar {
+    border-radius: 50%;
+    width: auto;
+    height: 70px;
+    margin: auto 0;
+  }
+}
+
 .game-account-info {
   display: flex;
+}
+
+@media (max-width: 768px) {
+  .game-account-info span:last-child {
+    font-size: 0.8rem;
+  }
 }
 
 .platform-icon img {
@@ -11469,6 +11591,15 @@ h2 {
   width: auto;
   height: 25px;
   padding-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .platform-icon img {
+    display: block;
+    width: auto;
+    height: 20px;
+    padding-right: 5px;
+  }
 }
 
 .devise-alert {
@@ -11481,6 +11612,19 @@ h2 {
   text-align: center;
 }
 
+@media (max-width: 576px) {
+  .devise-alert {
+    font-size: 0.9rem;
+    height: 40px;
+    line-height: 42px;
+    margin: 0 auto;
+    margin-top: 40px;
+    color: #ffffff;
+    background-color: #fd5a5a;
+    text-align: center;
+  }
+}
+
 .devise-notice {
   height: 40px;
   line-height: 42px;
@@ -11489,6 +11633,19 @@ h2 {
   color: #ffffff;
   background-color: #4169e1;
   text-align: center;
+}
+
+@media (min-width: 576px) {
+  .devise-notice {
+    font-size: 0.9rem;
+    height: 40px;
+    line-height: 42px;
+    margin: 0 auto;
+    margin-top: 40px;
+    color: #ffffff;
+    background-color: #4169e1;
+    text-align: center;
+  }
 }
 
 .mt-10 {
@@ -11505,8 +11662,34 @@ h2 {
   display: flex;
 }
 
-.profiel-edit-btn {
+.profile-edit-btn-pc {
+  display: block;
   margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .profile-edit-btn-pc {
+    display: none;
+  }
+}
+
+.profile-edit-btn-mb {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .profile-edit-btn-mb {
+    display: block;
+    width: 80%;
+    margin: 5px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-edit-btn-mb a {
+    width: 100%;
+    font-size: 0.8rem;
+  }
 }
 
 .wd-250 {
@@ -11532,15 +11715,39 @@ h2 {
   padding: 20px;
 }
 
+@media (max-width: 768px) {
+  .overall-record-area {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
+
 .overall-record-container {
   display: flex;
   border: 1px solid #ffffff;
   border-radius: 0.5rem;
 }
 
+@media (max-width: 992px) {
+  .overall-record-container {
+    display: block;
+    border: 1px solid #ffffff;
+    border-radius: 0.5rem;
+  }
+}
+
 .overall-title {
   display: flex;
-  width: 300px;
+  width: 20%;
+}
+
+@media (max-width: 992px) {
+  .overall-title {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ffffff;
+  }
 }
 
 .overall-title p {
@@ -11552,18 +11759,42 @@ h2 {
 
 .overall-record-stats {
   display: flex;
+  width: 80%;
   flex-wrap: wrap;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 992px) {
+  .overall-record-stats {
+    display: flex;
+    width: 100%;
+    padding: 0 0 10px 25px;
+    flex-wrap: wrap;
+  }
 }
 
 .overall-stat {
   display: flex;
   flex-direction: column;
   width: 175px;
-  margin: 1rem 0.5rem 1rem 0;
+  margin: 1rem 0 0 0;
   padding-left: 1rem;
   color: #ffffff;
   line-height: 1.1;
   border-left: 1px solid #ffffff;
+}
+
+@media (max-width: 768px) {
+  .overall-stat {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin: 15px 0 0 0;
+    padding-left: 1rem;
+    color: #ffffff;
+    line-height: 1.1;
+    border-left: 1px solid #ffffff;
+  }
 }
 
 .overall-stat .name {
@@ -11573,6 +11804,13 @@ h2 {
 .overall-stat .value {
   display: flex;
   font-size: 1.7rem;
+}
+
+@media (max-width: 768px) {
+  .overall-stat .value {
+    display: flex;
+    font-size: 1.5rem;
+  }
 }
 
 .overall-stat .rank {
@@ -11600,6 +11838,14 @@ h2 {
   padding: 20px;
 }
 
+@media (max-width: 768px) {
+  .trn-legend-stats-area {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
+
 .trn-legend-stats-container {
   border: 1px solid #ffffff;
   border-radius: 0.5rem;
@@ -11607,7 +11853,13 @@ h2 {
 
 .legend-stats-title h2 {
   text-align: center;
-  padding-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .legend-stats-title h2 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
 }
 
 .legend-stats-card {
@@ -11617,9 +11869,26 @@ h2 {
   background-color: #292929;
 }
 
+@media (max-width: 768px) {
+  .legend-stats-card {
+    margin: 0.5rem;
+    border: solid 1px #ffffff;
+    border-radius: 0.5rem;
+    background-color: #292929;
+  }
+}
+
 .legend-stats-card-head {
   display: flex;
   border-bottom: solid 1px #ffffff;
+}
+
+@media (max-width: 768px) {
+  .legend-stats-card-head {
+    display: flex;
+    height: 61px;
+    border-bottom: solid 1px #ffffff;
+  }
 }
 
 .legend-name {
@@ -11629,21 +11898,31 @@ h2 {
   margin: auto 0;
 }
 
+@media (max-width: 768px) {
+  .legend-name {
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: auto 0;
+  }
+}
+
 .legend-stats-card-body {
   display: flex;
   flex-wrap: wrap;
   color: #ffffff;
-  margin: 0 0 0 35px;
+  margin: 0;
+  padding-left: 1rem;
 }
 
-.match-result-card {
-  display: flex;
-  justify-content: space-between;
-  height: 72px;
-  margin: 1.5rem 5rem;
-  border: solid 1px #ffffff;
-  border-radius: 0.5rem;
-  background-color: #292929;
+@media (max-width: 768px) {
+  .legend-stats-card-body {
+    display: flex;
+    flex-wrap: wrap;
+    color: #ffffff;
+    margin: 0;
+    padding: 0 0 10px 18px !important;
+  }
 }
 
 .no-match-result-card {
@@ -11654,21 +11933,25 @@ h2 {
   background-color: #292929;
 }
 
+@media (max-width: 768px) {
+  .no-match-result-card {
+    margin: 0.5rem;
+  }
+}
+
 .no-match-result-card h2 {
   text-align: center;
   margin: 0;
   padding: 1rem 0;
 }
 
-.match-result-card-left {
-  display: flex;
-}
-
-.match-result-card-right {
-  display: flex;
-  flex-wrap: wrap;
-  color: #ffffff;
-  margin: 0 0 0 35px;
+@media (max-width: 768px) {
+  .no-match-result-card h2 {
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 0;
+    padding: 0.5rem 0;
+  }
 }
 
 .legend-stat {
@@ -11676,18 +11959,23 @@ h2 {
   color: #ffffff;
   flex-direction: column;
   width: 175px;
-  margin: 1rem 0.5rem;
+  margin: 0.5rem;
   padding-left: 1rem;
   line-height: 1.1;
   border-left: 1px solid #ffffff;
 }
 
-.legend-stat .name {
-  font-size: 1rem;
-}
-
-.legend-stat .value {
-  font-size: 1.7rem;
+@media (max-width: 768px) {
+  .legend-stat {
+    display: flex;
+    width: 150px;
+    color: #ffffff;
+    flex-direction: column;
+    margin: 10px 0 0 0;
+    padding-left: 1rem;
+    line-height: 1.1;
+    border-left: 1px solid #ffffff;
+  }
 }
 
 .legend-icon img {
@@ -11696,6 +11984,16 @@ h2 {
   background-color: rgb(98, 76, 162);
   margin-right: 0.8rem;
   border-radius: 0.5rem 0 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .legend-icon img {
+    width: 60px;
+    height: 60px;
+    background-color: rgb(98, 76, 162);
+    margin-right: 0.8rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
 }
 
 .legend-stats-card-body .legend-name {
@@ -11710,6 +12008,12 @@ h2 {
 
 .legend-stat .value {
   font-size: 1.7rem;
+}
+
+@media (max-width: 768px) {
+  .legend-stat .value {
+    font-size: 1.5rem;
+  }
 }
 
 .legend-stat .rank {
@@ -11730,6 +12034,14 @@ h2 {
   padding: 20px;
 }
 
+@media (max-width: 769px) {
+  .trn-failed-stats-area {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
+
 .trn-failed-stats-container {
   border: 1px solid #ffffff;
   border-radius: 0.5rem;
@@ -11739,6 +12051,14 @@ h2 {
   text-align: center;
   font-size: 2rem;
   margin-top: 1rem;
+}
+
+@media (max-width: 769px) {
+  .trn-failed-stats-container h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
 }
 
 .trn-failed-stats-container h2::before {
@@ -11753,6 +12073,12 @@ h2 {
   margin: 1rem 2rem;
 }
 
+@media (max-width: 769px) {
+  .trn-failed-stats-body {
+    margin: 0 0.5rem;
+  }
+}
+
 .trn-failed-stats-body a {
   text-decoration: none;
 }
@@ -11762,12 +12088,36 @@ h2 {
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .trn-error-check-list p:first-child {
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
 .trn-error-check-list p {
   font-size: 1rem;
 }
 
+@media (max-width: 768px) {
+  .trn-error-check-list p {
+    font-size: 0.8rem;
+  }
+}
+
+.nav-bar-left {
+  display: flex;
+  align-items: center;
+}
+
 .nav-bar-search {
   display: block;
+}
+
+@media (max-width: 1200px) {
+  .nav-bar-search {
+    display: none;
+  }
 }
 
 .nav-bar-search-field {
@@ -11798,12 +12148,31 @@ h2 {
   color: #ffffff;
 }
 
+@media (max-width: 768px) {
+  .main-area {
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    color: #ffffff;
+  }
+}
+
 .main-container {
   max-width: 1000px;
   border: 1px solid #ffffff;
   border-radius: 0.5rem;
-  padding: 40px;
+  padding: 10px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    max-width: 1000px;
+    border: 1px solid #ffffff;
+    border-radius: 0.5rem;
+    padding: 10px;
+    margin: 0 auto;
+  }
 }
 
 .main-field {
@@ -11820,8 +12189,20 @@ h2 {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .main-form {
+    display: block;
+  }
+}
+
 .main-form-left {
   width: 25%;
+}
+
+@media (max-width: 768px) {
+  .main-form-left {
+    width: 100%;
+  }
 }
 
 .main-left-form-supplement {
@@ -11831,6 +12212,12 @@ h2 {
 
 .main-form-right {
   width: 75%;
+}
+
+@media (max-width: 768px) {
+  .main-form-right {
+    width: 100%;
+  }
 }
 
 .main-form-left p,
@@ -11850,8 +12237,28 @@ h2 {
   margin-top: 2px;
 }
 
+@media (max-width: 768px) {
+  .main-form-right input:not(.main-form-checkbox input),
+  .main-form-right select {
+    color: #ffffff;
+    width: 100%;
+    height: 40px;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ffffff;
+    outline: none;
+    margin-top: 2px;
+  }
+}
+
 .main-form-checkbox {
   width: 80%;
+}
+
+@media (max-width: 768px) {
+  .main-form-checkbox {
+    width: 100%;
+  }
 }
 
 .main-form-right textarea {
@@ -11898,6 +12305,17 @@ h2 {
   background-color: #292929;
 }
 
+@media (max-width: 768px) {
+  .result-card {
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: solid 1px #ffffff;
+    border-radius: 0.5rem;
+    background-color: #292929;
+  }
+}
+
 .result-header {
   display: flex;
   align-items: center;
@@ -11919,6 +12337,15 @@ h2 {
   padding-left: 5px;
 }
 
+@media (max-width: 768px) {
+  .result-user-info p {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin: auto;
+    padding-left: 5px;
+  }
+}
+
 .no-game-account-info {
   padding-left: 5px;
 }
@@ -11927,11 +12354,53 @@ h2 {
   margin-left: auto;
 }
 
+@media (max-width: 992px) {
+  .user-profile-btn {
+    display: none;
+  }
+}
+
+.user-profile-btn-mb {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .user-profile-btn-mb {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .user-profile-btn-mb a {
+    display: block;
+    width: 100%;
+    line-height: 20px;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+}
+
 .result-user-avatar {
   border-radius: 50%;
   width: auto;
   height: 80px;
   margin: auto 0;
+}
+
+@media (max-width: 768px) {
+  .result-user-avatar {
+    border-radius: 50%;
+    width: auto;
+    height: 50px;
+    margin: auto 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .result-body {
+    font-size: 0.8rem;
+  }
 }
 
 .breadcrumbs {
@@ -11964,7 +12433,7 @@ h2 {
 
 .switch-result-button {
   display: flex;
-  max-width: 400px;
+  width: 400px;
   height: 60px;
   justify-content: space-between;
   margin: 0 auto;
@@ -11973,21 +12442,48 @@ h2 {
   color: #ffffff;
 }
 
-.switch-result-button-top {
-  max-width: 350px;
+@media (max-width: 768px) {
+  .switch-result-button {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: 10px;
+    font-size: 2rem;
+    color: #ffffff;
+  }
 }
 
 .switch-result-button a {
+  display: block;
   color: rgba(255, 255, 255, 0.55);
   text-decoration: none;
   margin: 0;
 }
 
-.button-on {
-  border-bottom: 1px solid #ffffff;
+@media (max-width: 768px) {
+  .switch-result-button a {
+    font-size: 1.5rem;
+  }
 }
 
-.button-off {
+@media (max-width: 768px) {
+  .overall-button p {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .match-record-button p {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+}
+
+.button-on {
+  border-bottom: 1px solid #ffffff;
 }
 
 footer {
@@ -11999,6 +12495,14 @@ footer {
   width: 90%;
   margin: 0 auto;
   padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .match-record-calendar-area {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
 }
 
 .match-record-calendar-container {
@@ -12015,6 +12519,12 @@ footer {
   margin: 1.5rem 5rem;
 }
 
+@media (max-width: 768px) {
+  .match-record-calendar {
+    margin: 0.5rem;
+  }
+}
+
 .simple-calendar {
   table,
   th,
@@ -12022,6 +12532,7 @@ footer {
     color: #ffffff;
     text-align: center;
     padding: 0;
+    margin: 0;
   }
 
   thead {
@@ -12090,5 +12601,124 @@ footer {
 
   .next-month {
     background: #16160e;
+  }
+}
+
+@media (max-width: 768px) {
+  .simple-calendar {
+    table,
+    th,
+    td {
+      color: #ffffff;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 0;
+    }
+
+    thead {
+      background: #1a1a1a;
+    }
+
+    tbody {
+      background: #2b2b2b;
+    }
+
+    td button {
+      width: 100%;
+      padding: 0;
+    }
+
+    td button p {
+      font-size: 0.6rem;
+      margin: 0;
+    }
+
+    td button p:first-child {
+      text-align: start;
+    }
+
+    .calendar-heading {
+      display: flex;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .calendar-heading a {
+      font-size: 0.8rem;
+      margin: auto 0;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .calendar-heading .calendar-title {
+      font-size: 1.2rem;
+      margin: 0 auto;
+    }
+
+    button {
+      color: #ffffff;
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+
+    .day {
+      height: 50px;
+    }
+
+    .wday-0 button p:first-child {
+      color: #dc3545;
+    }
+
+    .wday-6 button p:first-child {
+      color: #0d6efd;
+    }
+
+    .today {
+      background: #5e5e5e;
+    }
+
+    .prev-month {
+      background: #16160e;
+    }
+
+    .next-month {
+      background: #16160e;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-h1-pc {
+    display: none;
+  }
+}
+
+.top-h1-mb {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .top-h1-mb {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-btn {
+    width: 80%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .lead {
+    font-size: 1rem;
   }
 }
