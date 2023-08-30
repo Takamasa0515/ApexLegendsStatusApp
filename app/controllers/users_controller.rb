@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       @trn_player_stats = "No account"
     else
       @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
-      fetch_trn_player_stats if @trn_player_stats.include?("data")
+      @trn_player_stats.include?("data") ? fetch_trn_player_stats : @trn_player_stats = "No account"
     end
   end
 
@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   end
 
   def fetch_trn_overall_stats
-    binding.pry
     @trn_overall_stats_name = ["level", "kills", "damage", "matchesPlayed", "wins", "killsAsKillLeader"]
     @trn_overall_stats_name.each do |segment|
       value = TrackerApiService.overall_stat_value(@trn_player_stats, segment)
