@@ -48,7 +48,7 @@ class TrackerApiService
 
   def self.stat_attribute_check(trn_player_stats, segment_stat, attribute)
     if trn_player_stats.dig('data', 'segments', 0, 'stats', segment_stat, attribute).present?
-      trn_player_stats['data']['segments'][0]['stats'][segment_stat][attribute].floor.to_s(:delimited)
+      trn_player_stats['data']['segments'][0]['stats'][segment_stat][attribute].floor.to_fs(:delimited)
     else
       "---"
     end
