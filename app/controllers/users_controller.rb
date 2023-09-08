@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def fetch_trn_current_season_stats
-    @trn_current_season = @trn_player_stats["data"]["metadata"]["currentSeason"].to_s
+    @trn_current_season = TrackerApiService.fetch_current_season(@trn_player_stats)
     @trn_current_season_stats_name = ["Kills", "Wins"]
     @trn_current_season_stats_name.each do |segment|
       value = TrackerApiService.current_season_stat_value(@trn_player_stats, @trn_current_season, segment)

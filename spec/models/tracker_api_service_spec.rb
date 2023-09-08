@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe TrackerApiService, type: :model do
   let(:overall_data) do {
       "data" => {
+        "metadata" => {"currentSeason" => 10},
         "segments" =>[
           { "stats" => {
               "level" => { "rank" => 10000, "percentile" => 50.0, "value" => 1000 },
@@ -10,7 +11,9 @@ RSpec.describe TrackerApiService, type: :model do
               "damage" => { "rank" => 2000, "percentile" => 99.8, "value" => 250000000 },
               "matchesPlayed" => { "rank" => 5000, "percentile" => 5.00, "value" => 5000 },
               "wins" => { "rank" => 3000, "percentile" => 10.0, "value" => 25 },
-              "killsAsKillLeader" => { "rank" => 20000, "percentile" => 60.0, "value" => 30 }
+              "killsAsKillLeader" => { "rank" => 20000, "percentile" => 60.0, "value" => 30 },
+              "season10Kills" => { "rank" => 6000, "percentile" => 97.7, "value" => 8000 },
+              "season10Wins" => { "rank" => 100, "percentile" => 99.5, "value" => 600 }
             }
           }
         ]
@@ -23,6 +26,7 @@ RSpec.describe TrackerApiService, type: :model do
       "segments" => [
         { "stats" => {
             "level" => { "rank" => {}, "percentile" => {}, "value" => {} },
+            "season10Kills" => { "rank" => {}, "percentile" => {}, "value" => {} }
             }
           }
         ]
@@ -134,6 +138,58 @@ RSpec.describe TrackerApiService, type: :model do
 
       it "該当要素にpercentileの値がない場合、---を返す事" do
         percentile = TrackerApiService.overall_stat_percentile(no_overall_data, "level")
+        expect(percentile).to eq "---"
+      end
+    end
+
+    context "シーズン戦績を抽出する場合" do
+      it "現在のシーズンを取得している事" do
+        current_season = TrackerApiService.fetch_current_season(overall_data)
+        expect(current_season).to eq "10"
+      end
+
+      it "シーズンkillsのvalueを取得している事" do
+        value = TrackerApiService.current_season_stat_value(overall_data, "10", "Kills")
+        expect(value).to eq "8,000"
+      end
+
+      it "シーズンkillsのrankを取得している事" do
+        rank = TrackerApiService.current_season_stat_rank(overall_data, "10", "Kills")
+        expect(rank).to eq "6,000"
+      end
+
+      it "シーズンkillsのpercentileを取得している事" do
+        percentile = TrackerApiService.current_season_stat_percentile(overall_data, "10", "Kills")
+        expect(percentile).to eq "2.3%"
+      end
+
+      it "シーズンwinsのvalueを取得している事" do
+        value = TrackerApiService.current_season_stat_value(overall_data, "10", "Wins")
+        expect(value).to eq "600"
+      end
+
+      it "シーズンwinsのrankを取得している事" do
+        rank = TrackerApiService.current_season_stat_rank(overall_data, "10", "Wins")
+        expect(rank).to eq "100"
+      end
+
+      it "シーズンwinsのpercentileを取得している事" do
+        percentile = TrackerApiService.current_season_stat_percentile(overall_data, "10", "Wins")
+        expect(percentile).to eq "0.5%"
+      end
+
+      it "該当要素にvalueの値がない場合、---を返す事" do
+        value = TrackerApiService.current_season_stat_value(no_overall_data, "10", "Kills")
+        expect(value).to eq "---"
+      end
+
+      it "該当要素にrankの値がない場合、---を返す事" do
+        rank = TrackerApiService.current_season_stat_rank(no_overall_data, "10", "Kills")
+        expect(rank).to eq "---"
+      end
+
+      it "該当要素にpercentileの値がない場合、---を返す事" do
+        percentile = TrackerApiService.current_season_stat_percentile(no_overall_data, "10", "Kills")
         expect(percentile).to eq "---"
       end
     end
