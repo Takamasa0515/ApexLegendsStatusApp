@@ -23,9 +23,15 @@ RSpec.describe TrackerApiService, type: :model do
 
   let(:matchesPlayed) { "1,000" }
 
+  let(:no_matchesPlayed) { "---" }
+
   let(:kills) { "5,000" }
 
+  let(:no_kills) { "---" }
+
   let(:wins) { "150" }
+
+  let(:no_wins) { "---" }
 
   let(:no_overall_data) do {
     "data" => {
@@ -152,10 +158,29 @@ RSpec.describe TrackerApiService, type: :model do
         expect(kpm).to eq 5.0
       end
 
+      it "matchesPlayedが---の場合、1試合の平均キル数が---を返す事" do
+        kpm = TrackerApiService.calculate_kpm(no_matchesPlayed, kills)
+        expect(kpm).to eq "---"
+      end
+
+      it "killsが---の場合、1試合の平均キル数が---を返す事" do
+        kpm = TrackerApiService.calculate_kpm(matchesPlayed, no_kills)
+        expect(kpm).to eq "---"
+      end
+
       it "勝率が算出できている事" do
         winrate = TrackerApiService.calculate_winrate(matchesPlayed, wins)
-        binding.pry
         expect(winrate).to eq "15.0%"
+      end
+
+      it "matchesPlayedが---の場合、勝率が---を返す事" do
+        winrate = TrackerApiService.calculate_winrate(no_matchesPlayed, wins)
+        expect(winrate).to eq "---"
+      end
+
+      it "winsが---の場合、勝率が---を返す事" do
+        winrate = TrackerApiService.calculate_winrate(matchesPlayed, no_wins)
+        expect(winrate).to eq "---"
       end
     end
 
