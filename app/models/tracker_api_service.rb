@@ -34,6 +34,10 @@ class TrackerApiService
     calculate_ratio(overall_matchesPlayed_value, overall_wins_value, percentage: true)
   end
 
+  def self.fetch_current_season(trn_player_stats)
+    trn_player_stats["data"]["metadata"]["currentSeason"].to_s
+  end
+
   def self.current_season_stat_value(trn_player_stats, trn_current_season, trn_current_season_stat)
     stat_attribute_check(trn_player_stats, "season#{trn_current_season}#{trn_current_season_stat}", 'value')
   end
