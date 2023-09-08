@@ -9,6 +9,8 @@ class TrackerApiService
     result = JSON.parse(client.get(url, header: headers).body)
     if result["message"] == "API rate limit exceeded"
       "Apilimit"
+    elsif result.include?("errors")
+      "No account"
     else
       result
     end

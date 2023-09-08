@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       @trn_player_stats = "No account"
     else
       @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
-      @trn_player_stats.include?("data") ? fetch_trn_player_stats : @trn_player_stats = "No account"
+      fetch_trn_player_stats if @trn_player_stats.include?("data")
     end
   end
 
