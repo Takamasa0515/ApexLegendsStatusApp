@@ -27,7 +27,7 @@ class TrackerApiService
   end
 
   def self.calculate_kpm(overall_matchesPlayed_value, overall_kills_value)
-    calculate_ratio(overall_matchesPlayed_value, overall_kills_value).floor(2)
+    calculate_ratio(overall_matchesPlayed_value, overall_kills_value)
   end
 
   def self.calculate_winrate(overall_matchesPlayed_value, overall_wins_value)
@@ -61,7 +61,7 @@ class TrackerApiService
   def self.stat_percentile_check(trn_player_stats, segment_stat)
     if trn_player_stats.dig('data', 'segments', 0, 'stats', segment_stat, 'value').present?
       value = trn_player_stats['data']['segments'][0]['stats'][segment_stat]['percentile']
-      value.present? ? "#{(PERCENTAGE_BASE - value).round(1)}%" : "---"
+      value.present? ? "#{(PERCENTAGE_BASE - value).floor(1)}%" : "---"
     else
       "---"
     end
@@ -71,7 +71,7 @@ class TrackerApiService
     if matchesPlayed == "---" || attribute == "---"
       "---"
     else
-      ratio = (attribute.delete(',').to_f / matchesPlayed.delete(',').to_f).floor(3)
+      ratio = (attribute.delete(',').to_f / matchesPlayed.delete(',').to_f).floor(1)
       percentage ? "#{(ratio * PERCENTAGE_BASE).floor(1)}%" : ratio
     end
   end
