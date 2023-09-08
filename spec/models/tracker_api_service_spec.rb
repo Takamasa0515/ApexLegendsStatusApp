@@ -21,6 +21,12 @@ RSpec.describe TrackerApiService, type: :model do
     }
   end
 
+  let(:matchesPlayed) { "1,000" }
+
+  let(:kills) { "5,000" }
+
+  let(:wins) { "150" }
+
   let(:no_overall_data) do {
     "data" => {
       "segments" => [
@@ -139,6 +145,17 @@ RSpec.describe TrackerApiService, type: :model do
       it "該当要素にpercentileの値がない場合、---を返す事" do
         percentile = TrackerApiService.overall_stat_percentile(no_overall_data, "level")
         expect(percentile).to eq "---"
+      end
+
+      it "1試合の平均キル数が算出できている事" do
+        kpm = TrackerApiService.calculate_kpm(matchesPlayed, kills)
+        expect(kpm).to eq 5.0
+      end
+
+      it "勝率が算出できている事" do
+        winrate = TrackerApiService.calculate_winrate(matchesPlayed, wins)
+        binding.pry
+        expect(winrate).to eq "15.0%"
       end
     end
 
