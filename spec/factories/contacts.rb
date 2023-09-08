@@ -1,4 +1,4 @@
-FactoryBot.define do
-  factory :contact do
-  end
-end
+#FactoryBot.define do
+  #factory :contact do
+  #end
+#end
