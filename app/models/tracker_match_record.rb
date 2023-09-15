@@ -24,7 +24,8 @@ class TrackerMatchRecord < ApplicationRecord
 
       results = fetch_match_result(day_history)
       results.each do |result|
-        TrackerMatchRecord.create!(user:, match_date: result["date"], legend: result["legend"], kills: result["kills"], damages: result["damages"], wins: result["wins"]) unless TrackerMatchRecord.exists?(user:, match_date: result["date"], legend: result["legend"], kills: result["kills"], damages: result["damages"], wins: result["wins"])
+        result_date = Date.parse(result["date"])
+        TrackerMatchRecord.create!(user: user, match_date: result["date"], legend: result["legend"], kills: result["kills"], damages: result["damages"], wins: result["wins"]) unless TrackerMatchRecord.exists?(user: user, match_date: result["date"], legend: result["legend"], kills: result["kills"], damages: result["damages"], wins: result["wins"])
       end
     end
   end
