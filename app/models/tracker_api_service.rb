@@ -27,7 +27,12 @@ class TrackerApiService
   end
 
   def self.calculate_kpm(overall_matchesPlayed_value, overall_kills_value)
-    calculate_ratio(overall_matchesPlayed_value, overall_kills_value).floor(2)
+    result = calculate_ratio(overall_matchesPlayed_value, overall_kills_value)
+    if result == "---"
+      result
+    else
+      result.floor(2)
+    end
   end
 
   def self.calculate_winrate(overall_matchesPlayed_value, overall_wins_value)

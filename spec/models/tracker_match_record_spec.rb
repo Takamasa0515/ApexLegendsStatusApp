@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TrackerMatchRecord, type: :model do
   let(:user) { FactoryBot.build(:user) }
-  let(:saved_match_results) { FactoryBot.create(:tracker_match_record, user: user) }
+  let(:saved_match_result) { FactoryBot.create(:tracker_match_record, user: user) }
 
   let(:match_history) do
     { "data" =>
@@ -95,7 +95,7 @@ RSpec.describe TrackerMatchRecord, type: :model do
       end
 
       it "DBにデータがある場合、保存しないこと" do
-        saved_match_results
+        saved_match_result
         expect {
           TrackerMatchRecord.save_past_match_histories(match_history, user)
         }.not_to change(TrackerMatchRecord, :count)
