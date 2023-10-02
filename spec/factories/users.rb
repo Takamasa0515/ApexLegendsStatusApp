@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :user do
-    name { "test" }
-    email { "test@example.com" }
-    password { "testpassword" }
-    self_introduction { "テストデータです" }
+    name { "user" }
+    email { "user@example.com" }
+    password { "userpassword" }
+    self_introduction { "ユーザーです" }
   end
 
   factory :guest_user, class: "User" do
@@ -13,4 +13,10 @@ FactoryBot.define do
     self_introduction { "ゲストユーザーです" }
   end
 
+  factory :registered_user, class: "User" do
+    name { "登録済みユーザー" }
+    email { "registered_user@example.com" }
+    password { "registered_user_password" }
+    self_introduction { "ユーザーです" }
+  end
 end
