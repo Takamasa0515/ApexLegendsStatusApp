@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Users, type: :system do
+RSpec.describe GameAccountInfo, type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:registered_user) { FactoryBot.create(:registered_user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
@@ -53,17 +53,17 @@ RSpec.describe Users, type: :system do
         end
       end
 
-      context "ゲームアカウントが登録されてい時" do
+      context "ゲームアカウントが登録されている時" do
         before do
           game_account_info
         end
 
-        it "プラットフォームが指定されている事" do
+        it "既存のプラットフォームが指定されている事" do
           visit edit_game_account_info_path(user.id)
           expect(page).to have_select("プラットフォーム", selected: user.game_account_info.platform.capitalize)
         end
 
-        it "ゲームIDが入力されている事" do
+        it "既存のゲームIDが入力されている事" do
           visit edit_game_account_info_path(user.id)
           expect(page).to have_field("ゲームID", with: user.game_account_info.gameid)
         end
@@ -77,9 +77,47 @@ RSpec.describe Users, type: :system do
             fill_in "ゲームID" , with: "TestID"
             click_button "登録する"
             expect(page).to have_content "ゲームアカウント情報を更新しました"
-            expect(page).to have_selector(".game-account-info span, TestID")
-            expect(page).to have_selector(".platform-icon, img[src$='steam_icon.png']")
             expect(current_path).to eq user_path(user.id)
+          end
+
+          it "Steamのプラットフォームアイコンが表示される事" do
+            visit edit_game_account_info_path(user.id)
+            select "Steam", from: "プラットフォーム"
+            fill_in "ゲームID" , with: "TestID"
+            click_button "登録する"
+            expect(page).to have_selector(".platform-icon, img[src$='steam_icon.png']")
+          end
+
+          it "Originのプラットフォームアイコンが表示される事" do
+            visit edit_game_account_info_path(user.id)
+            select "Origin", from: "プラットフォーム"
+            fill_in "ゲームID" , with: "TestID"
+            click_button "登録する"
+            expect(page).to have_selector(".platform-icon, img[src$='origin_icon.png']")
+          end
+
+          it "PlayStationのプラットフォームアイコンが表示される事" do
+            visit edit_game_account_info_path(user.id)
+            select "PlayStation", from: "プラットフォーム"
+            fill_in "ゲームID" , with: "TestID"
+            click_button "登録する"
+            expect(page).to have_selector(".platform-icon, img[src$='psn_icon.png']")
+          end
+
+          it "Xboxのプラットフォームアイコンが表示される事" do
+            visit edit_game_account_info_path(user.id)
+            select "Xbox", from: "プラットフォーム"
+            fill_in "ゲームID" , with: "TestID"
+            click_button "登録する"
+            expect(page).to have_selector(".platform-icon, img[src$='xbl_icon.png']")
+          end
+
+          it "ゲームIDが表示される事" do
+            visit edit_game_account_info_path(user.id)
+            select "Steam", from: "プラットフォーム"
+            fill_in "ゲームID" , with: "TestID"
+            click_button "登録する"
+            expect(page).to have_selector(".game-account-info span, TestID")
           end
         end
 
@@ -116,8 +154,6 @@ RSpec.describe Users, type: :system do
             fill_in "ゲームID" , with: "TestID"
             click_button "登録する"
             expect(page).to have_content "ゲームアカウント情報を更新しました"
-            expect(page).to have_selector(".game-account-info span, TestID")
-            expect(page).to have_selector(".platform-icon, img[src$='steam_icon.png']")
             expect(current_path).to eq user_path(user.id)
           end
         end
