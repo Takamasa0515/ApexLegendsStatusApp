@@ -17,6 +17,6 @@ FactoryBot.define do
     name { "登録済みユーザー" }
     email { "registered_user@example.com" }
     password { "registered_user_password" }
-    self_introduction { "ユーザーです" }
+    self_introduction { "登録済みユーザーです" }
   end
 end
