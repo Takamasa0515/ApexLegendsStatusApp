@@ -7,11 +7,10 @@ class TrackerApiService
     headers = { 'TRN-Api-Key' => ENV.fetch('TRN_API_KEY', nil) }
     url = "https://public-api.tracker.gg/v2/apex/standard/profile/#{game_account_info.platform}/#{game_account_info.gameid}"
     result = JSON.parse(client.get(url, header: headers).body)
-    #binding.pry
     if result.dig("message") == "API rate limit exceeded"
       "Apilimit"
     elsif
-      result.dig("errors", 0, "message") == "There was an error with an external Apex Legends service: ExternalError"
+      result.dig("errors", 0, "code") == "CollectorResultStatus::ExternalError" || result.dig("errors", 0, "code") == "CollectorResultStatus::NotFound"
         "No account"
     else
       result
