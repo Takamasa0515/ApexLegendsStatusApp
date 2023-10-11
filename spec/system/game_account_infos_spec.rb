@@ -76,6 +76,7 @@ RSpec.describe GameAccountInfo, type: :system do
             select "Steam", from: "プラットフォーム"
             fill_in "ゲームID" , with: "TestID"
             click_button "登録する"
+            allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_content "ゲームアカウント情報を更新しました"
             expect(current_path).to eq user_path(user.id)
           end
@@ -85,6 +86,7 @@ RSpec.describe GameAccountInfo, type: :system do
             select "Steam", from: "プラットフォーム"
             fill_in "ゲームID" , with: "TestID"
             click_button "登録する"
+            allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_selector(".platform-icon, img[src$='steam_icon.png']")
           end
 
@@ -93,6 +95,7 @@ RSpec.describe GameAccountInfo, type: :system do
             select "Origin", from: "プラットフォーム"
             fill_in "ゲームID" , with: "TestID"
             click_button "登録する"
+            allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_selector(".platform-icon, img[src$='origin_icon.png']")
           end
 
@@ -101,6 +104,7 @@ RSpec.describe GameAccountInfo, type: :system do
             select "PlayStation", from: "プラットフォーム"
             fill_in "ゲームID" , with: "TestID"
             click_button "登録する"
+            allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_selector(".platform-icon, img[src$='psn_icon.png']")
           end
 
@@ -109,6 +113,7 @@ RSpec.describe GameAccountInfo, type: :system do
             select "Xbox", from: "プラットフォーム"
             fill_in "ゲームID" , with: "TestID"
             click_button "登録する"
+            allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_selector(".platform-icon, img[src$='xbl_icon.png']")
           end
 
@@ -117,6 +122,7 @@ RSpec.describe GameAccountInfo, type: :system do
             select "Steam", from: "プラットフォーム"
             fill_in "ゲームID" , with: "TestID"
             click_button "登録する"
+            allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_selector(".game-account-info span, TestID")
           end
         end
@@ -154,6 +160,7 @@ RSpec.describe GameAccountInfo, type: :system do
             fill_in "ゲームID" , with: "TestID"
             click_button "登録する"
             expect(page).to have_content "ゲームアカウント情報を更新しました"
+            allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(current_path).to eq user_path(user.id)
           end
         end
