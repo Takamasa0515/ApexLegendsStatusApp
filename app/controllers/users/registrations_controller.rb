@@ -1,6 +1,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :ensure_normal_user, only: %i[update destroy]
 
+  def after_update_path_for(resource)
+    user_path(current_user.id)
+  end
+
   def ensure_normal_user
     return unless resource.email == "guest@example.com"
 

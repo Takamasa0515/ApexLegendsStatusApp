@@ -1,7 +1,8 @@
 <header class="bg-primary bg-gradient text-white">
   <div class="container px-4 mt-10">
     <div class="boxshadow-user-edit">
-      <h2 class="container-h2">ゲームアカウント 登録 / 編集</h2>
+    <%= render "shared/breadcrumbs", user: current_user %>
+      <h2 class="container-h2">ゲームアカウント登録・編集</h2>
       <hr class="hr-white">
       <%= form_with model: @game_account_info, url: {controller: 'game_account_info', action: 'update' }, method: :patch, local: true do |f| %>
         <div class="devise-user-edit">
