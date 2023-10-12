@@ -16,14 +16,14 @@
       <%= link_to "試合履歴", user_tracker_match_records_path(@user.id) %>
     </div>
   </div>
-  <% if @trn_player_stats == "Apilimit" %>
+  <% if @user.id == 1 %>
+    <%= render "guest_account" %>
+  <% elsif @trn_player_stats == "Apilimit" %>
     <%= render "shared/api_rate_limit" %>
   <% elsif @trn_player_stats == "No account" %>
     <%= render "shared/no_game_account_info" %>
-  <% elsif @trn_player_stats.present? %>
+  <% else @trn_player_stats.present? %>
     <%= render "overall_stats" %>
     <%= render "legend_stats_card" %>
-  <% else @user.id == 1 %>
-    <%= render "guest_account" %>
   <% end %>
 </div>

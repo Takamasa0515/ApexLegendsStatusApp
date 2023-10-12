@@ -7,10 +7,14 @@
   <% breadcrumb :search %>
 <% when ["tracker_match_records", "index"] %>
   <% breadcrumb :user_match_record, @user  %>
-<% when ["devise/registrations", "new"] %>
+<% when ["users/registrations", "new"] %>
   <% breadcrumb :sign_up %>
 <% when ["devise/sessions", "new"] %>
   <% breadcrumb :log_in %>
+<% when ["users/registrations", "edit"] %>
+  <% breadcrumb :user_edit, @user %>
+<% when ["game_account_info", "edit"] %>
+  <% breadcrumb :game_account_info_edit, user %>
 <% when ["contacts", "new"] %>
   <% breadcrumb :contact %>
 <% when ["contacts", "confirm"] %>

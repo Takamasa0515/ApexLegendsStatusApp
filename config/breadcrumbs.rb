@@ -26,6 +26,16 @@ crumb :user_show do |user|
   parent :users
 end
 
+crumb :user_edit do |user|
+  link "アカウント編集", edit_user_registration_path
+  parent :user_show, user
+end
+
+crumb :game_account_info_edit do |user|
+  link "ゲームアカウント登録・編集", edit_game_account_info_path
+  parent :user_show, user
+end
+
 crumb :user_match_record do |user|
   link "試合履歴", user_tracker_match_records_path(user)
   parent :users
