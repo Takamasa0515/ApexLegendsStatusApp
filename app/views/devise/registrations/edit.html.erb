@@ -1,6 +1,7 @@
 <header class="bg-primary bg-gradient text-white">
   <div class="container px-4 mt-10">
     <div class="boxshadow-user-edit">
+    <%= render "shared/breadcrumbs", user: @user %>
       <h2 class="container-h2">アカウント編集</h2>
       <hr class="hr-white">
       <%= form_with model: @user, url: user_registration_path, id: 'edit_user', local: true do |f| %>
