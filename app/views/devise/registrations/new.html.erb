@@ -1,7 +1,6 @@
 <header class="bg-primary bg-gradient text-white">
   <div class="container px-4">
     <div class="boxshadow">
-  <%= render "shared/breadcrumbs" %>
       <h2 class="container-h2">アカウント作成</h2>
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', local: true do |f| %>
         <div class="devise devise-mb">

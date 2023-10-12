@@ -75,7 +75,6 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem 'rspec-rails'
-  gem 'rspec-mocks'
   gem 'factory_bot_rails'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false

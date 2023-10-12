@@ -380,7 +380,6 @@ DEPENDENCIES
   rails-i18n
   rails_same_site_cookie
   ransack
-  rspec-mocks
   rspec-rails
   rubocop
   rubocop-performance

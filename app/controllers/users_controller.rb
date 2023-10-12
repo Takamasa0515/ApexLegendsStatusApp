@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = 'ユーザーを削除しました。'
-    redirect_to root_path
+    redirect_to root_path #削除に成功すればrootページに戻る
   end
 
   private
@@ -25,11 +25,7 @@ class UsersController < ApplicationController
       @trn_player_stats = "No account"
     else
       @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
-      if @trn_player_stats.include?("data")
-        fetch_trn_player_stats
-      else
-        return @trn_player_stats
-      end
+      @trn_player_stats.include?("data") ? fetch_trn_player_stats : @trn_player_stats = "No account"
     end
   end
 
@@ -60,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def fetch_trn_current_season_stats
-    @trn_current_season = TrackerApiService.fetch_current_season(@trn_player_stats)
+    @trn_current_season = @trn_player_stats["data"]["metadata"]["currentSeason"].to_s
     @trn_current_season_stats_name = ["Kills", "Wins"]
     @trn_current_season_stats_name.each do |segment|
       value = TrackerApiService.current_season_stat_value(@trn_player_stats, @trn_current_season, segment)

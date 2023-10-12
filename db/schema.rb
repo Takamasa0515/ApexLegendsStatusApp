@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_112756) do
   end
 
   create_table "tracker_match_records", force: :cascade do |t|
-    t.date "match_date"
+    t.datetime "match_date"
     t.string "legend"
     t.integer "kills"
     t.integer "wins"
