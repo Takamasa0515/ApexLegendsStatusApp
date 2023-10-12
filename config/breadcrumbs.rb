@@ -38,7 +38,7 @@ end
 
 crumb :user_match_record do |user|
   link "試合履歴", user_tracker_match_records_path(user)
-  parent :users
+  parent :user_show, user
 end
 
 crumb :search do
@@ -58,5 +58,5 @@ end
 
 crumb :complete do
   link "送信完了", complete_path
-  parent :root
+  parent :contact
 end
