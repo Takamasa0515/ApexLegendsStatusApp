@@ -12,13 +12,7 @@
     <div class="main-container bg-gray">
       <%= render "shared/user_search_form" %>
       <hr class="hr-white">
-      <% if @users_result.blank? %>
-        <div class="results">
-          <p>該当するユーザーは見つかりませんでした。別の条件で検索してみてください。</p>
-        </div>
-      <% else %>
-        <%= render "shared/user_search_result", users: @users_result %>
-      <% end %>
+      <%= render "shared/user_search_result", users: @users_result %>
     </div>
   </div>
 </div>
