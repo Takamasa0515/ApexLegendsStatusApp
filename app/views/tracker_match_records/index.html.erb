@@ -3,7 +3,7 @@
     <%= render "shared/mypage_header_first_line", user: @user, game_account_info: @game_account_info %>
     <hr class="hr-white">
     <div class="header-container-second-line">
-      <p>先月と今月のキル数を確認できます。また、日付をクリックすることで詳細を確認できます。</p>
+      <p>過去の試合戦績を取得します。また、日付をクリックすることで詳細を確認できます。</p>
     </div>
   </div>
 </header>
@@ -16,7 +16,9 @@
       <p>試合履歴</p>
     </div>
   </div>
-  <% if @match_histories == "Apilimit" %>
+  <% if @user.id == 1 %>
+    <%= render "shared/guest_account" %>
+  <% elsif @match_histories == "Apilimit" %>
     <%= render "shared/api_rate_limit" %>
   <% else %>
     <%= render "match_history", matches: @matches %>
