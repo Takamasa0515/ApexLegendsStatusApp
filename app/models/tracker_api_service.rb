@@ -79,7 +79,7 @@ class TrackerApiService
     if matchesPlayed == "---" || attribute == "---"
       "---"
     else
-      ratio = (attribute.delete(',').to_f / matchesPlayed.delete(',').to_f).floor(3)
+      ratio = (attribute.delete(',').to_f / matchesPlayed.delete(',').to_f).floor(2)
       percentage ? "#{(ratio * PERCENTAGE_BASE).floor(1)}%" : ratio
     end
   end
