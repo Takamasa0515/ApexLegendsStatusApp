@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TrackerApiService, type: :model do
-  let(:overall_data) do {
+  let(:overall_data) do{
       "data" => {
         "metadata" => {"currentSeason" => 10},
         "segments" =>[

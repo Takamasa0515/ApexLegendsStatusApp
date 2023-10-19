@@ -223,6 +223,7 @@ RSpec.describe TrackerApiService, type: :system do
 
     context "ゲームアカウントが存在しない時" do
       it "戦績が取得できない事" do
+        binding.pry
         no_game_account_info
         visit user_path(user.id)
         expect(page).to have_selector(".trn-failed-stats-container h2", text: "戦績を取得できませんでした")
