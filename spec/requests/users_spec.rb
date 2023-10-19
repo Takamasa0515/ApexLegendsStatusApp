@@ -41,6 +41,7 @@ RSpec.describe "Users", type: :request do
       before do
         sign_in user
         game_account_info
+        allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("Apilimit")
         get user_path(user.id)
       end
 
@@ -64,6 +65,7 @@ RSpec.describe "Users", type: :request do
     context "ゲームアカウントを登録していない時" do
       before do
         sign_in user
+        allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
         get user_path(user.id)
       end
 
@@ -80,6 +82,7 @@ RSpec.describe "Users", type: :request do
       before do
         sign_in user
         no_game_account_info
+        allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
         get user_path(user.id)
       end
 

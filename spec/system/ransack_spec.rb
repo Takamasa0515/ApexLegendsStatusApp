@@ -8,9 +8,9 @@ RSpec.describe "ransack", type: :system do
   let(:steam_game_account_info) { FactoryBot.create(:steam_game_account_info, user: user2 ) }
 
   before do
+    guest_user
     user
     user2
-    guest_user
     game_account_info
     steam_game_account_info
   end
