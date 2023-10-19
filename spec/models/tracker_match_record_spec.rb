@@ -2,16 +2,16 @@ require 'rails_helper'
 
 RSpec.describe TrackerMatchRecord, type: :model do
   let(:user) { FactoryBot.build(:user) }
-  let(:saved_match_results) { FactoryBot.create(:tracker_match_record, user: user) }
+  let(:saved_match_result) { FactoryBot.create(:tracker_match_record, user: user) }
 
   let(:match_history) do
     { "data" =>
       { "items" =>
         [
-          { "metadata" => { "endDate" => { "value" => "2023-08-01" } },
+          { "metadata" => { "endDate" => { "value" => Date.today.beginning_of_month.to_s } },
             "matches" => [ {
               "metadata" => {
-                "endDate"=>{ "value" => "2023-08-01" },
+                "endDate"=>{ "value" => Date.today.beginning_of_month.to_s },
                 "character"=>{ "displayValue" => "Wraith" }
               },
               "stats" => {
@@ -29,10 +29,10 @@ RSpec.describe TrackerMatchRecord, type: :model do
   let(:extract_day_history) do
     [
       {
-        "metadata" => { "endDate" => { "value" => "2023-08-01" } },
+        "metadata" => { "endDate" => { "value" => Date.today.beginning_of_month.to_s } },
         "matches" => [
           {
-            "metadata" => { "endDate" => { "value" => "2023-08-01" }, "character" => { "displayValue" => "Wraith" } },
+            "metadata" => { "endDate" => { "value" => Date.today.beginning_of_month.to_s }, "character" => { "displayValue" => "Wraith" } },
             "stats" => { "kills" => { "value" => 10 }, "damage" => { "value" => 1800 }, "wins" => { "value" => 1 } }
           }
         ]
@@ -43,7 +43,7 @@ RSpec.describe TrackerMatchRecord, type: :model do
   let(:one_match_history) do
     {
       "metadata" => {
-        "endDate" => { "value" => "2023-08-01" }, "character" => { "displayValue" => "Wraith" }
+        "endDate" => { "value" => Date.today.beginning_of_month.to_s }, "character" => { "displayValue" => "Wraith" }
       },
       "stats" => {
         "kills" => { "value" => 10 }, "damage" => { "value" => 1800 }, "wins" => { "value" => 1 }
@@ -54,7 +54,7 @@ RSpec.describe TrackerMatchRecord, type: :model do
   let(:no_value_one_match_history) do
         {
       "metadata" => {
-        "endDate" => { "value" => "2023-08-01" }, "character" => { "displayValue" => "Wraith" }
+        "endDate" => { "value" => Date.today.beginning_of_month.to_s }, "character" => { "displayValue" => "Wraith" }
       },
       "stats" => {
         "kills" => { "value" => 10 }, "damage" => { "value" => 1800 }
@@ -63,17 +63,18 @@ RSpec.describe TrackerMatchRecord, type: :model do
   end
 
   let(:extract_one_match_result) {
-    { "date" => "2023-08-01", "legend" => "Wraith", "kills" => 10, "damages" => 1800, "wins" => 1 }
+    { "date" => Date.today.beginning_of_month.to_s, "legend" => "Wraith", "kills" => 10, "damages" => 1800, "wins" => 1 }
   }
 
   let(:extract_match_result) {
-    [{"date" => "2023-08-01", "legend" => "Wraith", "kills" => 10, "damages" => 1800, "wins" =>1 }]
+    [{"date" => Date.today.beginning_of_month.to_s, "legend" => "Wraith", "kills" => 10, "damages" => 1800, "wins" =>1 }]
   }
 
   describe "API通信でデータを取得した時" do
     context "指定した日にデータがある場合" do
       it "全ての試合履歴が取得できている事" do
-        date = Date.new(2023, 8, 1)
+        today = Date.today
+        date = Date.new(today.year, today.month, 1)
         day_history = TrackerMatchRecord.fetch_day_match_history(match_history, date)
         expect(day_history).to eq extract_day_history
       end
@@ -95,7 +96,7 @@ RSpec.describe TrackerMatchRecord, type: :model do
       end
 
       it "DBにデータがある場合、保存しないこと" do
-        saved_match_results
+        saved_match_result
         expect {
           TrackerMatchRecord.save_past_match_histories(match_history, user)
         }.not_to change(TrackerMatchRecord, :count)
@@ -107,6 +108,11 @@ RSpec.describe TrackerMatchRecord, type: :model do
         date = Date.new(2023, 8, 2)
         day_history = TrackerMatchRecord.fetch_day_match_history(match_history, date)
         expect(day_history).to be_blank
+      end
+
+      it "試合履歴に必要な要素がない場合、0を返す事" do
+        one_match_result = TrackerMatchRecord.extract_match_result(no_value_one_match_history)
+        expect(one_match_result["wins"]).to eq 0
       end
     end
   end
