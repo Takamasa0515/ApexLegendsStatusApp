@@ -166,6 +166,39 @@ RSpec.describe Users, type: :system do
         end
       end
     end
+
+    describe "パスワード再設定メールフォーム" do
+      before do
+        user
+        visit new_user_password_path
+      end
+
+      context "フォームの入力値が正常の時" do
+        it "メールが送信される事" do
+          fill_in "Eメール", with: user.email
+          click_button "パスワード再設定メールを送信"
+          expect(page).to have_content "パスワードの再設定について数分以内にメールでご連絡いたします。"
+          expect(current_path).to eq new_user_session_path
+        end
+      end
+
+      context "フォームが未入力の時" do
+        it "メールが送信されない事" do
+          click_button "パスワード再設定メールを送信"
+          expect(page).to have_content "Eメールを入力してください"
+          expect(current_path).to eq new_user_password_path
+        end
+      end
+
+      context "メールアドレスが見つからない時" do
+        it "メールが送信されない事" do
+          fill_in "Eメール", with: "different_test@example.com"
+          click_button "パスワード再設定メールを送信"
+          expect(page).to have_content "Eメールは見つかりませんでした。"
+          expect(current_path).to eq new_user_password_path
+        end
+      end
+    end
   end
 
   describe "ログインしている時" do

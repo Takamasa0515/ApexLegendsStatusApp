@@ -6,7 +6,7 @@
       <% if @user.errors.include?(:reset_password_token) %>
         <p class="error-messages"><%= @user.errors.full_messages_for(:reset_password_token).first %></p>
       <% end %>
-      <%= form_with(model: resource, scope: resource_name, url: password_path(resource_name), method: :put) do |f| %>
+      <%= form_with model: @user, url: user_password_path, method: :patch, local: true do |f| %>
         <%= f.hidden_field :reset_password_token %>
         <div class="devise devise-mb">
           <div class="devise-form">

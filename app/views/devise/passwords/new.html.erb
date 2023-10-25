@@ -3,7 +3,7 @@
     <div class="boxshadow">
     <%= render "shared/breadcrumbs" %>
       <h2 class="container-h2">パスワード再設定</h2>
-      <%= form_with(model: resource, scope: resource_name, url: password_path(resource_name), method: :post) do |f| %>
+      <%= form_with model: @user, url: user_password_path, method: :post, local: true do |f| %>
         <div class="devise devise-mb justify-content-between">
           <div class="devise-form">
             <div class="field">
