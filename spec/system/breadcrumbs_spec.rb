@@ -40,6 +40,31 @@ RSpec.describe "Breadcrumbs", type: :system do
     end
   end
 
+  describe "パスワード再設定メール送信ページに遷移した時" do
+    it "Home>ログイン>パスワード再設定メール送信と表示される事" do
+      visit new_user_password_path
+      within(".breadcrumbs") do
+        expect(page).to have_content "Home"
+        expect(page).to have_content "ログイン"
+        expect(page).to have_content "パスワード再設定メール送信"
+      end
+    end
+  end
+
+  describe "パスワード再設定ページに遷移した時" do
+    it "Home>パスワード再設定と表示される事" do
+      @token = Devise.friendly_token
+      user.reset_password_token = Devise.token_generator.digest(self, :reset_password_token, @token)
+      user.reset_password_sent_at = Time.now
+      user.save!
+      visit "#{edit_user_password_path}?reset_password_token=#{@token}"
+      within(".breadcrumbs") do
+        expect(page).to have_content "Home"
+        expect(page).to have_content "パスワード再設定"
+      end
+    end
+  end
+
   describe "ユーザー検索画面に遷移した時" do
     it "Home>ユーザー検索と表示される事" do
       visit search_users_path

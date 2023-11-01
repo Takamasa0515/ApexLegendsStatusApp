@@ -31,6 +31,16 @@ crumb :user_edit do |user|
   parent :user_show, user
 end
 
+crumb :new_user_password do
+  link "パスワード再設定メール送信", new_user_password_path
+  parent :log_in
+end
+
+crumb :edit_user_password do
+  link "パスワード再設定", edit_user_password_path
+  parent :root
+end
+
 crumb :game_account_info_edit do |user|
   link "ゲームアカウント登録・編集", edit_game_account_info_path
   parent :user_show, user

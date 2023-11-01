@@ -11367,7 +11367,12 @@ h2 {
   border: 1px solid #ffffff;
   outline: none;
   margin-top: 2px;
-  font-size: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .devise-user-edit textarea {
+    font-size: 0.5rem;
+  }
 }
 
 .devise-button {
@@ -11424,9 +11429,19 @@ h2 {
 }
 
 .signup-actions {
-  margin: 8.9rem 0;
-  margin-left: auto;
-  margin-right: 0;
+  margin: auto 0;
+}
+
+.reset-password {
+  margin: 1.2rem 0;
+}
+
+.new-password {
+  margin: 3.9rem 0;
+}
+
+.devise-error {
+  margin-top: 2.7rem;
 }
 
 .signup-actions-mb {
@@ -11701,7 +11716,7 @@ h2 {
 }
 
 .bg-dark-black {
-  min-height: 44vh;
+  min-height: 48vh;
   background-color: #16160e;
 }
 
@@ -11803,7 +11818,7 @@ h2 {
 
 .overall-stat .value {
   display: flex;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 }
 
 @media (max-width: 768px) {
@@ -12008,7 +12023,7 @@ h2 {
 }
 
 .legend-stat .value {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 }
 
 @media (max-width: 768px) {
@@ -12122,6 +12137,7 @@ h2 {
 }
 
 .nav-bar-search-field {
+  color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 0.5rem;

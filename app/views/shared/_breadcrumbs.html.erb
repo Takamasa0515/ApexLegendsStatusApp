@@ -3,6 +3,10 @@
   <% breadcrumb :users %>
 <% when ["users", "show"] %>
   <% breadcrumb :user_show, @user %>
+<% when ["users/passwords", "new"] %>
+  <% breadcrumb :new_user_password %>
+<% when ["users/passwords", "edit"] %>
+  <% breadcrumb :edit_user_password %>
 <% when ["users", "search"] %>
   <% breadcrumb :search %>
 <% when ["tracker_match_records", "index"] %>
