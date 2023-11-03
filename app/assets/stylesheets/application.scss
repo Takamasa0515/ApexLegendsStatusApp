@@ -11429,9 +11429,19 @@ h2 {
 }
 
 .signup-actions {
-  margin: 8.9rem 0;
-  margin-left: auto;
-  margin-right: 0;
+  margin: auto 0;
+}
+
+.reset-password {
+  margin: 1.2rem 0;
+}
+
+.new-password {
+  margin: 3.9rem 0;
+}
+
+.devise-error {
+  margin-top: 2.7rem;
 }
 
 .signup-actions-mb {
@@ -11498,6 +11508,10 @@ h2 {
 .btn-border-color-white {
   --bs-btn-border-color: #ffffff;
   --bs-btn-hover-border-color: #ffffff;
+}
+
+.col-lg-8 h2 {
+  color: #000;
 }
 
 .header {

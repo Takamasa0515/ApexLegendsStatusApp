@@ -166,6 +166,131 @@ RSpec.describe Users, type: :system do
         end
       end
     end
+
+    describe "パスワード再設定メールフォーム" do
+      before do
+        user
+        visit new_user_password_path
+      end
+
+      context "フォームの入力値が正常の時" do
+        it "メールが送信される事" do
+          fill_in "Eメール", with: user.email
+          click_button "パスワード再設定メールを送信"
+          expect(page).to have_content "パスワードの再設定について数分以内にメールでご連絡いたします。"
+          expect(current_path).to eq new_user_session_path
+          expect(ActionMailer::Base.deliveries.size).to eq(1)
+        end
+      end
+
+      context "フォームが未入力の時" do
+        it "メールが送信されない事" do
+          click_button "パスワード再設定メールを送信"
+          expect(page).to have_content "Eメールを入力してください"
+          expect(current_path).to eq new_user_password_path
+        end
+      end
+
+      context "メールアドレスが見つからない時" do
+        it "メールが送信されない事" do
+          fill_in "Eメール", with: "different_test@example.com"
+          click_button "パスワード再設定メールを送信"
+          expect(page).to have_content "Eメールは見つかりませんでした。"
+          expect(current_path).to eq new_user_password_path
+        end
+      end
+    end
+
+    describe "パスワード再設定フォーム" do
+      before do
+        user
+        @token = Devise.friendly_token
+        user.reset_password_token = Devise.token_generator.digest(self, :reset_password_token, @token)
+        user.reset_password_sent_at = Time.now
+        user.save!
+      end
+
+      describe "トークンが有効期限内の時" do
+        before do
+          visit "#{edit_user_password_path}?reset_password_token=#{@token}"
+        end
+
+        context "フォームの入力値が正常の時" do
+          it "パスワードが更新される事" do
+            fill_in "新しいパスワード(6文字以上)", with: "new_userpassword"
+            fill_in "パスワード（確認用）", with: "new_userpassword"
+            click_button "パスワードを再設定"
+            expect(page).to have_content "パスワードが正しく変更されました。"
+            expect(current_path).to eq user_path(user)
+            expect(user.reload.valid_password?("new_userpassword")).to be true
+          end
+        end
+
+        context "フォームが未入力の時" do
+          it "パスワードが更新されない事" do
+            fill_in "新しいパスワード(6文字以上)", with: ""
+            fill_in "パスワード（確認用）", with: ""
+            click_button "パスワードを再設定"
+            expect(page).to have_content "パスワードを入力してください"
+            expect(current_path).to eq edit_user_password_path
+          end
+        end
+
+        context "新しいパスワードが6文字未満の時" do
+          it "パスワードが更新されない事" do
+            fill_in "新しいパスワード(6文字以上)", with: "pass"
+            fill_in "パスワード（確認用）", with: "pass"
+            click_button "パスワードを再設定"
+            expect(page).to have_content "パスワードは6文字以上で設定してください"
+            expect(current_path).to eq edit_user_password_path
+          end
+        end
+
+        context "確認用パスワードが未入力の時" do
+          it "パスワードが更新されない事" do
+            fill_in "新しいパスワード(6文字以上)", with: "new_userpassword"
+            fill_in "パスワード（確認用）", with: ""
+            click_button "パスワードを再設定"
+            expect(page).to have_content "パスワード（確認用）がパスワードと一致しません"
+            expect(current_path).to eq edit_user_password_path
+          end
+        end
+
+        context "確認用パスワードが違う時" do
+          it "パスワードが更新されない事" do
+            fill_in "新しいパスワード(6文字以上)", with: "new_userpassword"
+            fill_in "パスワード（確認用）", with: "different_userpassword"
+            click_button "パスワードを再設定"
+            expect(page).to have_content "パスワード（確認用）がパスワードと一致しません"
+            expect(current_path).to eq edit_user_password_path
+          end
+        end
+      end
+
+      describe "存在しないトークンの時" do
+        it "トークンが一致しませんと表示される事" do
+          visit "#{edit_user_password_path}?reset_password_token=not_exist_token"
+          fill_in "新しいパスワード(6文字以上)", with: "new_userpassword"
+          fill_in "パスワード（確認用）", with: "new_userpassword"
+          click_button "パスワードを再設定"
+          expect(page).to have_content "パスワードリセット用トークンが一致しません"
+          expect(current_path).to eq edit_user_password_path
+        end
+      end
+
+      describe "トークンが有効期限外の時" do
+        it "有効期限が切れていると表示される事" do
+          user.reset_password_sent_at = Time.now - 1800
+          user.save!
+          visit "#{edit_user_password_path}?reset_password_token=#{@token}"
+          fill_in "新しいパスワード(6文字以上)", with: "new_userpassword"
+          fill_in "パスワード（確認用）", with: "new_userpassword"
+          click_button "パスワードを再設定"
+          expect(page).to have_content "パスワードリセット用トークンの有効期限が切れました。新しくリクエストしてください。"
+          expect(current_path).to eq edit_user_password_path
+        end
+      end
+    end
   end
 
   describe "ログインしている時" do

@@ -1,25 +1,43 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+<header class="bg-primary bg-gradient text-white">
+  <div class="container px-4">
+    <div class="boxshadow">
+    <%= render "shared/breadcrumbs" %>
+      <h2 class="container-h2">パスワード再設定</h2>
+      <% if @user.errors.include?(:reset_password_token) %>
+        <p class="error-messages"><%= @user.errors.full_messages_for(:reset_password_token).first %></p>
+      <% end %>
+      <%= form_with model: @user, url: user_password_path, method: :patch, local: true do |f| %>
+        <%= f.hidden_field :reset_password_token %>
+        <div class="devise devise-mb">
+          <div class="devise-form">
+            <div class="field">
+              <%= f.label :password, "新しいパスワード(6文字以上)" ,class: "devise-label" %>
+              <% if @user.errors.include?(:password) %>
+                <p class="error-messages"><%= @user.errors.full_messages_for(:password).first %></p>
+              <% end %>
+              <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+            </div>
+            <div class="field">
+              <%= f.label :password_confirmation, class: "devise-label" %>
+              <% if @user.errors.include?(:password_confirmation) %>
+                <p class="error-messages"><%= @user.errors.full_messages_for(:password_confirmation).first %></p>
+              <% end %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+          </div>
+          <div class="signup-actions">
+            <%= f.submit "パスワードを再設定", class: "btn-dark btn-lg btn btn-border-color-white" %>
+          </div>
+          <div class="signup-actions-mb">
+            <%= f.submit "パスワードを再設定", class: "btn-dark btn-lg btn btn-border-color-white" %>
+          </div>
+        </div>
+      <% end %>
+      <hr class="hr-white">
+      <div class="under-forms">
+        <p>パスワードが分かる場合は、<%= link_to "こちらからログイン", new_user_session_path, class: "custom-link" %>してください。</p>
+        <p>アカウントをお持ちでない場合は、<%= link_to "こちらから新規作成", new_registration_path(resource_name), class: "custom-link" %>してください。</p>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</header>
