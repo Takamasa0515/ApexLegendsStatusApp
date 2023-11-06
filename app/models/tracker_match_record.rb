@@ -31,8 +31,8 @@ class TrackerMatchRecord < ApplicationRecord
   end
 
   def self.fetch_day_match_history(match_histories, day)
-    match_histories["data"]["items"].select do |history|
-      end_date_value = history["metadata"]["endDate"]["value"]
+    match_histories["data"]["items"].select do |his|
+      end_date_value = his["metadata"]["endDate"]["value"]
       end_date_value.include?(day.to_s)
     end
   end
