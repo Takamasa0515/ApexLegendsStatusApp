@@ -195,7 +195,7 @@ RSpec.describe Users, type: :system do
       context "アイコン画像をアップロードする時" do
         it "正常にアップロードでき、表示される事" do
           visit edit_user_registration_path
-          attach_file "user[avatar]", "#{Rails.root.join('spec/fixtures/image/test_avatar.jpg')}"
+          attach_file "user[avatar]", Rails.root.join('spec/fixtures/image/test_avatar.jpg').to_s
           fill_in "現在のパスワード", with: user.password
           click_button "更新する"
           expect(page).to have_content "アカウント情報を変更しました。"

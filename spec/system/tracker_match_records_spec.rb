@@ -11,12 +11,12 @@ RSpec.describe TrackerMatchRecord, type: :system do
         "items" => [
           {
             "metadata" => {
-              "endDate" => { "value" => Date.today.beginning_of_month.to_s }
+              "endDate" => { "value" => Time.zone.today.beginning_of_month.to_s }
             },
             "matches" => [
               {
                 "metadata" => {
-                  "endDate" => { "value" => Date.today.beginning_of_month.to_s },
+                  "endDate" => { "value" => Time.zone.today.beginning_of_month.to_s },
                   "character" => { "displayValue" => "Wraith" }
                 },
                 "stats" => {
@@ -64,7 +64,7 @@ RSpec.describe TrackerMatchRecord, type: :system do
         context "今月のカレンダーを表示した時" do
           it "先月のカレンダーに遷移できる事" do
             click_link "先月"
-            expect(page).to have_content "#{Date.today.last_month.month}月"
+            expect(page).to have_content "#{Time.zone.today.last_month.month}月"
           end
 
           it "先月から今月に戻れる事" do
@@ -88,7 +88,7 @@ RSpec.describe TrackerMatchRecord, type: :system do
 
             it "日時の詳細が表示される事" do
               within ".legend-stats-title" do
-                expect(page).to have_content Date.today.beginning_of_month.to_s
+                expect(page).to have_content Time.zone.today.beginning_of_month.to_s
               end
             end
 
@@ -130,7 +130,7 @@ RSpec.describe TrackerMatchRecord, type: :system do
 
             it "日時の詳細が表示される事" do
               within ".legend-stats-title" do
-                expect(page).to have_content (Date.today.beginning_of_month + 14).to_s
+                expect(page).to have_content (Time.zone.today.beginning_of_month + 14).to_s
               end
             end
 

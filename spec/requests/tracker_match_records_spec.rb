@@ -48,7 +48,7 @@ RSpec.describe "Users", type: :request do
     end
 
     it "今月のカレンダーが表示される事" do
-      expect(response.body).to include("#{Date.today.month}月 #{Date.today.year}")
+      expect(response.body).to include("#{Time.zone.today.month}月 #{Time.zone.today.year}")
     end
   end
 

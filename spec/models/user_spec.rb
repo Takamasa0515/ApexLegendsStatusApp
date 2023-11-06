@@ -18,9 +18,9 @@ RSpec.describe User, type: :model do
   end
 
   it "メールアドレスが重複している場合、バリデーションエラーを返す事" do
-    user1 = FactoryBot.create(:user)
-    user2 = user
-    expect(user2).to_not be_valid
+    FactoryBot.create(:user)
+    new_user = FactoryBot.build(:user)
+    expect(new_user).to_not be_valid
   end
 
   it "パスワードが無い場合、バリデーションエラーを返す事" do
