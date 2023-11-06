@@ -2,10 +2,16 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
   let(:user) { FactoryBot.create(:user) }
+  let(:guest_user) { FactoryBot.create(:guest_user) }
   let(:game_account_info) { FactoryBot.create(:game_account_info, user: user) }
   let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user: user) }
 
   describe "API通信を行う時" do
+    before do
+      guest_user
+      user
+    end
+
     context "ゲームアカウントが存在する時" do
       it "アカウント情報が返ってくること" do
         result = TrackerMatchRecord.fetch_trn_match_history(game_account_info)
@@ -31,6 +37,9 @@ RSpec.describe "Users", type: :request do
 
   describe "GET/user_tracker_match_records" do
     before do
+      guest_user
+      user
+      game_account_info
       get user_tracker_match_records_path(user)
     end
 

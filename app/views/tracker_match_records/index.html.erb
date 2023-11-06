@@ -3,7 +3,7 @@
     <%= render "shared/mypage_header_first_line", user: @user, game_account_info: @game_account_info %>
     <hr class="hr-white">
     <div class="header-container-second-line">
-      <p>過去の試合戦績を取得します。また、日付をクリックすることで詳細を確認できます。</p>
+      <p>過去の試合戦績(アクセスした日から最大2カ月前まで)を取得します。また、日付をクリックすることで詳細を確認できます。</p>
     </div>
   </div>
 </header>
@@ -20,6 +20,8 @@
     <%= render "shared/guest_account" %>
   <% elsif @match_histories == "Apilimit" %>
     <%= render "shared/api_rate_limit" %>
+  <% elsif @match_histories == "No account" %>
+    <%= render "shared/no_game_account_info" %>
   <% else %>
     <%= render "match_history", matches: @matches %>
   <% end %>

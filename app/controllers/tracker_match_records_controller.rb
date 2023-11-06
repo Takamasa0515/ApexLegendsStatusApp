@@ -4,7 +4,7 @@ class TrackerMatchRecordsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @game_account_info = @user.game_account_info
-    api_request_check if @game_account_info.present?
+    @game_account_info.present? ? api_request_check : @match_histories = "No account"
     @matches = TrackerMatchRecord.where(user_id: @user.id)
   end
 
@@ -38,7 +38,11 @@ class TrackerMatchRecordsController < ApplicationController
 
   def api_request_and_save
     @match_histories = TrackerMatchRecord.fetch_trn_match_history(@game_account_info)
-    TrackerMatchRecord.save_past_match_histories(@match_histories, @user) if @match_histories.include?("data")
-    @user.update(last_accessed_at_match_record: Time.zone.now)
+    if @match_histories.include?("data")
+      TrackerMatchRecord.save_past_match_histories(@match_histories, @user) if @match_histories.include?("data")
+      @user.update(last_accessed_at_match_record: Time.zone.now)
+    else
+      return @match_histories
+    end
   end
 end
