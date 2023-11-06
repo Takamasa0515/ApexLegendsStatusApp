@@ -25,11 +25,10 @@ class UsersController < ApplicationController
       @trn_player_stats = "No account"
     else
       @trn_player_stats = TrackerApiService.fetch_trn_player_stats(@game_account_info)
-      if @trn_player_stats.include?("data")
-        fetch_trn_player_stats
-      else
-        return @trn_player_stats
-      end
+      return @trn_player_stats unless @trn_player_stats.include?("data")
+
+      fetch_trn_player_stats
+
     end
   end
 
@@ -79,7 +78,7 @@ class UsersController < ApplicationController
 
   def current_rank
     @trn_rank_name = @trn_player_stats.dig("data", "segments", 0, "stats", "rankScore", "metadata", "rankName")
-    @user.game_account_info.update(current_rank:@trn_rank_name)
+    @user.game_account_info.update(current_rank: @trn_rank_name)
     value = nil
     rank = TrackerApiService.overall_stat_rank(@trn_player_stats, "rankScore")
     percentile = TrackerApiService.overall_stat_percentile(@trn_player_stats, "rankScore")

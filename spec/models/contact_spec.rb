@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
   describe "メールアドレスの正規表現についてのバリデーション" do
-
     contact = FactoryBot.create(:contact)
 
     it "メールアドレスの形式が正しい場合、通過する事" do

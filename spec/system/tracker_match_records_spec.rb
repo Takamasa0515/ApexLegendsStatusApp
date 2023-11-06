@@ -3,34 +3,34 @@ require 'rails_helper'
 RSpec.describe TrackerMatchRecord, type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
-  let(:steam_game_account_info) { FactoryBot.create(:steam_game_account_info, user: user) }
-  let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user: user) }
+  let(:steam_game_account_info) { FactoryBot.create(:steam_game_account_info, user:) }
+  let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user:) }
   let(:api_tracker_match_record) do
     {
-      "data"=> {
-        "items"=> [
+      "data" => {
+        "items" => [
           {
-            "metadata"=> {
-              "endDate"=>{"value"=>Date.today.beginning_of_month.to_s}
+            "metadata" => {
+              "endDate" => { "value" => Date.today.beginning_of_month.to_s }
             },
-            "matches"=> [
+            "matches" => [
               {
-                "metadata"=> {
-                  "endDate"=>{"value"=>Date.today.beginning_of_month.to_s},
-                  "character"=>{"displayValue"=>"Wraith"}
+                "metadata" => {
+                  "endDate" => { "value" => Date.today.beginning_of_month.to_s },
+                  "character" => { "displayValue" => "Wraith" }
                 },
-                "stats"=> {
-                  "kills"=>{"value"=>10},
-                  "damage"=>{"value"=>1800},
-                  "wins"=>{"value"=>1}
+                "stats" => {
+                  "kills" => { "value" => 10 },
+                  "damage" => { "value" => 1800 },
+                  "wins" => { "value" => 1 }
                 }
               }
             ],
-            "stats"=> {
-              "kills"=>{"value"=>10},
-              "damage"=>{"value"=>1800},
-              "wins"=>{"value"=>1}
-            },
+            "stats" => {
+              "kills" => { "value" => 10 },
+              "damage" => { "value" => 1800 },
+              "wins" => { "value" => 1 }
+            }
           }
         ]
       }

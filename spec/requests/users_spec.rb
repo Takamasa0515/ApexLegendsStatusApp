@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
-  let(:game_account_info) { FactoryBot.create(:game_account_info, user: user) }
-  let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user: user) }
+  let(:game_account_info) { FactoryBot.create(:game_account_info, user:) }
+  let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user:) }
 
   describe "GET/users" do
     before do

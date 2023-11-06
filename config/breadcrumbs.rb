@@ -12,7 +12,7 @@ crumb :log_in do
   parent :root
 end
 
-crumb :users do |user|
+crumb :users do |_user|
   link "ユーザー一覧", users_path
   parent :root
 end

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
-  let(:game_account_info) { FactoryBot.create(:game_account_info, user: user) }
-  let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user: user) }
+  let(:game_account_info) { FactoryBot.create(:game_account_info, user:) }
+  let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user:) }
 
   describe "API通信を行う時" do
     before do
@@ -48,7 +48,7 @@ RSpec.describe "Users", type: :request do
     end
 
     it "今月のカレンダーが表示される事" do
-      expect(response.body).to include("#{Date.today.month.to_s}月 #{Date.today.year.to_s}")
+      expect(response.body).to include("#{Date.today.month}月 #{Date.today.year}")
     end
   end
 

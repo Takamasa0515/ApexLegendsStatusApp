@@ -1,21 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe TrackerApiService, type: :model do
-  let(:overall_data) do{
+  let(:overall_data) do
+    {
       "data" => {
-        "metadata" => {"currentSeason" => 10},
-        "segments" =>[
+        "metadata" => { "currentSeason" => 10 },
+        "segments" => [
           { "stats" => {
-              "level" => { "rank" => 10000, "percentile" => 50.0, "value" => 1000 },
-              "kills" => { "rank" => 150, "percentile" => 99.9, "value" => 20000 },
-              "damage" => { "rank" => 2000, "percentile" => 99.8, "value" => 250000000 },
-              "matchesPlayed" => { "rank" => 5000, "percentile" => 5.00, "value" => 5000 },
-              "wins" => { "rank" => 3000, "percentile" => 10.0, "value" => 25 },
-              "killsAsKillLeader" => { "rank" => 20000, "percentile" => 60.0, "value" => 30 },
-              "season10Kills" => { "rank" => 6000, "percentile" => 97.7, "value" => 8000 },
-              "season10Wins" => { "rank" => 100, "percentile" => 99.5, "value" => 600 }
-            }
-          }
+            "level" => { "rank" => 10_000, "percentile" => 50.0, "value" => 1000 },
+            "kills" => { "rank" => 150, "percentile" => 99.9, "value" => 20_000 },
+            "damage" => { "rank" => 2000, "percentile" => 99.8, "value" => 250_000_000 },
+            "matchesPlayed" => { "rank" => 5000, "percentile" => 5.00, "value" => 5000 },
+            "wins" => { "rank" => 3000, "percentile" => 10.0, "value" => 25 },
+            "killsAsKillLeader" => { "rank" => 20_000, "percentile" => 60.0, "value" => 30 },
+            "season10Kills" => { "rank" => 6000, "percentile" => 97.7, "value" => 8000 },
+            "season10Wins" => { "rank" => 100, "percentile" => 99.5, "value" => 600 }
+          } }
         ]
       }
     }
@@ -33,14 +33,14 @@ RSpec.describe TrackerApiService, type: :model do
 
   let(:no_wins) { "---" }
 
-  let(:no_overall_data) do {
-    "data" => {
-      "segments" => [
-        { "stats" => {
+  let(:no_overall_data) do
+    {
+      "data" => {
+        "segments" => [
+          { "stats" => {
             "level" => { "rank" => {}, "percentile" => {}, "value" => {} },
             "season10Kills" => { "rank" => {}, "percentile" => {}, "value" => {} }
-            }
-          }
+          } }
         ]
       }
     }

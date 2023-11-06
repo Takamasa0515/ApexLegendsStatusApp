@@ -9,9 +9,8 @@ class TrackerApiService
     result = JSON.parse(client.get(url, header: headers).body)
     if result.dig("message") == "API rate limit exceeded"
       "Apilimit"
-    elsif
-      result.dig("errors", 0, "code") == "CollectorResultStatus::ExternalError" || result.dig("errors", 0, "code") == "CollectorResultStatus::NotFound"
-        "No account"
+    elsif result.dig("errors", 0, "code") == "CollectorResultStatus::ExternalError" || result.dig("errors", 0, "code") == "CollectorResultStatus::NotFound"
+      "No account"
     else
       result
     end
