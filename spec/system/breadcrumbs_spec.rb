@@ -55,7 +55,7 @@ RSpec.describe "Breadcrumbs", type: :system do
     it "Home>パスワード再設定と表示される事" do
       @token = Devise.friendly_token
       user.reset_password_token = Devise.token_generator.digest(self, :reset_password_token, @token)
-      user.reset_password_sent_at = Time.now
+      user.reset_password_sent_at = Time.zone.now
       user.save!
       visit "#{edit_user_password_path}?reset_password_token=#{@token}"
       within(".breadcrumbs") do
