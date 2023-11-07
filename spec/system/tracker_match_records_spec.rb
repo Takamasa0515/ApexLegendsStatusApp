@@ -94,7 +94,7 @@ RSpec.describe TrackerMatchRecord, type: :system do
 
             it "レジェンドが表示される事" do
               within ".legend-stats-card" do
-                expect(page).to have_content "Wraith"
+                expect(page).to have_content "レイス"
               end
             end
 

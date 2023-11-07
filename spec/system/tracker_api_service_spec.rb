@@ -74,7 +74,7 @@ RSpec.describe TrackerApiService, type: :system do
       context "総合戦績" do
         it "レベルが表示される事" do
           within ".overall-record-area" do
-            expect(page).to have_selector(".overall-stat .name", text: "Level")
+            expect(page).to have_selector(".overall-stat .name", text: "レベル")
             expect(page).to have_selector(".overall-stat .value", text: "1,557")
             expect(page).to have_selector(".overall-stat .rank", text: "25,233 - Top0.7%")
           end
@@ -82,7 +82,7 @@ RSpec.describe TrackerApiService, type: :system do
 
         it "キル数が表示される事" do
           within ".overall-record-area" do
-            expect(page).to have_selector(".overall-stat .name", text: "Kills")
+            expect(page).to have_selector(".overall-stat .name", text: "キル数")
             expect(page).to have_selector(".overall-stat .value", text: "45,350")
             expect(page).to have_selector(".overall-stat .rank", text: "3,659 - Top0.1%")
           end
@@ -90,7 +90,7 @@ RSpec.describe TrackerApiService, type: :system do
 
         it "ダメージ数が表示される事" do
           within ".overall-record-area" do
-            expect(page).to have_selector(".overall-stat .name", text: "Damage")
+            expect(page).to have_selector(".overall-stat .name", text: "ダメージ数")
             expect(page).to have_selector(".overall-stat .value", text: "12,892,834")
             expect(page).to have_selector(".overall-stat .rank", text: "2,190 - Top0.1%")
           end
@@ -98,7 +98,7 @@ RSpec.describe TrackerApiService, type: :system do
 
         it "試合数が表示される事" do
           within ".overall-record-area" do
-            expect(page).to have_selector(".overall-stat .name", text: "Matchesplayed")
+            expect(page).to have_selector(".overall-stat .name", text: "プレイ回数")
             expect(page).to have_selector(".overall-stat .value", text: "8,916")
             expect(page).to have_selector(".overall-stat .rank", text: "--- - Top0.7%")
           end
@@ -106,7 +106,7 @@ RSpec.describe TrackerApiService, type: :system do
 
         it "勝利数が表示される事" do
           within ".overall-record-area" do
-            expect(page).to have_selector(".overall-stat .name", text: "Wins")
+            expect(page).to have_selector(".overall-stat .name", text: "勝利数")
             expect(page).to have_selector(".overall-stat .value", text: "1,599")
             expect(page).to have_selector(".overall-stat .rank", text: "4,285 - Top0.4%")
           end
@@ -114,7 +114,7 @@ RSpec.describe TrackerApiService, type: :system do
 
         it "キルリーダーとしてのキル数が表示される事" do
           within ".overall-record-area" do
-            expect(page).to have_selector(".overall-stat .name", text: "Killsaskillleader")
+            expect(page).to have_selector(".overall-stat .name", text: "キルリーダーキル数")
             expect(page).to have_selector(".overall-stat .value", text: "3,383")
             expect(page).to have_selector(".overall-stat .rank", text: "--- - Top0.1%")
           end
@@ -154,7 +154,7 @@ RSpec.describe TrackerApiService, type: :system do
           within ".overall-record-area" do
             expect(page).to have_selector(".overall-stat .name", text: "現在のランク")
             expect(page).to have_selector(".overall-stat .value img, img[src$='master.png']")
-            expect(page).to have_selector(".overall-stat .value", text: "Master")
+            expect(page).to have_selector(".overall-stat .value", text: "マスター")
             expect(page).to have_selector(".overall-stat .rank", text: "1,008 - Top0.2%")
           end
         end
@@ -175,13 +175,13 @@ RSpec.describe TrackerApiService, type: :system do
 
         it "レジェンド名が表示されている事" do
           within ".trn-legend-stats-area" do
-            expect(page).to have_selector(".legend-name", text: "Wraith")
+            expect(page).to have_selector(".legend-name", text: "レイス")
           end
         end
 
         it "キル数が表示されている事" do
           within ".trn-legend-stats-area" do
-            expect(page).to have_selector(".legend-stat .name", text: "Kills")
+            expect(page).to have_selector(".legend-stat .name", text: "キル数")
             expect(page).to have_selector(".legend-stat .value", text: "23,996")
             expect(page).to have_selector(".legend-stat .rank", text: "2,433 - Top1.0%")
           end
@@ -189,7 +189,7 @@ RSpec.describe TrackerApiService, type: :system do
 
         it "ダメージ数が表示されている事" do
           within ".trn-legend-stats-area" do
-            expect(page).to have_selector(".legend-stat .name", text: "Damage")
+            expect(page).to have_selector(".legend-stat .name", text: "ダメージ数")
             expect(page).to have_selector(".legend-stat .value", text: "7,025,561")
             expect(page).to have_selector(".legend-stat .rank", text: "2,000 - Top0.0%")
           end
@@ -197,7 +197,7 @@ RSpec.describe TrackerApiService, type: :system do
 
         it "勝利数が表示されている事" do
           within ".trn-legend-stats-area" do
-            expect(page).to have_selector(".legend-stat .name", text: "Wins")
+            expect(page).to have_selector(".legend-stat .name", text: "勝利数")
             expect(page).to have_selector(".legend-stat .value", text: "894")
             expect(page).to have_selector(".legend-stat .rank", text: "--- - Top1.0%")
           end
@@ -205,7 +205,7 @@ RSpec.describe TrackerApiService, type: :system do
 
         it "試合数が表示されている事" do
           within ".trn-legend-stats-area" do
-            expect(page).to have_selector(".legend-stat .name", text: "Matchesplayed")
+            expect(page).to have_selector(".legend-stat .name", text: "プレイ回数")
             expect(page).to have_selector(".legend-stat .value", text: "7,751")
             expect(page).to have_selector(".legend-stat .rank", text: "--- - Top0.5%")
           end
@@ -213,7 +213,7 @@ RSpec.describe TrackerApiService, type: :system do
 
         it "キルリーダーとしてのキル数が表示されている事" do
           within ".trn-legend-stats-area" do
-            expect(page).to have_selector(".legend-stat .name", text: "Killsaskillleader")
+            expect(page).to have_selector(".legend-stat .name", text: "キルリーダーキル数")
             expect(page).to have_selector(".legend-stat .value", text: "965")
             expect(page).to have_selector(".legend-stat .rank", text: "--- - Top8.1%")
           end
