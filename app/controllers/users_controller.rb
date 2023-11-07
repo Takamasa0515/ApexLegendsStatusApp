@@ -12,10 +12,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = 'ユーザーを削除しました。'
-    redirect_to root_path
+    @user = current_user
+    if @user.email == "guest@example.com"
+      flash[:alert] = "ゲストユーザーの退会はできません。"
+      redirect_back fallback_location: root_path
+    else
+      @user.destroy
+      flash[:notice] = 'ユーザーを削除しました。'
+      redirect_to root_path
+    end
   end
 
   private

@@ -206,7 +206,7 @@ RSpec.describe Users, type: :system do
         user
         @token = Devise.friendly_token
         user.reset_password_token = Devise.token_generator.digest(self, :reset_password_token, @token)
-        user.reset_password_sent_at = Time.now
+        user.reset_password_sent_at = Time.zone.now
         user.save!
       end
 
@@ -280,7 +280,7 @@ RSpec.describe Users, type: :system do
 
       describe "トークンが有効期限外の時" do
         it "有効期限が切れていると表示される事" do
-          user.reset_password_sent_at = Time.now - 1800
+          user.reset_password_sent_at = Time.zone.now - 1800
           user.save!
           visit "#{edit_user_password_path}?reset_password_token=#{@token}"
           fill_in "新しいパスワード(6文字以上)", with: "new_userpassword"
