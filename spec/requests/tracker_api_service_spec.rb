@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe TrackerApiService, type: :request do
   let(:user) { FactoryBot.create(:user) }
-  let(:game_account_info) { FactoryBot.create(:game_account_info, user: user) }
-  let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user: user) }
+  let(:game_account_info) { FactoryBot.create(:game_account_info, user:) }
+  let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user:) }
 
   describe "API通信を行う時" do
     context "ゲームアカウントが存在する時" do

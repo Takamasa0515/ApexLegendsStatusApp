@@ -38,11 +38,9 @@ class TrackerMatchRecordsController < ApplicationController
 
   def api_request_and_save
     @match_histories = TrackerMatchRecord.fetch_trn_match_history(@game_account_info)
-    if @match_histories.include?("data")
-      TrackerMatchRecord.save_past_match_histories(@match_histories, @user) if @match_histories.include?("data")
-      @user.update(last_accessed_at_match_record: Time.zone.now)
-    else
-      return @match_histories
-    end
+    return @match_histories unless @match_histories.include?("data")
+
+    TrackerMatchRecord.save_past_match_histories(@match_histories, @user) if @match_histories.include?("data")
+    @user.update(last_accessed_at_match_record: Time.zone.now)
   end
 end

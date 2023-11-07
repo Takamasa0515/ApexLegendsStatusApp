@@ -4,8 +4,8 @@ RSpec.describe "ransack", type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:user2) { FactoryBot.create(:user2) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
-  let(:game_account_info) { FactoryBot.create(:game_account_info, user: user) }
-  let(:steam_game_account_info) { FactoryBot.create(:steam_game_account_info, user: user2 ) }
+  let(:game_account_info) { FactoryBot.create(:game_account_info, user:) }
+  let(:steam_game_account_info) { FactoryBot.create(:steam_game_account_info, user: user2) }
 
   before do
     guest_user

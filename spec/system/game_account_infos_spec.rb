@@ -4,7 +4,7 @@ RSpec.describe GameAccountInfo, type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:registered_user) { FactoryBot.create(:registered_user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
-  let(:game_account_info) { FactoryBot.create(:game_account_info, user: user) }
+  let(:game_account_info) { FactoryBot.create(:game_account_info, user:) }
 
   before do
     guest_user
@@ -74,7 +74,7 @@ RSpec.describe GameAccountInfo, type: :system do
           it "登録が成功する事" do
             visit edit_game_account_info_path(user.id)
             select "Steam", from: "プラットフォーム"
-            fill_in "ゲームID" , with: "TestID"
+            fill_in "ゲームID", with: "TestID"
             click_button "登録する"
             allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_content "ゲームアカウント情報を更新しました"
@@ -84,7 +84,7 @@ RSpec.describe GameAccountInfo, type: :system do
           it "Steamのプラットフォームアイコンが表示される事" do
             visit edit_game_account_info_path(user.id)
             select "Steam", from: "プラットフォーム"
-            fill_in "ゲームID" , with: "TestID"
+            fill_in "ゲームID", with: "TestID"
             click_button "登録する"
             allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_selector(".platform-icon, img[src$='steam_icon.png']")
@@ -93,7 +93,7 @@ RSpec.describe GameAccountInfo, type: :system do
           it "Originのプラットフォームアイコンが表示される事" do
             visit edit_game_account_info_path(user.id)
             select "Origin", from: "プラットフォーム"
-            fill_in "ゲームID" , with: "TestID"
+            fill_in "ゲームID", with: "TestID"
             click_button "登録する"
             allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_selector(".platform-icon, img[src$='origin_icon.png']")
@@ -102,7 +102,7 @@ RSpec.describe GameAccountInfo, type: :system do
           it "PlayStationのプラットフォームアイコンが表示される事" do
             visit edit_game_account_info_path(user.id)
             select "PlayStation", from: "プラットフォーム"
-            fill_in "ゲームID" , with: "TestID"
+            fill_in "ゲームID", with: "TestID"
             click_button "登録する"
             allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_selector(".platform-icon, img[src$='psn_icon.png']")
@@ -111,7 +111,7 @@ RSpec.describe GameAccountInfo, type: :system do
           it "Xboxのプラットフォームアイコンが表示される事" do
             visit edit_game_account_info_path(user.id)
             select "Xbox", from: "プラットフォーム"
-            fill_in "ゲームID" , with: "TestID"
+            fill_in "ゲームID", with: "TestID"
             click_button "登録する"
             allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_selector(".platform-icon, img[src$='xbl_icon.png']")
@@ -120,7 +120,7 @@ RSpec.describe GameAccountInfo, type: :system do
           it "ゲームIDが表示される事" do
             visit edit_game_account_info_path(user.id)
             select "Steam", from: "プラットフォーム"
-            fill_in "ゲームID" , with: "TestID"
+            fill_in "ゲームID", with: "TestID"
             click_button "登録する"
             allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
             expect(page).to have_selector(".game-account-info span, TestID")
@@ -130,7 +130,7 @@ RSpec.describe GameAccountInfo, type: :system do
         context "プラットフォームが選択されていない時" do
           it "登録が失敗する事" do
             visit edit_game_account_info_path(user.id)
-            fill_in "ゲームID" , with: "TestID"
+            fill_in "ゲームID", with: "TestID"
             click_button "登録する"
             expect(page).to have_content "プラットフォームを入力してください"
             expect(current_path).to eq edit_game_account_info_path(user.id)
@@ -157,7 +157,7 @@ RSpec.describe GameAccountInfo, type: :system do
           it "更新が成功する事" do
             visit edit_game_account_info_path(user.id)
             select "Steam", from: "プラットフォーム"
-            fill_in "ゲームID" , with: "TestID"
+            fill_in "ゲームID", with: "TestID"
             click_button "登録する"
             expect(page).to have_content "ゲームアカウント情報を更新しました"
             allow(TrackerApiService).to receive(:fetch_trn_player_stats).and_return("No account")
@@ -178,7 +178,7 @@ RSpec.describe GameAccountInfo, type: :system do
         context "ゲームIDが未入力の時" do
           it "登録が失敗する事" do
             visit edit_game_account_info_path(user.id)
-            fill_in "ゲームID" , with: ""
+            fill_in "ゲームID", with: ""
             click_button "登録する"
             expect(page).to have_content "ゲームIDを入力してください"
             expect(current_path).to eq edit_game_account_info_path(user.id)

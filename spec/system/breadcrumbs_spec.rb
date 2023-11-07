@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Breadcrumbs", type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
-  let(:game_account_info) { FactoryBot.create(:game_account_info, user: user) }
+  let(:game_account_info) { FactoryBot.create(:game_account_info, user:) }
 
   before do
     guest_user

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "GameAccountInfos", type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
-  let(:game_account_info) { FactoryBot.build(:game_account_info, user: user) }
+  let(:game_account_info) { FactoryBot.build(:game_account_info, user:) }
 
   describe "GET/edit_game_account_info" do
     before do

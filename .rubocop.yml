@@ -18,6 +18,12 @@ AllCops:
     - "config/environments/*"
     - "config/puma.rb"
 
+Metrics:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
@@ -48,3 +54,9 @@ Naming/MethodParameterName:
     - "app/models/tracker_api_service.rb"
   AllowedNames:
     - "matchesPlayed"
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false

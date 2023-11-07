@@ -2,37 +2,34 @@ require 'rails_helper'
 
 RSpec.describe TrackerMatchRecord, type: :model do
   let(:user) { FactoryBot.build(:user) }
-  let(:saved_match_result) { FactoryBot.create(:tracker_match_record, user: user) }
+  let(:saved_match_result) { FactoryBot.create(:tracker_match_record, user:) }
 
   let(:match_history) do
     { "data" =>
       { "items" =>
         [
-          { "metadata" => { "endDate" => { "value" => Date.today.beginning_of_month.to_s } },
-            "matches" => [ {
+          { "metadata" => { "endDate" => { "value" => Time.zone.today.beginning_of_month.to_s } },
+            "matches" => [{
               "metadata" => {
-                "endDate"=>{ "value" => Date.today.beginning_of_month.to_s },
-                "character"=>{ "displayValue" => "Wraith" }
+                "endDate" => { "value" => Time.zone.today.beginning_of_month.to_s },
+                "character" => { "displayValue" => "Wraith" }
               },
               "stats" => {
                 "kills" => { "value" => 10 },
-                "damage" =>{ "value" => 1800 },
-                "wins" =>  { "value" => 1 }
+                "damage" => { "value" => 1800 },
+                "wins" => { "value" => 1 }
               }
-            } ]
-          }
-        ]
-      }
-    }
+            }] }
+        ] } }
   end
 
   let(:extract_day_history) do
     [
       {
-        "metadata" => { "endDate" => { "value" => Date.today.beginning_of_month.to_s } },
+        "metadata" => { "endDate" => { "value" => Time.zone.today.beginning_of_month.to_s } },
         "matches" => [
           {
-            "metadata" => { "endDate" => { "value" => Date.today.beginning_of_month.to_s }, "character" => { "displayValue" => "Wraith" } },
+            "metadata" => { "endDate" => { "value" => Time.zone.today.beginning_of_month.to_s }, "character" => { "displayValue" => "Wraith" } },
             "stats" => { "kills" => { "value" => 10 }, "damage" => { "value" => 1800 }, "wins" => { "value" => 1 } }
           }
         ]
@@ -43,7 +40,7 @@ RSpec.describe TrackerMatchRecord, type: :model do
   let(:one_match_history) do
     {
       "metadata" => {
-        "endDate" => { "value" => Date.today.beginning_of_month.to_s }, "character" => { "displayValue" => "Wraith" }
+        "endDate" => { "value" => Time.zone.today.beginning_of_month.to_s }, "character" => { "displayValue" => "Wraith" }
       },
       "stats" => {
         "kills" => { "value" => 10 }, "damage" => { "value" => 1800 }, "wins" => { "value" => 1 }
@@ -52,9 +49,9 @@ RSpec.describe TrackerMatchRecord, type: :model do
   end
 
   let(:no_value_one_match_history) do
-        {
+    {
       "metadata" => {
-        "endDate" => { "value" => Date.today.beginning_of_month.to_s }, "character" => { "displayValue" => "Wraith" }
+        "endDate" => { "value" => Time.zone.today.beginning_of_month.to_s }, "character" => { "displayValue" => "Wraith" }
       },
       "stats" => {
         "kills" => { "value" => 10 }, "damage" => { "value" => 1800 }
@@ -62,19 +59,18 @@ RSpec.describe TrackerMatchRecord, type: :model do
     }
   end
 
-  let(:extract_one_match_result) {
-    { "date" => Date.today.beginning_of_month.to_s, "legend" => "Wraith", "kills" => 10, "damages" => 1800, "wins" => 1 }
-  }
+  let(:extract_one_match_result) do
+    { "date" => Time.zone.today.beginning_of_month.to_s, "legend" => "Wraith", "kills" => 10, "damages" => 1800, "wins" => 1 }
+  end
 
-  let(:extract_match_result) {
-    [{"date" => Date.today.beginning_of_month.to_s, "legend" => "Wraith", "kills" => 10, "damages" => 1800, "wins" =>1 }]
-  }
+  let(:extract_match_result) do
+    [{ "date" => Time.zone.today.beginning_of_month.to_s, "legend" => "Wraith", "kills" => 10, "damages" => 1800, "wins" => 1 }]
+  end
 
   describe "API通信でデータを取得した時" do
     context "指定した日にデータがある場合" do
       it "全ての試合履歴が取得できている事" do
-        today = Date.today
-        date = Date.new(today.year, today.month, 1)
+        date = Date.new(Time.zone.today.year, Time.zone.today.month, 1)
         day_history = TrackerMatchRecord.fetch_day_match_history(match_history, date)
         expect(day_history).to eq extract_day_history
       end
@@ -90,16 +86,16 @@ RSpec.describe TrackerMatchRecord, type: :model do
       end
 
       it "DBにデータがない場合、保存する事" do
-        expect {
+        expect do
           TrackerMatchRecord.save_past_match_histories(match_history, user)
-        }.to change(TrackerMatchRecord, :count).by(1)
+        end.to change(TrackerMatchRecord, :count).by(1)
       end
 
       it "DBにデータがある場合、保存しないこと" do
         saved_match_result
-        expect {
+        expect do
           TrackerMatchRecord.save_past_match_histories(match_history, user)
-        }.not_to change(TrackerMatchRecord, :count)
+        end.not_to change(TrackerMatchRecord, :count)
       end
     end
 
@@ -117,4 +113,3 @@ RSpec.describe TrackerMatchRecord, type: :model do
     end
   end
 end
-

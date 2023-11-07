@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe TrackerApiService, type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
-  let(:game_account_info) { FactoryBot.create(:game_account_info, user: user) }
-  let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user: user) }
+  let(:game_account_info) { FactoryBot.create(:game_account_info, user:) }
+  let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user:) }
   let(:tracker_api_service) do
     {
       "data" => {
@@ -12,13 +12,13 @@ RSpec.describe TrackerApiService, type: :system do
         "segments" => [
           {
             "stats" => {
-              "level" => { "rank" => 25233, "percentile" => 99.3, "value" => 1557.0 },
-              "kills" => { "rank" => 3659, "percentile" => 99.9, "value" => 45350.0 },
+              "level" => { "rank" => 25_233, "percentile" => 99.3, "value" => 1557.0 },
+              "kills" => { "rank" => 3659, "percentile" => 99.9, "value" => 45_350.0 },
               "killsPerMatch" => { "rank" => nil, "percentile" => 97.4, "value" => 3.96 },
               "killsAsKillLeader" => { "rank" => nil, "percentile" => 99.9, "value" => 3383.0 },
-              "damage" => { "rank" => 2190, "percentile" => 99.9, "value" => 12892834.0 },
+              "damage" => { "rank" => 2190, "percentile" => 99.9, "value" => 12_892_834.0 },
               "matchesPlayed" => { "rank" => nil, "percentile" => 99.3, "value" => 8916.0 },
-              "rankScore" => { "rank" => 1008, "percentile" => 99.8, "metadata" => { "rankName" => "Master" }, "value" => 33770.0 },
+              "rankScore" => { "rank" => 1008, "percentile" => 99.8, "metadata" => { "rankName" => "Master" }, "value" => 33_770.0 },
               "season10Kills" => { "rank" => nil, "percentile" => 99.1, "value" => 4122.0 },
               "season10Wins" => { "rank" => nil, "percentile" => nil, "value" => nil },
               "wins" => { "rank" => 4285, "percentile" => 99.6, "value" => 1599.0 }
@@ -28,9 +28,9 @@ RSpec.describe TrackerApiService, type: :system do
             "type" => "legend",
             "metadata" => { "name" => "Wraith" },
             "stats" => {
-              "kills" => { "rank" => 2433, "percentile" => 99.0, "value" => 23996.0 },
+              "kills" => { "rank" => 2433, "percentile" => 99.0, "value" => 23_996.0 },
               "killsAsKillLeader" => { "rank" => nil, "percentile" => 91.9, "value" => 965.0 },
-              "damage" => { "rank" => 2000, "percentile" => 100.0, "value" => 7025561.0 },
+              "damage" => { "rank" => 2000, "percentile" => 100.0, "value" => 7_025_561.0 },
               "matchesPlayed" => { "rank" => nil, "percentile" => 99.5, "value" => 7751.0 },
               "wins" => { "rank" => nil, "percentile" => 99.0, "value" => 894.0 }
             }
@@ -39,11 +39,11 @@ RSpec.describe TrackerApiService, type: :system do
             "type" => "legend",
             "metadata" => { "name" => "Horizon" },
             "stats" => {
-              "kills" => { "rank" => 10000, "percentile" => 99.1, "value" => 6000.0 },
+              "kills" => { "rank" => 10_000, "percentile" => 99.1, "value" => 6000.0 },
               "killsAsKillLeader" => { "rank" => nil, "percentile" => 99.9, "value" => 3830.0 },
-              "damage" => { "rank" => 14324, "percentile" => 100.0, "value" => 1203407.0 },
-              "matchesPlayed" => { "rank" => nil, "percentile" => 99.5, "value" => 10003.0 },
-              "wins" => { "rank" => 42990, "percentile" => 96.9, "value" => 492.0 }
+              "damage" => { "rank" => 14_324, "percentile" => 100.0, "value" => 1_203_407.0 },
+              "matchesPlayed" => { "rank" => nil, "percentile" => 99.5, "value" => 10_003.0 },
+              "wins" => { "rank" => 42_990, "percentile" => 96.9, "value" => 492.0 }
             }
           }
         ]
