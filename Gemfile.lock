@@ -196,6 +196,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
+    pg (1.5.4)
     popper_js (2.11.8)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -374,6 +375,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   mini_magick
+  pg
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.5)
@@ -388,7 +390,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_calendar (~> 2.0)
   sprockets-rails
-  sqlite3 (~> 1.4)
+  sqlite3
   stimulus-rails
   turbo-rails
   tzinfo-data
