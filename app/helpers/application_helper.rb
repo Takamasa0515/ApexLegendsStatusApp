@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def rank_image_path(rank)
     case rank
-    when "Predator"
+    when "Apex Predator"
       image_tag("rank_images/predator.png")
     when "Master"
       image_tag("rank_images/master.png")
