@@ -11,19 +11,19 @@
         <span class="legend-icon">
           <%= legend_image_path(match.legend) %>
         </span>
-        <span class="legend-name"><%= match.legend %></span>
+        <span class="legend-name"><%= I18n.t("legend.#{match.legend}") %></span>
       </div>
       <div class="legend-stats-card-body p-0 ps-3">
         <div class="legend-stat">
-          <span class="name">Kills</span>
+          <span class="name">キル数</span>
           <span class="value"><%= match.kills.present? ? add_commas_to_number(match.kills) : "---" %></span>
         </div>
         <div class="legend-stat">
-          <span class="name">Damage</span>
+          <span class="name">ダメージ数</span>
           <span class="value"><%= match.damages.present? ? add_commas_to_number(match.damages) : "---" %></span>
         </div>
         <div class="legend-stat">
-          <span class="name">Wins</span>
+          <span class="name">勝利数</span>
           <span class="value"><%= match.wins.present? ? add_commas_to_number(match.wins) : "---" %></span>
         </div>
       </div>

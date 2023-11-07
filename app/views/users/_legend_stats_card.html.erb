@@ -10,13 +10,13 @@
           <%= legend_image_path(legend_name(legend_stats)) %>
         </span>
         <span class="legend-name">
-          <%= legend_name(legend_stats) %>
+          <%= I18n.t("legend.#{legend_name(legend_stats)}") %>
         </span>
       </div>
       <div class="legend-stats-card-body">
         <% @trn_legend_stats_name.each do |stats_name| %>
           <div class="legend-stat">
-            <span class="name"><%= stats_name.capitalize %></span>
+            <span class="name"><%= I18n.t("stats.#{stats_name}") %></span>
             <% if legend_stats.dig("stats", stats_name, "value").present? %>
               <span class="value">
                 <%= add_commas_to_number(legend_stats_value(legend_stats, stats_name, "value").floor) %>
