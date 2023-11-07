@@ -126,5 +126,11 @@ RSpec.describe "Users", type: :request do
       delete user_path(user)
       expect(User.all).not_to include(user)
     end
+
+    it "ゲストユーザーが削除されない事" do
+      sign_in guest_user
+      delete user_path(guest_user)
+      expect(User.all).to include(guest_user)
+    end
   end
 end

@@ -13,11 +13,11 @@ RSpec.describe GameAccountInfo, type: :system do
   describe "ゲストユーザーでログインしている時" do
     it "ゲームアカウントを登録できない事" do
       sign_in guest_user
-      user = guest_user
-      visit user_path(user.id)
+      visit user_path(guest_user.id)
       click_link "ゲームアカウントを登録・編集する"
+      sleep 0.2
       expect(page).to have_content "ゲストアカウントにはゲームアカウントを登録できません。"
-      expect(current_path).to eq user_path(user.id)
+      expect(current_path).to eq user_path(guest_user.id)
     end
   end
 
