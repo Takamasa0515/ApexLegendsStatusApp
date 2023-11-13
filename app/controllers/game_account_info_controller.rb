@@ -2,7 +2,7 @@ class GameAccountInfoController < ApplicationController
   before_action :authenticate_user!
 
   def edit
-    if current_user.id == 1
+    if current_user.email == "guest@example.com"
       redirect_to user_path(current_user.id), alert: "ゲストアカウントにはゲームアカウントを登録できません。"
     else
       @game_account_info = GameAccountInfo.find_or_initialize_by(user_id: current_user.id)
