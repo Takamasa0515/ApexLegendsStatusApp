@@ -317,9 +317,12 @@ RSpec.describe Users, type: :system do
     end
 
     describe "プロフィール編集" do
+      before do
+        visit edit_user_registration_path
+      end
+
       context "アイコン画像をアップロードする時" do
         it "正常にアップロードでき、表示される事" do
-          visit edit_user_registration_path
           attach_file "user[avatar]", Rails.root.join('spec/fixtures/image/test_avatar.jpg').to_s
           fill_in "現在のパスワード", with: user.password
           click_button "更新する"
@@ -329,7 +332,6 @@ RSpec.describe Users, type: :system do
       end
       context "アイコン画像をアップロードしない時" do
         it "デフォルト画像が表示される事" do
-          visit edit_user_registration_path
           fill_in "現在のパスワード", with: user.password
           click_button "更新する"
           expect(page).to have_content "アカウント情報を変更しました。"
@@ -338,7 +340,6 @@ RSpec.describe Users, type: :system do
       end
       context "フォームの入力値が正常" do
         it "プロフィールの編集が成功する事" do
-          visit edit_user_registration_path
           fill_in "ユーザー名", with: "Updateテストユーザー"
           fill_in "プロフィール", with: "テストユーザーです。"
           fill_in "Eメール", with: "Update_test@example.com"
@@ -350,7 +351,6 @@ RSpec.describe Users, type: :system do
       end
       context "ユーザー名が未入力の時" do
         it "プロフィールの編集が失敗する事" do
-          visit edit_user_registration_path
           fill_in "ユーザー名", with: ""
           fill_in "プロフィール", with: "テストユーザーです。"
           fill_in "Eメール", with: user.email
@@ -363,7 +363,6 @@ RSpec.describe Users, type: :system do
       context "登録済みのメールアドレスが入力された時" do
         it "プロフィールの編集が失敗する事" do
           registered_user
-          visit edit_user_registration_path
           fill_in "ユーザー名", with: user.name
           fill_in "プロフィール", with: "テストユーザーです。"
           fill_in "Eメール", with: registered_user.email
@@ -375,7 +374,6 @@ RSpec.describe Users, type: :system do
       end
       context "現在のパスワードが未入力の時" do
         it "プロフィールの編集が失敗する事" do
-          visit edit_user_registration_path
           fill_in "ユーザー名", with: user.name
           fill_in "プロフィール", with: "テストユーザーです。"
           fill_in "Eメール", with: user.email
@@ -387,7 +385,6 @@ RSpec.describe Users, type: :system do
       end
       context "現在のパスワードが間違っている時" do
         it "プロフィールの編集が失敗する事" do
-          visit edit_user_registration_path
           fill_in "ユーザー名", with: user.name
           fill_in "プロフィール", with: "テストユーザーです。"
           fill_in "Eメール", with: user.email
@@ -395,6 +392,28 @@ RSpec.describe Users, type: :system do
           click_button "更新する"
           expect(page).to have_content "現在のパスワードが一致しません"
           expect(current_path).to eq edit_user_registration_path
+        end
+      end
+    end
+  end
+
+  describe "ゲストアカウントでログインしている時" do
+    before do
+      guest_user
+      user
+      sign_in guest_user
+    end
+    describe "プロフィール編集" do
+      context "プロフィールを編集する時" do
+        it "プロフィールの編集が失敗する事" do
+          visit edit_user_registration_path
+          fill_in "ユーザー名", with: "ゲスト"
+          fill_in "プロフィール", with: guest_user.self_introduction
+          fill_in "Eメール", with: guest_user.email
+          fill_in "現在のパスワード", with: guest_user.password
+          click_button "更新する"
+          expect(page).to have_content "ゲストユーザーの更新・削除はできません。"
+          expect(current_path).to eq user_path(guest_user.id)
         end
       end
     end
