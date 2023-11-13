@@ -20,6 +20,7 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.name = "ゲストアカウント"
+      user.self_introduction = "ゲストアカウントです。このアカウントにゲームアカウントの登録はできません。"
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
     end

@@ -44,6 +44,14 @@ RSpec.describe TrackerMatchRecord, type: :system do
       sign_in user
     end
 
+    describe "ゲストアカウントの試合履歴ページを表示した時" do
+      it "試合履歴が表示されない事" do
+        sign_in guest_user
+        visit user_tracker_match_records_path(guest_user.id)
+        expect(page).to have_content "ゲストアカウントでは戦績は表示できません。"
+      end
+    end
+
     describe "ゲームアカウントが存在する時" do
       before do
         steam_game_account_info
