@@ -22,13 +22,13 @@ module TrackerMatchRecordsHelper
 
   def month_kills(user, start_date)
     start_date = Date.new(start_date.year, start_date.month, 1)
-    end_date =  start_date.end_of_month
+    end_date = start_date.end_of_month
     calculate_kills(user, start_date, end_date)
   end
 
   def previous_month_kills(user, start_date)
     start_date = Date.new(start_date.year, start_date.month - 1, 1)
-    end_date =  start_date.end_of_month
+    end_date = start_date.end_of_month
     calculate_kills(user, start_date, end_date)
   end
 
