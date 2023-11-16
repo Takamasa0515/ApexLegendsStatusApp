@@ -1,4 +1,8 @@
 <div class="simple-calendar">
+  <div class="compare-kills">
+    <p>今月の総キル数：<%= month_kills(@user, start_date) %>キル</p>
+    <p>先月の総キル数：<%= previous_month_kills(@user, start_date) %>キル</p>
+  </div>
   <div class="calendar-heading">
     <% unless start_date.month == Time.current.month - 2 %>
       <%= link_to t("simple_calendar.previous", default: "先月"), calendar.url_for_previous_view %>

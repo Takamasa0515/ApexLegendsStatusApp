@@ -1,13 +1,13 @@
 <div class="match-record-calendar-area">
   <div class="match-record-calendar-container bg-gray">
     <div class="match-record-calendar-title">
-      <h2>今月のキル数一覧</h2>
+      <h2>キル数一覧</h2>
     </div>
     <div class="match-record-calendar">
       <%= month_calendar do |date| %>
         <%= button_to user_tracker_show_records_path, {params: {match_date: date, match_ids: match_id(matches, date)} , remote: true} do %>
           <p><%= date.day %></p>
-          <p><%= match_kills(@matches, date) %>kills</p>
+          <p><%= match_kills(matches, date) %>kills</p>
         <% end %>
       <% end %>
     </div>
