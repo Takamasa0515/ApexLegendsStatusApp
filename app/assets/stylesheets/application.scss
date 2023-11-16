@@ -12550,6 +12550,18 @@ footer {
   }
 }
 
+.compare-kills {
+  display: flex;
+  justify-content: space-around;
+  color: #ffffff;
+}
+
+.compare-kills p {
+  font-size: 1.5rem;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+}
+
 .simple-calendar {
   table,
   th,
