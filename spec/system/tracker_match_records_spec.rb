@@ -31,6 +31,29 @@ RSpec.describe TrackerMatchRecord, type: :system do
               "damage" => { "value" => 1800 },
               "wins" => { "value" => 1 }
             }
+          },
+          {
+            "metadata" => {
+              "endDate" => { "value" => (Time.zone.today.beginning_of_month - 1).to_s }
+            },
+            "matches" => [
+              {
+                "metadata" => {
+                  "endDate" => { "value" => (Time.zone.today.beginning_of_month - 1).to_s },
+                  "character" => { "displayValue" => "Pathfinder" }
+                },
+                "stats" => {
+                  "kills" => { "value" => 5 },
+                  "damage" => { "value" => 900 },
+                  "wins" => { "value" => 0 }
+                }
+              }
+            ],
+            "stats" => {
+              "kills" => { "value" => 5 },
+              "damage" => { "value" => 900 },
+              "wins" => { "value" => 0 }
+            }
           }
         ]
       }
@@ -79,6 +102,14 @@ RSpec.describe TrackerMatchRecord, type: :system do
             click_link "先月"
             click_link "来月"
             expect(page).to have_content "#{Date.current.month}月"
+          end
+
+          it "今月の総キル数が表示される事" do
+            expect(page).to have_content "今月の総キル数：10キル"
+          end
+
+          it "先月の総キル数が表示される事" do
+            expect(page).to have_content "先月の総キル数：5キル"
           end
 
           it "カレンダーにキル数が表示されている事" do
