@@ -4,6 +4,7 @@ RSpec.describe "GameAccountInfos", type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
   let(:game_account_info) { FactoryBot.build(:game_account_info, user:) }
+  let(:tracker_match_record) { FactoryBot.create(:tracker_match_record, user:) }
 
   describe "GET/edit_game_account_info" do
     before do
@@ -62,12 +63,28 @@ RSpec.describe "GameAccountInfos", type: :request do
     before do
       guest_user
       user
+      user.last_accessed_at_match_record = Time.zone.today
       sign_in user
-      patch game_account_info_path(user), params: { game_account_info: { platform: "origin", gameid: "Test" } }
     end
 
-    it "ゲームアカウントが更新された場合、マイページにリダイレクトされる事" do
-      expect(response).to redirect_to(user_path(user))
+    context "ゲームアカウントが変更された時" do
+      before do
+        tracker_match_record
+        patch game_account_info_path(user), params: { game_account_info: { platform: "origin", gameid: "Test" } }
+      end
+
+      it "試合履歴が削除される事" do
+        expect(user.tracker_match_records).to be_empty
+      end
+
+      it "ユーザーのlast_accessed_at_match_recordがnilになる事" do
+        user.reload
+        expect(user.last_accessed_at_match_record).to be_nil
+      end
+
+      it "マイページにリダイレクトされる事" do
+        expect(response).to redirect_to(user_path(user))
+      end
     end
   end
 end

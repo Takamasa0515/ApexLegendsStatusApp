@@ -11,12 +11,26 @@ class GameAccountInfoController < ApplicationController
 
   def update
     @game_account_info = GameAccountInfo.find_or_initialize_by(user_id: current_user.id)
-    if @game_account_info.update(game_account_info_params)
+    if account_match_check
+      redirect_to user_path
+    elsif @game_account_info.update(game_account_info_params)
+      delete_match_record
       flash[:notice] = I18n.t('flash.update')
       redirect_to user_path
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def account_match_check
+    @game_account_info.platform == game_account_info_params[:platform] && @game_account_info.gameid == game_account_info_params[:gameid]
+  end
+
+  def delete_match_record
+    user = @game_account_info.user
+    records = user.tracker_match_records.all
+    records.destroy_all
+    user.update(last_accessed_at_match_record: nil)
   end
 
   private
