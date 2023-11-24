@@ -21,8 +21,13 @@ class User < ApplicationRecord
     if User.exists?(email: 'guest@example.com')
       User.find_by!(email: 'guest@example.com')
     else
-      password = SecureRandom.urlsafe_base64
-      user = User.create(name: "ゲストアカウント", self_introduction: "ゲストアカウントです。このアカウントにゲームアカウントの登録はできません。", password: password, password_confirmation: password)
+      guest_password = SecureRandom.urlsafe_base64
+      user = User.create(
+        name: "ゲストアカウント",
+        self_introduction: "ゲストアカウントです。このアカウントにゲームアカウントの登録はできません。",
+        password: guest_password,
+        password_confirmation: guest_password
+      )
       GameAccountInfo.create(platform: "origin", gameid: "Twitch_Ne1u", user_id: user.id)
     end
   end
