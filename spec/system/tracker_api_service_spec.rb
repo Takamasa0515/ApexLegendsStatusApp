@@ -5,6 +5,7 @@ RSpec.describe TrackerApiService, type: :system do
   let(:guest_user) { FactoryBot.create(:guest_user) }
   let(:game_account_info) { FactoryBot.create(:game_account_info, user:) }
   let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user:) }
+  let(:guest_game_account_info) { FactoryBot.create(:guest_game_account_info, user_id: guest_user.id) }
   let(:tracker_api_service) do
     {
       "data" => {
@@ -56,10 +57,11 @@ RSpec.describe TrackerApiService, type: :system do
   end
 
   describe "ゲストアカウントを表示した時" do
-    it "戦績が表示されない事" do
+    it "ゲストアカウント用の戦績が取得されている事" do
+      guest_game_account_info
       sign_in guest_user
       visit user_path(guest_user.id)
-      expect(page).to have_content "ゲストアカウントでは戦績は表示できません。"
+      expect(page).to have_selector(".overall-title", text: "総合戦績")
     end
   end
 

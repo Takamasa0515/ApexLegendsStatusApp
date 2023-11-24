@@ -5,6 +5,7 @@ RSpec.describe TrackerMatchRecord, type: :system do
   let(:guest_user) { FactoryBot.create(:guest_user) }
   let(:steam_game_account_info) { FactoryBot.create(:steam_game_account_info, user:) }
   let(:no_game_account_info) { FactoryBot.create(:no_game_account_info, user:) }
+  let(:guest_game_account_info) { FactoryBot.create(:guest_game_account_info, user_id: guest_user.id) }
   let(:api_tracker_match_record) do
     {
       "data" => {
@@ -68,10 +69,11 @@ RSpec.describe TrackerMatchRecord, type: :system do
     end
 
     describe "ゲストアカウントの試合履歴ページを表示した時" do
-      it "試合履歴が表示されない事" do
+      it "カレンダーが表示され、試合履歴が取得できる事" do
+        guest_game_account_info
         sign_in guest_user
         visit user_tracker_match_records_path(guest_user.id)
-        expect(page).to have_content "ゲストアカウントでは戦績は表示できません。"
+        expect(page).to have_css ".simple-calendar"
       end
     end
 

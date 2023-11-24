@@ -16,9 +16,7 @@
       <%= link_to "試合履歴", user_tracker_match_records_path(@user.id) %>
     </div>
   </div>
-  <% if @user.email == "guest@example.com" %>
-    <%= render "shared/guest_account" %>
-  <% elsif @trn_player_stats == "Apilimit" %>
+  <% if @trn_player_stats == "Apilimit" %>
     <%= render "shared/api_rate_limit" %>
   <% elsif @trn_player_stats == "No account" %>
     <%= render "shared/no_game_account_info" %>

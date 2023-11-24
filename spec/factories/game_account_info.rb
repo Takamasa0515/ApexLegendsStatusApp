@@ -15,4 +15,10 @@ FactoryBot.define do
     platform { "steam" }
     gameid { "no_account" }
   end
+
+  factory :guest_game_account_info, class: "GameAccountInfo" do
+    platform { "origin" }
+    gameid { "Twitch_Ne1u" }
+    current_rank { "Master" }
+  end
 end

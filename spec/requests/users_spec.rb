@@ -108,10 +108,6 @@ RSpec.describe "Users", type: :request do
       it "ゲストアカウント用のプロフィールが表示されること" do
         expect(response.body).to include(guest_user.self_introduction)
       end
-
-      it "ゲストアカウントでは戦績は表示できません、と表示される事" do
-        expect(response.body).to include("ゲストアカウントでは戦績は表示できません")
-      end
     end
   end
 
