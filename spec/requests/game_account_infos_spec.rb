@@ -63,7 +63,7 @@ RSpec.describe "GameAccountInfos", type: :request do
     before do
       guest_user
       user
-      user.last_accessed_at_match_record = Date.today
+      user.last_accessed_at_match_record = Time.zone.today
       sign_in user
     end
 
