@@ -16,9 +16,7 @@
       <p>試合履歴</p>
     </div>
   </div>
-  <% if @user.email == "guest@example.com" %>
-    <%= render "shared/guest_account" %>
-  <% elsif @match_histories == "Apilimit" %>
+  <% if @match_histories == "Apilimit" %>
     <%= render "shared/api_rate_limit" %>
   <% elsif @match_histories == "No account" %>
     <%= render "shared/no_game_account_info" %>
