@@ -14,10 +14,13 @@ class GameAccountInfoController < ApplicationController
     if account_match_check
       redirect_to user_path
     else
-      @game_account_info.update(game_account_info_params)
-      delete_match_record
-      flash[:notice] = I18n.t('flash.update')
-      redirect_to user_path
+      if @game_account_info.update(game_account_info_params)
+        delete_match_record
+        flash[:notice] = I18n.t('flash.update')
+        redirect_to user_path
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
