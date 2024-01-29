@@ -27,7 +27,11 @@ module TrackerMatchRecordsHelper
   end
 
   def previous_month_kills(user, start_date)
-    start_date = Date.new(start_date.year, start_date.month - 1, 1)
+    if start_date.month > 1
+      start_date = Date.new(start_date.year, start_date.month - 1, 1)
+    else
+      start_date = Date.new(start_date.year - 1, 12, 1)
+    end
     end_date = start_date.end_of_month
     calculate_kills(user, start_date, end_date)
   end
