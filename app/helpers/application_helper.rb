@@ -45,7 +45,7 @@ module ApplicationHelper
     if File.exist?(Rails.root.join("app/assets/images/legend_images/#{legend_name}_icon.jpg").to_s)
       image_tag("legend_images/#{legend_name}_icon.jpg")
     else
-      image_tag('legend_images/no_image.jpg')
+      image_tag("legend_images/no_image.jpg")
     end
   end
 end
