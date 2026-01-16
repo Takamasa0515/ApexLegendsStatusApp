@@ -7,19 +7,19 @@
       <% @trn_overall_stats_name.each do |stat| %>
         <div class="overall-stat">
           <span class="name"><%= I18n.t("stats.#{stat}") %></span>
-          <span class="value"><%= instance_variable_get(:"@trn_overall_#{stat}_value") %></span>
-          <span class="rank"><%= instance_variable_get(:"@trn_overall_#{stat}_rank") %> - Top<%= instance_variable_get(:"@trn_overall_#{stat}_percentile") %></span>
+          <span class="value"><%= @trn_overall_stats[stat][:value] %></span>
+          <span class="rank"><%= @trn_overall_stats[stat][:rank] %> - Top<%= @trn_overall_stats[stat][:percentile] %></span>
         </div>
       <% end %>
       <div class="overall-stat">
         <span class="name">Season<%= @trn_current_season %>キル数</span>
-        <span class="value"><%= @trn_currentseason_Kills_value %></span>
-        <span class="rank"><%= @trn_currentseason_Kills_rank %> - Top<%= @trn_currentseason_Kills_percentile %></span>
+        <span class="value"><%= @trn_current_season_stats["Kills"][:value] %></span>
+        <span class="rank"><%= @trn_current_season_stats["Kills"][:rank] %> - Top<%= @trn_current_season_stats["Kills"][:percentile] %></span>
       </div>
       <div class="overall-stat">
         <span class="name">Season<%= @trn_current_season %>勝利数</span>
-        <span class="value"><%= @trn_currentseason_Wins_value %></span>
-        <span class="rank"><%= @trn_currentseason_Wins_rank %> - Top<%= @trn_currentseason_Wins_percentile %></span>
+        <span class="value"><%= @trn_current_season_stats["Wins"][:value] %></span>
+        <span class="rank"><%= @trn_current_season_stats["Wins"][:rank] %> - Top<%= @trn_current_season_stats["Wins"][:percentile] %></span>
       </div>
       <div class="overall-stat">
         <span class="name">1試合での平均キル数</span>
@@ -32,7 +32,7 @@
       <div class="overall-stat">
         <span class="name">現在のランク</span>
         <span class="value"><%= rank_image_path(@trn_rank_name) %><%= I18n.t("rank.#{@trn_rank_name}") %></span>
-        <span class="rank"><%= @trn_rank_point_rank %> - Top<%= @trn_rank_point_percentile %></span>
+        <span class="rank"><%= @trn_rank_stats[:point][:rank] %> - Top<%= @trn_rank_stats[:point][:percentile] %></span>
       </div>
     </div>
   </div>
