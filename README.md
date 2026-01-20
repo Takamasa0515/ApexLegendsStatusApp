@@ -2,12 +2,12 @@
 
 ![apexlegends_status_logo](https://github.com/Takamasa0515/ApexLegendsStatusApp/assets/102008250/a0972c0f-8b52-4107-b810-663022bd9927)
 
-ApexLegends Statusは「ApexLegends」のアカウント全体の戦績から、1日1日のキル数をはじめとする試合の結果を確認できるサービスです。
+ApexLegends Statusは「ApexLegends」のアカウント全体の戦績から、1日のキル数をはじめとする試合の結果を確認できるサービスです。
 
 ## アプリ URL
 
 以下の URL から実際にサービスを利用することができます。テストデータも用意しており、アカウント登録せずともアプリの機能を試すことができます。  
-https://apexlegends-status-app-9b8a0f5342c3.herokuapp.com/
+[ApexLegends Status](https://apexlegends-status-app-9b8a0f5342c3.herokuapp.com){:target="_blank"}
 
 ## アプリケーションを開発した経緯
 
