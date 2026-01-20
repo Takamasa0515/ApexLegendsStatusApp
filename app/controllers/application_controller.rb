@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_q, :search
 
   def search
-    @users_result = @q.result
+    @users_result = @q.result.includes(:game_account_info, avatar_attachment: :blob)
   end
 
   private
