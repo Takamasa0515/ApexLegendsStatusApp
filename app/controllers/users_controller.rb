@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   PERCENTAGE_BASE = 100
 
   def index
-    @users = User.all
+    @users = User.includes(:game_account_info, avatar_attachment: :blob)
   end
 
   def show
