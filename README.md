@@ -7,7 +7,7 @@ ApexLegends Statusは「ApexLegends」のアカウント全体の戦績から、
 ## アプリ URL
 
 以下の URL から実際にサービスを利用することができます。テストデータも用意しており、アカウント登録せずともアプリの機能を試すことができます。  
-[ApexLegends Status](https://apexlegends-status-app-9b8a0f5342c3.herokuapp.com){:target="_blank"}
+[ApexLegends Status](https://apexlegends-status-app-9b8a0f5342c3.herokuapp.com)
 
 ## アプリケーションを開発した経緯
 
