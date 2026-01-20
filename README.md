@@ -60,7 +60,7 @@ ApexLegendsの戦績を確認できるサービスとして[Tracker Network](htt
 ### フロントエンド
 
 - HTML
-- CSS (SCSS)
+- SCSS
 - Bootstrap ([Startbootstrap](https://startbootstrap.com/template/scrolling-nav "Start Bootstrap"))
 - JavaScript（jQuery）
 
