@@ -5,7 +5,7 @@ class UpdateGuestUserParameters < ActiveRecord::Migration[7.0]
 
     game_account = guest.game_account_info
     game_account.update!(
-      gameid: "lNe1u",
+      gameid: "Pato_385",
     )
   end
 
